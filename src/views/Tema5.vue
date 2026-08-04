@@ -12,6 +12,5 @@
 <script>
 export default {
   name: 'Tema5',
-  data: () => ({}),
 }
 </script>
