@@ -7,14 +7,18 @@ vez, y cada comprobación existe porque algo se colcó por ahí:
   3. AOS SIN ANIMAR        -> con el viewport cubriendo la página, 0 elementos `[data-aos]` sin
                               `aos-animate`; si sale alguno, ese bloque no se ve nunca
   4. DESBORDE EN MÓVIL      -> por CDP, ningún elemento con `right` mayor que el `clientWidth`
+  4d. CAJA FUERA DE COLUMNA -> por CDP y en ESCRITORIO, ningún hijo de un `col-*` con el `bottom`
+                              por debajo del de su columna: eso se monta sobre el bloque siguiente
   5. COLORES PROHIBIDOS     -> hex que NO están en el XD (p. ej. los de un remapeo revertido)
 
 Los checks 1x son ESTÁTICOS (leen el Pug/JSON/DOCX, no hace falta el servidor) y cada uno existe
 porque una revisión manual lo pilló: 1b/1c/1d de la de Manuel del 2026-07-30 y 1e/1f/1g/1h/1i de la
 del 2026-08-04 (placeholders del scaffold, la actividad contra el AD.docx, las imágenes repetidas de
-la actividad, el contraste de `textColor()` y los comentarios de bitácora en el código).
+la actividad, el contraste de `textColor()` y los comentarios de bitácora en el código). El 4d es de
+la revisión de Luis del 2026-08-04 (Tema 1 de CF2: `.h-100` sobre `.tarjeta--icono-arriba`).
 
-Uso:  verificar_maqueta.py [--base URL] [--prohibidos HEX,HEX] [--movil 485] [--estaticos]
+Uso:  verificar_maqueta.py [--base URL] [--prohibidos HEX,HEX] [--movil 485] [--desktop 1440]
+                           [--estaticos]
       --estaticos  corre sólo los checks 1x y sale (no levanta Chrome ni necesita el servidor)
 """
 import glob
@@ -36,6 +40,9 @@ PROHIBIDOS = []
 if '--prohibidos' in sys.argv:
     PROHIBIDOS = [h.strip().lstrip('#').upper() for h in sys.argv[sys.argv.index('--prohibidos') + 1].split(',')]
 ANCHO_MOVIL = int(sys.argv[sys.argv.index('--movil') + 1]) if '--movil' in sys.argv else 485
+# El 4d va en ESCRITORIO a propósito: el fallo que lo motivó sólo existe con las columnas en fila
+# (`height: 100%` contra una columna estirada). Apiladas en móvil no se reproduce.
+ANCHO_DESKTOP = int(sys.argv[sys.argv.index('--desktop') + 1]) if '--desktop' in sys.argv else 1440
 
 fallos = []
 
@@ -381,6 +388,90 @@ else:
 # MANO y la entrada `medir-a-ojo` del diccionario queda como comprobación manual.
 paso('4c. altos contra el XD — PENDIENTE (ver el comentario del código)')
 print('  medir por CDP el alto de `.container.tarjeta--blanca` contra el alto del artboard')
+
+# ---------------------------------------------------------------- 4d. cajas fuera de su columna
+# Nace del Tema 1 de CF2 (revisión de Luis, 2026-08-04): `.h-100` puesta sobre
+# `.tarjeta--icono-arriba`. La utilidad de Bootstrap es `height: 100% !important` y pisa el
+# `height: calc(100% - 75px)` de la clase, que es lo que compensa el `margin-top: 75px` del círculo
+# del icono. Resultado: la tarjeta mide la columna ENTERA más los 75 px de margen, se sale 75 px por
+# abajo y se monta sobre el bloque siguiente (27 px encima del párrafo, porque su `mt-5` son 48).
+#
+# El check 4 no lo caza: mira el desborde HORIZONTAL. Este mide el vertical, y contra la COLUMNA en
+# vez de contra la ventana, que es donde se ve.
+#
+# Dos cosas que hay que hacer bien o los números mienten (probado a base de medir mal):
+#   · viewport ALTO (no 1200): con la página sin caber, los altos que devuelve el CDP bailan 75-100 px.
+#   · esperar a que TODAS las imágenes estén `complete`: si no, las filas miden lo que aún no ha
+#     cargado y salen falsos positivos y falsos negativos según el día.
+paso(f'4d. cajas que se salen de su columna a {ANCHO_DESKTOP}px')
+try:
+    import websocket
+    proc = subprocess.Popen(['google-chrome', '--headless=new', '--disable-gpu', '--no-sandbox',
+                             '--hide-scrollbars', '--remote-debugging-port=9398',
+                             '--remote-allow-origins=*', f'--window-size={ANCHO_DESKTOP},1200',
+                             f'{BASE}?noaos#/{RUTAS[2]}'],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ws = None
+    for _ in range(30):
+        time.sleep(1)
+        try:
+            tg = [t for t in json.load(urllib.request.urlopen('http://127.0.0.1:9398/json'))
+                  if t['type'] == 'page' and 'localhost' in t['url']]
+        except Exception:                                # noqa: BLE001
+            continue
+        if tg:
+            ws = websocket.create_connection(tg[0]['webSocketDebuggerUrl'],
+                                             suppress_origin=True, timeout=60)
+            break
+    if not ws:
+        raise RuntimeError('no apareció el target de la página')
+    i = [0]
+
+    def cdp(metodo, params=None):
+        i[0] += 1
+        ws.send(json.dumps({'id': i[0], 'method': metodo, 'params': params or {}}))
+        while True:
+            m = json.loads(ws.recv())
+            if m.get('id') == i[0]:
+                return m.get('result', {})
+
+    def ev(e):
+        return cdp('Runtime.evaluate',
+                   {'expression': e, 'returnByValue': True})['result'].get('value')
+
+    cdp('Emulation.setDeviceMetricsOverride', {'width': ANCHO_DESKTOP, 'height': 9000,
+                                               'deviceScaleFactor': 1, 'mobile': False})
+    MEDIDA = '''(()=>{const o=[];
+    document.querySelectorAll('[class*="col-"] > *').forEach(e=>{
+      const col=e.parentElement, cs=getComputedStyle(e);
+      if(cs.position==='absolute'||cs.position==='fixed') return;
+      if(getComputedStyle(col).overflow!=='visible') return;
+      const d=Math.round(e.getBoundingClientRect().bottom-col.getBoundingClientRect().bottom);
+      if(d>2) o.push({el:e.tagName.toLowerCase()+'.'+String(e.className).trim().slice(0,52), px:d});});
+    const vistos=new Set();
+    return JSON.stringify(o.filter(x=>{const k=x.el+x.px;
+      if(vistos.has(k))return false;vistos.add(k);return true;}))})()'''
+    total = 0
+    for r in RUTAS:
+        ev(f'location.hash = {json.dumps("#/" + r)}')
+        for _ in range(20):                              # la vista monta y las imágenes cargan
+            time.sleep(0.5)
+            if ev("[...document.images].every(i=>i.complete)"):
+                break
+        time.sleep(1)
+        casos = json.loads(ev(MEDIDA) or '[]')
+        if casos:
+            print(f'  {r or "inicio"}:')
+            for c in casos[:6]:
+                print(f'    +{c["px"]}px  {c["el"]}')
+            total += len(casos)
+    print('  total:', total or 'ninguna')
+    if total:
+        fallos.append(f'{total} cajas se salen de su columna en escritorio')
+    ws.close()
+    proc.kill()
+except Exception as e:                                   # noqa: BLE001
+    print('  (no se pudo medir por CDP:', e, ')')
 
 # ---------------------------------------------------------------- 5. colores prohibidos
 if PROHIBIDOS:

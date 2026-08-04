@@ -19,27 +19,31 @@
 
     p.mt-4(data-aos="fade-down") Los sistemas corporales actúan de manera coordinada para mantener la vida, proteger el organismo y permitir el movimiento. Su reconocimiento facilita la valoración inicial y la identificación de alteraciones durante una emergencia. Para comprender sus funciones principales, se describen los siguientes sistemas:
 
+    //- SIN `.h-100`: `.tarjeta--icono-arriba` ya iguala los altos con `height: calc(100% - 75px)`,
+    //- que descuenta los 75 px que el círculo del icono saca por arriba. La utilidad de Bootstrap
+    //- es `height: 100% !important` y pisa ese calc, así que la tarjeta acaba midiendo la columna
+    //- ENTERA más los 75 px de margen y se sale 75 px por abajo, encima del bloque siguiente.
     .row.mt-5
       .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba.h-100
+        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
           figure
             img(src="@/assets/curso/temas/t1/i1.svg" alt="")
           h4.text-center Sistema circulatorio
           p.text-center.mb-0 Transporta la sangre, el oxígeno y los nutrientes por todo el organismo. Su reconocimiento permite valorar el pulso e identificar alteraciones de la circulación.
       .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba.h-100
+        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
           figure
             img(src="@/assets/curso/temas/t1/i2.svg" alt="")
           h4.text-center Sistema respiratorio
           p.text-center.mb-0 Permite el intercambio de oxígeno y dióxido de carbono. Su funcionamiento orienta la identificación de dificultades respiratorias o de una obstrucción de la vía aérea.
       .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba.h-100
+        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
           figure
             img(src="@/assets/curso/temas/t1/i3.svg" alt="")
           h4.text-center Sistema tegumentario
           p.text-center.mb-0 Protege el cuerpo mediante la piel y contribuye a regular la temperatura. Su valoración permite identificar heridas, quemaduras y signos de infección.
       .col-lg-3(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba.h-100
+        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
           figure
             img(src="@/assets/curso/temas/t1/i4.svg" alt="")
           h4.text-center Sistema musculoesquelético
@@ -150,19 +154,19 @@
     //- (591,4180) 419x461 y #FFE6DE (1009,4180) 405x461 redondeado por la derecha.
     .row.g-0.mt-5
       .col-lg-4
-        .bg-4.r-izq-20.p-4.h-100.tarjeta--icono-arriba(data-aos="fade-down")
+        .bg-4.r-izq-20.p-4.tarjeta--icono-arriba(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t1/i9.svg" alt="")
           h4.text-center Vías respiratorias
           p.text-center.mb-0 Conducen el aire desde la nariz o la boca hasta los pulmones, a través de la faringe, la laringe y la tráquea. Por ejemplo, un alimento o un objeto pequeño puede bloquear este recorrido y ocasionar una obstrucción de la vía aérea por cuerpo extraño (OVACE).
       .col-lg-4
-        .bg-6.p-4.h-100.tarjeta--icono-arriba(data-aos="fade-down")
+        .bg-6.p-4.tarjeta--icono-arriba(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t1/i10.svg" alt="")
           h4.text-center Pulmones
           p.text-center.mb-0 Realizan el intercambio de oxígeno y dióxido de carbono entre el aire y la sangre. Por ejemplo, una alteración en este proceso puede manifestarse mediante dificultad para respirar, respiración acelerada o coloración azulada en los labios.
       .col-lg-4
-        .bg-1.r-der-20.p-4.h-100.tarjeta--icono-arriba(data-aos="fade-down")
+        .bg-1.r-der-20.p-4.tarjeta--icono-arriba(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t1/i11.svg" alt="")
           h4.text-center Músculos respiratorios

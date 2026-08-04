@@ -266,6 +266,13 @@ figcaption
       display: block
       margin-left: auto
       margin-right: auto
+// El `calc` de arriba YA iguala los altos: no hace falta `.h-100` y además es incompatible.
+// La utilidad de Bootstrap es `height: 100% !important`, así que gana al calc y la tarjeta mide la
+// columna entera MÁS los 75 px de margen: se sale 75 px por abajo y se monta sobre el bloque
+// siguiente (visto en el Tema 1, fila de los cuatro sistemas, 27 px encima del párrafo de abajo).
+// Se blinda con dos clases (0,2,0) para que gane al `!important` de la utilidad si alguien la añade.
+.tarjeta--icono-arriba.h-100
+  height: calc(100% - 75px) !important
 
 .p-full-width
   padding: 3rem 3.5rem!important;

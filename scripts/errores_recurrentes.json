@@ -309,6 +309,17 @@
       "revision_manuel_2026_08_04": "añadió `.img-infografica.color-acento-botones .img-infografica__item__numero { color: #000000 }` en `_custom.sass`"
     },
     {
+      "id": "contrato-del-componente-a-ojo",
+      "veces": 1,
+      "sintoma": "un componente del kit sale VACÍO: la columna está ahí pero dentro no hay nada, y no salta ningún error",
+      "causa": "escribir los hijos del componente a ojo en vez de leer su `v-for`. `LineaTiempoD` necesita `numero` Y `titulo` en cada `.row` hija y el contenido en un `.col-12`; con `.tarjeta(titulo=\"…\")` no pinta nada",
+      "regla": "antes de usar un componente del kit, abrir su `.vue` y leer de qué propiedades tira el `v-for` (`item.numero`, `item.titulo`, `item.elm`). Y comprobarlo EN EL RENDER, que es lo único que lo caza",
+      "detecta": "captura de la vista: si el hueco del componente aparece vacío, el contrato está mal. `verificar_maqueta.py` check 1d sólo caza la columna vacía por indentación, no ésta",
+      "visto_en": [
+        "CF2_63720048"
+      ]
+    },
+    {
       "id": "degradado-invertido",
       "veces": 1,
       "sintoma": "un degradado con los colores al revés",
@@ -407,6 +418,17 @@
       "detecta": "medir por CDP el `top` del icono contra el de la tarjeta",
       "visto_en": [
         "CF1_63720048"
+      ]
+    },
+    {
+      "id": "negrilla-pegada-al-texto",
+      "veces": 1,
+      "sintoma": "«**Heridas:**producen una pérdida…» — el término en negrilla y el texto sin espacio",
+      "causa": "en Pug, `b Término:` en una línea y `| resto` en la siguiente no dejan espacio entre los dos nodos",
+      "regla": "el término en negrilla dentro de un párrafo se escribe con la interpolación en LÍNEA: `span #[b Término:] resto del texto`",
+      "detecta": "grep de `\\n *| ` justo después de una línea `b …` en las vistas; y se ve en cualquier captura",
+      "visto_en": [
+        "CF2_63720048"
       ]
     },
     {
@@ -526,6 +548,19 @@
       "visto_en": [
         "CF1_63720048"
       ]
+    },
+    {
+      "id": "utilidad-bootstrap-pisa-la-clase-custom",
+      "veces": 1,
+      "sintoma": "una tarjeta con el círculo del icono montado arriba se sale por abajo de su columna y se monta sobre el bloque siguiente. Real en CF2: las 4 tarjetas de los sistemas del Tema 1 se salían 75 px y quedaban 27 px encima del párrafo de debajo",
+      "causa": "combinar `.h-100` (o `.p-4`) con una clase custom que YA declara `height` (o `padding`): la utilidad de Bootstrap es `!important` y gana, así que se pierde el `height: calc(100% - 75px)` que compensa el `margin-top` del icono y la tarjeta acaba midiendo la columna entera MÁS el margen",
+      "regla": "una clase custom que ya declara `height` o `padding` NO se combina con la utilidad equivalente de Bootstrap: la clase sola ya iguala los altos. Si aun así puede llegar combinada, se blinda con dos clases (`.tarjeta--icono-arriba.h-100`) para ganarle al `!important`",
+      "detecta": "verificar_maqueta.py check 4d: por CDP y en escritorio, ningún hijo de un `col-*` con el `bottom` por debajo del de su columna. Medir con viewport ALTO y esperando a que las imágenes estén `complete`, o los altos bailan 75-100 px",
+      "check": "caja-fuera-de-columna",
+      "visto_en": [
+        "CF2_63720048"
+      ],
+      "revision_luis_2026_08_04": "Tema 1: `.h-100` sobre `.tarjeta--icono-arriba` en las 4 tarjetas de los sistemas y en los 3 paneles del 1.2. En CF1 la misma clase se usa SIN `.h-100` y por eso allí no salió nunca. Hermano de `margen-negativo-colapsado`: misma clase, mismos 75 px, fallo opuesto (allí el icono no sobresalía, aquí sobresale y arrastra la caja)"
     },
     {
       "id": "vite-modulo-viejo",
