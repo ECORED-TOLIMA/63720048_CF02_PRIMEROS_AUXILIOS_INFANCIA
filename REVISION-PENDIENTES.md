@@ -19,10 +19,15 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    El check `1g` de `verificar_maqueta.py` ya pasa, pero **sólo sabe detectar duplicados**: no
    puede saber que una foto es de otro curso. Que pase no significa que estén bien.
 
-2. **Temas 4 a 6 sin maquetar.** `src/views/Tema4..6.vue` siguen en el scaffold (17 líneas). Por eso
-   el check `4b` marca DESCUADRE en los tres: el XD dibuja 1+1+1 pestañas de `.cajon` y hay 0
-   maquetadas. No es un fallo de maquetación, es trabajo que falta. Los temas 1, 2 y 3 dan
+2. **Temas 5 y 6 sin maquetar.** `src/views/Tema5.vue` y `Tema6.vue` siguen en el scaffold (17
+   líneas). Por eso el check `4b` marca DESCUADRE en los dos: el XD dibuja 1+1 pestañas de `.cajon`
+   y hay 0 maquetadas. No es un fallo de maquetación, es trabajo que falta. Los temas 1 a 4 dan
    `maquetados = XD` en ese check.
+
+   El Tema 4 llevaba además el párrafo de la línea **402 del DI duplicado en el propio DOCX** («El
+   traslado no consiste únicamente en cambiar de lugar…» escrito dos veces seguidas en la misma
+   celda). Se maquetó una sola vez; conviene avisar a diseño instruccional para que lo corrija en la
+   fuente.
 
 3. **El DI trae un bloque de apertura del Tema 2 que el diseño NO dibuja.** Son las líneas 140-155
    del volcado del `_DI.docx`: la introducción del tema, los «cuatro aspectos fundamentales»
@@ -104,12 +109,30 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    quedé con lo que se ve en el render del artboard, que es esquina recta. Vale la pena
    comprobarlo a ojo contra el XD: si alguna lleva radio, va con `.r-10` o `.r-20`.
 
-9. **El texto de los temas 2 y 3 se compuso por número de línea del `_DI.docx`, no
-   transcribiéndolo.** Los párrafos, las dos tablas, el acordeón, las listas numeradas, las de
-   viñeta y las tarjetas salen del volcado de `docx_text.py`, así que son literales y no hay
-   erratas de copia.
+9. **Los iconos de 84x84 del Tema 4 se exportaron uno a uno.** El XD **reusa el mismo cuadrado
+   salmón** en los seis (los rects `456463`, `456477` y `456483` aparecen repetidos), pero el glifo
+   de dentro es distinto en cada uno. El pipeline automático los combinó mal y el check `1b` cazó un
+   icono repetido; se sacaron por `--rect` en sus seis coordenadas: (533,446), (631,2712),
+   (185,4544), (631,5454), (628,7563) y (637,9014).
 
-10. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
+10. **El panel de la `.bloque-texto-g` del 4.5 va `.bg-4` (#8EC5FC)**, que es el fill del rect del
+   XD, y no un modificador `color-*` del kit: con `.color-acento-contenido` salía salmón. El
+   componente no pinta fondo propio, lo toma de la clase de color que se le ponga.
+
+11. **Los iconos de los tres paneles de apertura del Tema 4 van sin su círculo blanco.** En el XD
+   cada icono está dentro de un círculo blanco; los assets exportados traen sólo la línea. Se
+   colocaron centrados y sin el círculo. Si se quiere clavar, hay que exportar icono+círculo por
+   `--rect`.
+
+12. **La primera diapositiva del slider del 4.5 es la única con foto**, por lo mismo que en los
+   temas 2 y 3: el artboard dibuja una sola diapositiva y trae una sola imagen.
+
+13. **El texto de los temas 2, 3 y 4 se compuso por número de línea del `_DI.docx`, no
+   transcribiéndolo.** Los párrafos, las tres tablas, los acordeones, las listas numeradas, las de
+   viñeta, los sliders y las tarjetas salen del volcado de `docx_text.py`, así que son literales y
+   no hay erratas de copia.
+
+14. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
    `ActividadPregunta.vue` del kit (1.0.9), y dejarlo daba «¡Correcto! ¡Correcto! …». Es la única
    licencia sobre el texto del docx. Ojo: **CF1 sí lo dejó** y por eso arrastra esa duplicación.
 
