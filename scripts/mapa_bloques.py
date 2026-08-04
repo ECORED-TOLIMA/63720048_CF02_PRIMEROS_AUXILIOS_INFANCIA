@@ -102,6 +102,19 @@ def main():
         print(f'  ({x:>5},{y:>6}) {w:>5}x{h:<5} {estilo.get(nom, ""):<58} {nom[:28]:<28} '
               f'{" ".join(marcas)}')
 
+    if '--decoracion' in sys.argv:
+        # Los nodos SIN fill indexado son los trazados decorativos: las ondas y bandas que se salen
+        # del padding de la tarjeta. Filtrarlos del mapa (lo hacía `--todo`) escondía justo la
+        # categoría de error más repetida — el bloque maquetado 40 px estrecho y sin su fondo.
+        print('\n=== DECORACIÓN (trazados sin fill indexado) que SE SALE del contenido (x<186 o'
+              ' derecha>1414)')
+        for y, x, w, h, nom in sorted((y, x, w, h, nom) for nom, (x, y, w, h) in pos.items()
+                                      if not estilo.get(nom) and desde <= y <= hasta
+                                      and w >= 200 and (x < 186 or x + w > 1414)):
+            print(f'  ({x:>5},{y:>6}) {w:>5}x{h:<5} sobresale '
+                  f'{"izq " + str(186 - x) if x < 186 else ""} '
+                  f'{"der " + str(x + w - 1414) if x + w > 1414 else ""}   {nom}')
+
     if '--fotos' in sys.argv:
         print('\n=== FOTOS (bbox de la MÁSCARA: es el rect visible) — exportar con'
               ' `gen_asset.py <ab> --rect X Y W H --escala 2 --pag N salida.png`')

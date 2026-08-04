@@ -30,8 +30,10 @@ export default {
       // `mensaje_final_*`, NO `mensaje_*`: es el nombre que lee
       // `actividadCuestionario/Actividad.vue` del kit (1.0.9). Con el nombre corto los dos
       // mensajes finales del docx no se pintan nunca y no salta ningún error.
-      mensaje_final_aprobado: 'Felicitaciones. Ha superado satisfactoriamente la actividad. Los resultados obtenidos evidencian una comprensión adecuada de los conceptos y procedimientos relacionados con la atención de emergencias en la primera infancia. Se reconoce la capacidad para identificar situaciones de riesgo, interpretar signos de alarma y aplicar acciones básicas de primeros auxilios de manera segura y oportuna.',
-      mensaje_final_reprobado: 'No ha superado la actividad. Le recomendamos volver a revisar el componente formativo e intentar nuevamente la actividad didáctica.',
+      mensaje_final_aprobado:
+        'Felicitaciones. Ha superado satisfactoriamente la actividad. Los resultados obtenidos evidencian una comprensión adecuada de los conceptos y procedimientos relacionados con la atención de emergencias en la primera infancia. Se reconoce la capacidad para identificar situaciones de riesgo, interpretar signos de alarma y aplicar acciones básicas de primeros auxilios de manera segura y oportuna.',
+      mensaje_final_reprobado:
+        'No ha superado la actividad. Le recomendamos volver a revisar el componente formativo e intentar nuevamente la actividad didáctica.',
       preguntas: [
         {
           id: 1,
@@ -60,8 +62,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Los primeros auxilios buscan estabilizar al paciente y prevenir el agravamiento mientras llega la atención especializada.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Los primeros auxilios buscan estabilizar al paciente y prevenir el agravamiento mientras llega la atención especializada.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 2,
@@ -90,8 +94,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'El sistema circulatorio transporta sangre, oxígeno y nutrientes a todo el organismo.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'El sistema circulatorio transporta sangre, oxígeno y nutrientes a todo el organismo.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 3,
@@ -120,8 +126,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Evaluar la seguridad del entorno es esencial antes de intervenir, para evitar nuevos riesgos.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Evaluar la seguridad del entorno es esencial antes de intervenir, para evitar nuevos riesgos.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 4,
@@ -150,12 +158,15 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'La coloración azulada de la piel (cianosis) indica un déficit de oxígeno en la sangre y constituye una urgencia.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'La coloración azulada de la piel (cianosis) indica un déficit de oxígeno en la sangre y constituye una urgencia.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 5,
-          texto: '¿Qué se debe hacer ante una obstrucción leve de la vía aérea?',
+          texto:
+            '¿Qué se debe hacer ante una obstrucción leve de la vía aérea?',
           imagen: '@/assets/actividad/imagen2.png',
           barajarRespuestas: true,
           opciones: [
@@ -180,8 +191,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'La tos es el mecanismo más eficaz para expulsar el objeto en una obstrucción leve de la vía aérea.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'La tos es el mecanismo más eficaz para expulsar el objeto en una obstrucción leve de la vía aérea.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 6,
@@ -210,12 +223,15 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'En lactantes, se combinan golpes interescapulares y compresiones torácicas para desobstruir la vía aérea.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'En lactantes, se combinan golpes interescapulares y compresiones torácicas para desobstruir la vía aérea.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 7,
-          texto: '¿Cuál es la profundidad adecuada de compresión en RCP pediátrica?',
+          texto:
+            '¿Cuál es la profundidad adecuada de compresión en RCP pediátrica?',
           imagen: '@/assets/actividad/imagen2.png',
           barajarRespuestas: true,
           opciones: [
@@ -240,8 +256,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'La profundidad de compresión recomendada en RCP pediátrica es, aproximadamente, un tercio del diámetro del tórax.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'La profundidad de compresión recomendada en RCP pediátrica es, aproximadamente, un tercio del diámetro del tórax.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 8,
@@ -270,8 +288,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'El DEA analiza el ritmo cardíaco y aplica una descarga cuando es necesario.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'El DEA analiza el ritmo cardíaco y aplica una descarga cuando es necesario.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 9,
@@ -300,8 +320,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Aplicar sustancias sobre una quemadura puede empeorar la lesión o causar infección.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Aplicar sustancias sobre una quemadura puede empeorar la lesión o causar infección.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 10,
@@ -330,8 +352,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'La presión directa es la medida más efectiva para controlar una hemorragia.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'La presión directa es la medida más efectiva para controlar una hemorragia.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 11,
@@ -360,8 +384,10 @@ export default {
               esCorrecta: true,
             },
           ],
-          mensaje_correcto: 'Inmovilizar la zona afectada evita que la fractura se agrave.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Inmovilizar la zona afectada evita que la fractura se agrave.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 12,
@@ -390,8 +416,10 @@ export default {
               esCorrecta: true,
             },
           ],
-          mensaje_correcto: 'Los ojos hundidos son un signo típico de deshidratación.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Los ojos hundidos son un signo típico de deshidratación.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 13,
@@ -420,8 +448,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Durante una convulsión, se debe proteger al menor y colocarlo de lado para evitar lesiones y riesgo de aspiración.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Durante una convulsión, se debe proteger al menor y colocarlo de lado para evitar lesiones y riesgo de aspiración.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 14,
@@ -450,8 +480,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Una emergencia implica un riesgo inmediato para la vida y exige intervención urgente.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Una emergencia implica un riesgo inmediato para la vida y exige intervención urgente.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 15,
@@ -466,7 +498,8 @@ export default {
             },
             {
               id: 'b',
-              texto: 'Identificar una sustancia y no intervenir sin indicación.',
+              texto:
+                'Identificar una sustancia y no intervenir sin indicación.',
               esCorrecta: true,
             },
             {
@@ -480,8 +513,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Ante una intoxicación, es clave identificar la sustancia y no intervenir sin orientación médica.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Ante una intoxicación, es clave identificar la sustancia y no intervenir sin orientación médica.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 16,
@@ -510,8 +545,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'El aleteo nasal es un signo de dificultad respiratoria que requiere atención.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'El aleteo nasal es un signo de dificultad respiratoria que requiere atención.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 17,
@@ -540,8 +577,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Mantener la alineación corporal evita lesiones adicionales durante la movilización.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Mantener la alineación corporal evita lesiones adicionales durante la movilización.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 18,
@@ -570,8 +609,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'En una emergencia, la comunicación debe ser clara y sencilla para reducir el estrés y facilitar la comprensión.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'En una emergencia, la comunicación debe ser clara y sencilla para reducir el estrés y facilitar la comprensión.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 19,
@@ -600,8 +641,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'Evaluar el estado del lesionado antes de movilizarlo permite decidir la forma adecuada de hacerlo.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'Evaluar el estado del lesionado antes de movilizarlo permite decidir la forma adecuada de hacerlo.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
         {
           id: 20,
@@ -630,8 +673,10 @@ export default {
               esCorrecta: false,
             },
           ],
-          mensaje_correcto: 'La cadena de custodia garantiza la integridad y la trazabilidad de la información o la evidencia.',
-          mensaje_incorrecto: 'Revise nuevamente el contenido del componente formativo.',
+          mensaje_correcto:
+            'La cadena de custodia garantiza la integridad y la trazabilidad de la información o la evidencia.',
+          mensaje_incorrecto:
+            'Revise nuevamente el contenido del componente formativo.',
         },
       ],
     },

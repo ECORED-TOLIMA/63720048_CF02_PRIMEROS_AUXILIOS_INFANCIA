@@ -73,12 +73,51 @@ def main():
     tmp = '/tmp/comparar-bloques'
     subprocess.run(['mkdir', '-p', tmp], check=True)
 
-    # 1. mi render, a 1600 de ancho (el del artboard) y alto de sobra
+    # 1. mi render, a 1600 de ancho (el del artboard) y alto de sobra.
+    #    OJO: `?noaos` no basta. AOS deja los bloques a media opacidad y el color medido sale
+    #    mezclado con el blanco (`#DDEEFE` -> `#EBF5FE`), así que ninguna firma casa y todo se
+    #    reporta como sobrante. Hay que forzar opacidad 1 por CSS antes de capturar.
     png = f'{tmp}/mio.png'
+    css = ('[data-aos],[data-aos] *{opacity:1 !important;transform:none !important;'
+           'transition:none !important;animation:none !important}')
     subprocess.run(['google-chrome', '--headless=new', '--disable-gpu', '--no-sandbox',
-                    '--hide-scrollbars', '--virtual-time-budget=15000',
+                    '--hide-scrollbars', '--virtual-time-budget=18000',
                     '--window-size=1600,26000', f'--screenshot={png}',
-                    f'{base}?noaos#/{ruta}'], capture_output=True)
+                    f'--user-stylesheet=/dev/stdin'], capture_output=True, input=css, text=True)
+    # `--user-stylesheet` ya no existe en Chrome nuevo: se inyecta por CDP.
+    import base64 as _b64
+    import json as _json
+    import time as _t
+    import urllib.request as _u
+
+    import websocket as _ws
+    proc = subprocess.Popen(['google-chrome', '--headless=new', '--disable-gpu', '--no-sandbox',
+                             '--hide-scrollbars', '--remote-debugging-port=9451',
+                             '--remote-allow-origins=*', '--window-size=1600,26000',
+                             'about:blank'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    _t.sleep(5)
+    tg = [t for t in _json.load(_u.urlopen('http://127.0.0.1:9451/json')) if t['type'] == 'page']
+    ws = _ws.create_connection(tg[0]['webSocketDebuggerUrl'], suppress_origin=True, timeout=90)
+    _i = [0]
+
+    def _cmd(m, p):
+        _i[0] += 1
+        ws.send(_json.dumps({'id': _i[0], 'method': m, 'params': p}))
+        while True:
+            r = _json.loads(ws.recv())
+            if r.get('id') == _i[0]:
+                return r.get('result')
+    _cmd('Page.addScriptToEvaluateOnNewDocument', {'source': f"""
+        new MutationObserver(()=>{{ if(document.head && !document.getElementById('sinaos')) {{
+          const e=document.createElement('style'); e.id='sinaos'; e.textContent={css!r};
+          document.head.appendChild(e); }} }}).observe(document.documentElement,
+          {{childList:true,subtree:true}});"""})
+    _cmd('Page.navigate', {'url': f'{base}?noaos#/{ruta}'})
+    _t.sleep(12)
+    open(png, 'wb').write(_b64.b64decode(_cmd('Page.captureScreenshot',
+                                              {'format': 'png', 'captureBeyondViewport': True})['data']))
+    ws.close()
+    proc.kill()
     mio = np.asarray(Image.open(png).convert('RGB'))
 
     # 2. el artboard, de la caché del PDF a 144 dpi, reescalado a 1600 de ancho
@@ -105,42 +144,63 @@ def main():
 
     print(f'\nfranjas con contenido: artboard {len(fa)} · mío {len(fm)}')
 
-    def huecos(fs):
-        return [0] + [fs[i][0] - fs[i - 1][1] for i in range(1, len(fs))]
-    ha, hm = huecos(fa), huecos(fm)
-
-    print(f'\n{"artboard":>36}   {"mío":>36}   diferencias')
-    print(f'{"y":>6} {"hueco":>6} {"alto":>5} {"x":>5} {"ancho":>5} {"fondo":>8}   '
-          f'{"y":>6} {"hueco":>6} {"alto":>5} {"x":>5} {"ancho":>5} {"fondo":>8}')
-    problemas = []
-    for i in range(max(len(fa), len(fm))):
-        A = fa[i] if i < len(fa) else None
-        M = fm[i] if i < len(fm) else None
-        if A and M:
-            marcas = []
-            if abs(hm[i] - ha[i]) > tol * 3:
-                marcas.append(f'hueco {hm[i] - ha[i]:+d}')
-            if abs((M[3] - M[2]) - (A[3] - A[2])) > tol:
-                marcas.append(f'ancho {(M[3] - M[2]) - (A[3] - A[2]):+d}')
-            if abs(M[2] - A[2]) > tol:
-                marcas.append(f'x {M[2] - A[2]:+d}')
-            if A[4] != M[4]:
-                marcas.append(f'fondo {A[4]}->{M[4]}')
-            if abs((M[1] - M[0]) - (A[1] - A[0])) > tol * 4:
-                marcas.append(f'alto {(M[1] - M[0]) - (A[1] - A[0]):+d}')
-            print(f'{A[0]:>6} {ha[i]:>6} {A[1]-A[0]:>5} {A[2]:>5} {A[3]-A[2]:>5} {A[4]:>8}   '
-                  f'{M[0]:>6} {hm[i]:>6} {M[1]-M[0]:>5} {M[2]:>5} {M[3]-M[2]:>5} {M[4]:>8}   '
-                  f'{" · ".join(marcas)}')
-            if marcas:
-                problemas.append((A[0], marcas))
-        elif A:
-            print(f'{A[0]:>6} {ha[i]:>6} {A[1]-A[0]:>5} {A[2]:>5} {A[3]-A[2]:>5} {A[4]:>8}   '
-                  f'{"—":>36}   FALTA EN MI RENDER')
-            problemas.append((A[0], ['falta el bloque']))
+    # Emparejar por ORDEN no sirve: en cuanto un bloque mío mide distinto de alto, todo lo de
+    # abajo se desplaza y cada fila se compara con la del artboard equivocada. Se empareja por
+    # FIRMA — mismo color de fondo y ancho parecido — recorriendo en orden y sin repetir.
+    def firma(f):
+        return (f[4], round((f[3] - f[2]) / 24))
+    libres = list(range(len(fm)))
+    pares = []
+    for i, A in enumerate(fa):
+        cand = [j for j in libres if firma(fm[j]) == firma(A)]
+        if not cand:
+            cand = [j for j in libres if fm[j][4] == A[4]
+                    and abs((fm[j][3] - fm[j][2]) - (A[3] - A[2])) <= 60]
+        if cand:
+            j = min(cand, key=lambda j: abs(fm[j][0] - A[0]))
+            libres.remove(j)
+            pares.append((i, j))
         else:
-            print(f'{"—":>36}   {M[0]:>6} {hm[i]:>6} {M[1]-M[0]:>5} {M[2]:>5} {M[3]-M[2]:>5} '
-                  f'{M[4]:>8}   SOBRA EN MI RENDER')
-            problemas.append((M[0], ['bloque de más']))
+            pares.append((i, None))
+    sobran = sorted(libres)
+
+    print(f'\n{"artboard":>30}   {"mío":>30}   diferencias')
+    print(f'{"y":>6} {"alto":>5} {"x":>5} {"ancho":>5} {"fondo":>8}   '
+          f'{"y":>6} {"alto":>5} {"x":>5} {"ancho":>5} {"fondo":>8}')
+    problemas = []
+
+    def casi_igual(c1, c2):
+        a = [int(c1[i:i + 2], 16) for i in (1, 3, 5)]
+        b = [int(c2[i:i + 2], 16) for i in (1, 3, 5)]
+        return max(abs(x - y) for x, y in zip(a, b)) <= 12
+
+    for i, j in pares:
+        A = fa[i]
+        if j is None:
+            print(f'{A[0]:>6} {A[1]-A[0]:>5} {A[2]:>5} {A[3]-A[2]:>5} {A[4]:>8}   '
+                  f'{"—":>30}   FALTA EN MI RENDER')
+            problemas.append((A[0], ['falta el bloque']))
+            continue
+        M = fm[j]
+        marcas = []
+        if abs((M[3] - M[2]) - (A[3] - A[2])) > tol:
+            marcas.append(f'ancho {(M[3] - M[2]) - (A[3] - A[2]):+d}')
+        if abs(M[2] - A[2]) > tol:
+            marcas.append(f'x {M[2] - A[2]:+d}')
+        if A[4] != M[4] and not casi_igual(A[4], M[4]):
+            marcas.append(f'fondo {A[4]}->{M[4]}')
+        if abs((M[1] - M[0]) - (A[1] - A[0])) > tol * 4:
+            marcas.append(f'alto {(M[1] - M[0]) - (A[1] - A[0]):+d}')
+        print(f'{A[0]:>6} {A[1]-A[0]:>5} {A[2]:>5} {A[3]-A[2]:>5} {A[4]:>8}   '
+              f'{M[0]:>6} {M[1]-M[0]:>5} {M[2]:>5} {M[3]-M[2]:>5} {M[4]:>8}   '
+              f'{" · ".join(marcas)}')
+        if marcas:
+            problemas.append((A[0], marcas))
+    for j in sobran:
+        M = fm[j]
+        print(f'{"—":>30}   {M[0]:>6} {M[1]-M[0]:>5} {M[2]:>5} {M[3]-M[2]:>5} {M[4]:>8}   '
+              f'SOBRA EN MI RENDER')
+        problemas.append((M[0], ['bloque de más']))
     print(f'\n{len(problemas)} bloques con diferencia' if problemas else '\nsin diferencias')
     return 1 if problemas else 0
 

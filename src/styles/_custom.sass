@@ -123,6 +123,14 @@ figcaption
   border-radius: 10px !important
 .r-20
   border-radius: 20px !important
+.r-14                             // #8EC5FC y #DBC2FA con r=14 en el XD de CF2
+  border-radius: 14px !important
+.r-24                             // el botón verde #16D95E del XD
+  border-radius: 24px !important
+.r-25                             // #FFC0AC con r=25
+  border-radius: 25px !important
+.r-42                             // #8EC5FC con r=42
+  border-radius: 42px !important
 .r-izq-20                         // r=[20,0,0,20]: sólo el lado izquierdo (tarjetas pegadas)
   border-radius: 20px 0 0 20px !important
 .r-der-20                         // r=[0,20,20,0]: sólo el lado derecho
@@ -453,3 +461,49 @@ figcaption
   @media (min-width: 992px)
     margin-left: -115px
     margin-right: 44px
+
+// Banda decorativa del Tema 1 detrás de las cuatro tarjetas de sistemas: en el XD es
+// `Trazado 998172` en (137,869) 1328x254, o sea el ANCHO COMPLETO de la tarjeta blanca (137 = su
+// borde), 6 px por debajo del borde superior de las tarjetas (863) y 58 px por encima de su base.
+.bg-fondo-t1-sistemas, .bg-fondo-t1-figura
+  background-image: url(../assets/curso/temas/t1/bg/1.png)
+  background-repeat: no-repeat
+  background-size: 1328px 254px     // el tamaño natural del trazado, no estirado
+  background-position: center 6px
+  @media (min-width: 992px)
+    margin-inline: -3rem            // saca la banda hasta el borde de la tarjeta (p-5 = 48px)
+.bg-fondo-t1-figura                 // (136,3137) 1328x254: el mismo trazado, detrás de la Figura 1
+  background-position: center 173px
+
+// La viñeta cuadrada de `.lista-ol--cuadro`: el kit la pinta con `color: $white` y en el XD el
+// número va OSCURO sobre el salmón. El override tiene que colgar de la clase que se usa en las
+// vistas — antes estaba anidado bajo `.lista-numerada--clara/--cuadro`, que no uso, y el número
+// salía blanco sobre salmón, ilegible.
+.lista-ol--cuadro
+  li
+    padding-left: 32px            // 24 de la viñeta + 8 de separación: sangría francesa
+    text-indent: -32px
+  .lista-ol--cuadro__vineta
+    background-color: #FFC0AC
+    color: $color-sistema-texto
+    font-weight: 700             // en el XD el número/letra de la viñeta va en negrilla
+    // el número va CENTRADO DENTRO del cuadro: con el `span` interior del kit quedaba fuera,
+    // a la izquierda, y el cuadro salía vacío
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    min-width: 24px
+    height: 24px
+    text-indent: 0
+
+// El separador entre subtemas: en el XD es `Rectángulo 5131`, 820x16 centrado en (391,3703) con
+// degradado. El del kit pinta una barra gris de 475: se sustituye por el trazado del diseño.
+.separador-container .separador
+  width: 820px
+  max-width: 100%
+  height: 16px
+  margin-inline: auto
+  background: url(../assets/curso/temas/separador.png) center/820px 16px no-repeat !important
+  border: 0 !important
+  &:before, &:after
+    display: none !important
