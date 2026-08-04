@@ -525,3 +525,23 @@ figcaption
   img
     display: block
     width: 100%
+
+// Rótulo en pastilla del Tema 3: en el XD es un rect #FFC0AC r=25 de 50 px de alto (396, 489 y 520
+// de ancho segun el texto) con el icono de la casa-hospital a la izquierda y el texto en negrilla
+// oscuro. No hay clase del kit que lo haga: los titulos del kit no llevan pastilla.
+.titulo-pastilla
+  display: inline-flex
+  align-items: center
+  gap: 14px
+  background-color: #FFC0AC
+  border-radius: 25px
+  height: 50px
+  padding: 0 26px 0 8px
+  margin-bottom: 24px
+  img
+    width: 40px
+    height: auto
+  span
+    font-weight: 700
+    color: $color-sistema-texto
+    line-height: 1
