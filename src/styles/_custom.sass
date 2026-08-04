@@ -419,6 +419,24 @@ figcaption
       .icono-hover
         opacity: 1
 
+// Subtítulo de tercer nivel (los tres apartados de OVACE en el Tema 3). En el XD es una pastilla
+// #FFC0AC de 50 px de alto con `r=25` —o sea los extremos redondos del todo— con el icono a la
+// izquierda y el texto en negrilla oscuro. El icono NO es un asset: el propio XD nombra el nodo
+// `house-medical-solid-full`, que es el `fa-house-medical` de FontAwesome que ya trae el proyecto.
+// Es la `.titulo-tercero` del kit (así se usa en el CATALOGO, `h3.titulo-tercero`) con el color de
+// este curso encima; no se inventa clase.
+.titulo-tercero
+  display: inline-flex
+  align-items: center
+  gap: 12px
+  min-height: 50px
+  padding: 8px 26px
+  border-radius: 25px
+  background-color: #FFC0AC
+  color: $color-sistema-texto
+  font-weight: $base-bold-font-weight
+  margin-bottom: 24px
+
 // `.bg-white` la usa el catálogo para la tarjeta interior de los bloques de audio
 .bg-white
   background-color: $white

@@ -20,3 +20,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 README.md
+
+# Assets intermedios que saca exportar_assets.py: se regeneran del .xd y no se versionan
+# (CF1 sólo versiona los cuatro archivos fuente de `fuentes/`).
+fuentes/*/

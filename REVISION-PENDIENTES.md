@@ -19,10 +19,10 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    El check `1g` de `verificar_maqueta.py` ya pasa, pero **sólo sabe detectar duplicados**: no
    puede saber que una foto es de otro curso. Que pase no significa que estén bien.
 
-2. **Temas 3 a 6 sin maquetar.** `src/views/Tema3..6.vue` siguen en el scaffold (17 líneas). Por eso
-   el check `4b` marca DESCUADRE en los cuatro: el XD dibuja 4+1+1+1 pestañas de `.cajon` y hay 0
-   maquetadas. No es un fallo de maquetación, es trabajo que falta. El Tema 2 ya está y da
-   `XD=4 maquetados=4 OK`.
+2. **Temas 4 a 6 sin maquetar.** `src/views/Tema4..6.vue` siguen en el scaffold (17 líneas). Por eso
+   el check `4b` marca DESCUADRE en los tres: el XD dibuja 1+1+1 pestañas de `.cajon` y hay 0
+   maquetadas. No es un fallo de maquetación, es trabajo que falta. Los temas 1, 2 y 3 dan
+   `maquetados = XD` en ese check.
 
 3. **El DI trae un bloque de apertura del Tema 2 que el diseño NO dibuja.** Son las líneas 140-155
    del volcado del `_DI.docx`: la introducción del tema, los «cuatro aspectos fundamentales»
@@ -77,18 +77,39 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    (ver la entrada `utilidad-bootstrap-pisa-la-clase-custom` del diccionario). Si hay que clavar
    los 461 del XD, va con un `min-height` explícito, nunca con `.h-100`.
 
-4. **Las fotos del Tema 2 van con las esquinas rectas.** El inventario del artboard trae 131
+4. **Los tres rótulos de las tarjetas de apertura del Tema 3 los pone el XD, no el DI.** El DI
+   (línea 235) deja el «:» que los introduce y no los enumera; el artboard sí los nombra:
+   «Reanimación cardiopulmonar», «Manejo de la obstrucción de la vía aérea» y «Uso del
+   desfibrilador externo automático». Se tomaron de ahí.
+
+5. **Los tres subtítulos de OVACE son la `.titulo-tercero` del kit con el color del curso.** En el
+   XD son pastillas #FFC0AC de 50 px con `r=25`. El icono NO es un asset: el nodo del XD se llama
+   literalmente `house-medical-solid-full`, o sea el `fa-house-medical` de FontAwesome que ya trae
+   el proyecto. El tema queda en `_custom.sass`, como `.cajon.color1` o `.acordion--principios`; no
+   se inventó ninguna clase.
+
+6. **El slider del DEA (3.4) tiene ocho pasos y sólo las tres primeras tarjetas llevan icono.** El
+   artboard dibuja únicamente las tres tarjetas de la ventana visible del slider y sólo trae esos
+   tres iconos. Mismo criterio que con las fotos del slider del Tema 2: antes que repetir un icono
+   —que además el check `1b` caza— las cinco restantes van sin él.
+
+7. **Las cinco precauciones del DEA (A-E) NO van en negrilla.** El XD las pinta en negrilla, pero en
+   el `_DI.docx` esos párrafos no llevan `<w:b/>`, y manda el DOCX para el formato del texto
+   (regla `estilo-de-texto-inventado`). Comprobado run a run en `word/document.xml`; los términos
+   de las demás listas del Tema 2 y del Tema 3 sí van en negrilla en el DOCX, y así se maquetaron.
+
+8. **Las fotos del Tema 2 van con las esquinas rectas.** El inventario del artboard trae 131
    máscaras CUADRADAS y sólo 4 con radio (292x290 y 294x332 con r=10, 1228x474 con r=20, 560x309
    con r=10), y no conseguí emparejar esas cuatro con ninguna de las cinco fotos del tema. Me
    quedé con lo que se ve en el render del artboard, que es esquina recta. Vale la pena
    comprobarlo a ojo contra el XD: si alguna lleva radio, va con `.r-10` o `.r-20`.
 
-5. **El texto del Tema 2 se compuso por número de línea del `_DI.docx`, no transcribiéndolo.** Los
-   párrafos, las dos tablas, los cinco ítems del acordeón, los cinco pasos del pulso y los tres
-   niveles del slider salen del volcado de `docx_text.py`, así que son literales y no hay erratas
-   de copia.
+9. **El texto de los temas 2 y 3 se compuso por número de línea del `_DI.docx`, no
+   transcribiéndolo.** Los párrafos, las dos tablas, el acordeón, las listas numeradas, las de
+   viñeta y las tarjetas salen del volcado de `docx_text.py`, así que son literales y no hay
+   erratas de copia.
 
-6. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
+10. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
    `ActividadPregunta.vue` del kit (1.0.9), y dejarlo daba «¡Correcto! ¡Correcto! …». Es la única
    licencia sobre el texto del docx. Ojo: **CF1 sí lo dejó** y por eso arrastra esa duplicación.
 
