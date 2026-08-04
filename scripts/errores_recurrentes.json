@@ -335,6 +335,20 @@
       "revision_manuel_2026_07_30": "los 4 iconos de Tema 3 (i10, i11, o3, o4). Correlación de mi PNG contra el SVG bueno: 0.70-0.82; con el parche, el icono coincide."
     },
     {
+      "id": "foto-por-el-rect-del-nodo",
+      "veces": 1,
+      "sintoma": "una foto sale desplazada unos píxeles y con el encuadre algo distinto al del PDF; la correlación se queda en 0,70-0,85 y hay que rescatarla con fit_foto/fit_composicion",
+      "causa": "exportarla con el bbox del NODO DE IMAGEN, que es la caja del `pattern` y no lo que se ve: el nodo `Imagen 110` mide 303x265 en (181,1741) y lo visible es 292x261 en (186,1743)",
+      "regla": "el rect visible de una foto es el bbox de su `Enmascarar grupo`. Se saca con `mapa_bloques.py <ab> --fotos`, que además imprime el `--rect` listo y el `col-lg-N` que le toca. En el Tema 1 de CF2, 8 de 9 fotos salieron a 0,99 así; por el rect del nodo, 0,70",
+      "detecta": "mapa_bloques.py --fotos + la correlación que ya imprime gen_asset.py --pag N",
+      "check": "fotos-por-mascara",
+      "visto_en": [
+        "CF2_63720048",
+        "CF1_63720048"
+      ],
+      "ojo": "los nombres de los `Enmascarar grupo` se REPITEN dentro del artboard, así que se exporta con `--rect <bbox de la máscara>`, no con `--grupo <nombre>` (cogería el primero)"
+    },
+    {
       "id": "hex-escrito-muerto",
       "veces": 1,
       "sintoma": "la hoja de swatches del XD escribe un hex al lado de un rect de otro color y no se sabe cuál manda",

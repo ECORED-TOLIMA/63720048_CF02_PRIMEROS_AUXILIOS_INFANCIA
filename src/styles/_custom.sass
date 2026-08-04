@@ -419,3 +419,10 @@ figcaption
 
 .img-infografica.color-acento-botones .img-infografica__item__numero, .img-infografica-b.color-acento-botones .img-infografica__item__numero 
     color: #000000
+
+// La caja blanca del bloque de apertura del Tema 1 va MONTADA sobre la foto y el panel: en el XD
+// está en (685,360) 685x250 y la columna del panel empieza en 800, o sea 115 px a su derecha.
+.caja-sobre-panel
+  @media (min-width: 992px)
+    margin-left: -115px
+    margin-right: 44px
