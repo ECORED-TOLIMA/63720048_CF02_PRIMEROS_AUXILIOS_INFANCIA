@@ -515,3 +515,13 @@ figcaption
   background: url(../assets/curso/temas/t2/bg24.png) center/cover no-repeat
   @media (min-width: 992px)
     margin-inline: -3rem
+
+// Marco de la foto del slider del 2.4: en el XD son dos rects detrás de la foto —#8EC5FC 584x330
+// en (798,5987) y #DBC2FA 214x330 en (1168,5987)— con la foto (810,5998) 560x309 encima, así que
+// asoman 12 px como borde en degradado azul -> lila.
+.marco-degradado
+  padding: 12px
+  background: linear-gradient(120deg, #8EC5FC 0%, #8EC5FC 55%, #DBC2FA 100%)
+  img
+    display: block
+    width: 100%

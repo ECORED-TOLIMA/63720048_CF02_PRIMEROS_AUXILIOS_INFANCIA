@@ -59,7 +59,7 @@
     //- Ficha: panel abierto (290,2100) 1020x170 #F4EDFE r=20 y 4 filas cerradas 1020x90 #B8F4CE r=20
     .row.justify-content-center.mt-4
       .col-lg-10
-        AcordionA.acordion--respiracion(tipo="b")
+        AcordionA.acordion--principios(tipo="b")
           .row(titulo="Frecuencia respiratoria")
             .col-12
               p.mb-0 Corresponde al número de respiraciones realizadas durante un minuto. Su valoración permite reconocer si la respiración se mantiene dentro de las características esperadas para la edad o presenta cambios que requieren atención.
@@ -251,62 +251,62 @@
           .row.align-items-center
             .col-lg-6.mb-4.mb-lg-0
               h4 Observación (Seguimiento)
-              ul.lista-ul--color.mb-0
+              ul.lista-ul.mb-0
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Irritabilidad leve:] cambio moderado en el comportamiento que requiere acompañamiento y seguimiento.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Malestar general:] presencia de incomodidad, cansancio o disminución temporal del estado habitual.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Lesiones leves:] heridas superficiales, golpes menores o molestias que no comprometen el estado general.
                 li.mb-0
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Cambios leves en la actividad:] disminución moderada del juego, el movimiento o la interacción.
             .col-lg-6
-              figure.m-0
-                img(src="@/assets/curso/temas/t2/f5.png" alt="").w-100
+              figure.m-0.marco-degradado
+                img(src="@/assets/curso/temas/t2/f5.png" alt="")
           .row.align-items-center
             .col-12
               h4 Alerta (Valoración oportuna)
-              ul.lista-ul--color.mb-0
+              ul.lista-ul.mb-0
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Respiración rápida o irregular:] cambio en la frecuencia o el ritmo respiratorio que requiere vigilancia.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Dolor intenso:] molestia que causa llanto persistente, limita el movimiento o altera el comportamiento.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Fiebre persistente:] aumento de la temperatura que se mantiene o se acompaña de decaimiento.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Debilidad o decaimiento:] disminución evidente de la energía, la actividad o la capacidad de respuesta.
                 li.mb-0
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Cambios importantes en el comportamiento:] somnolencia inusual, irritabilidad intensa, confusión o dificultad para interactuar.
           .row.align-items-center
             .col-12
               h4 Grave (Atención inmediata)
-              ul.lista-ul--color.mb-0
+              ul.lista-ul.mb-0
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Ausencia de respiración:] falta de movimientos respiratorios y de entrada o salida de aire.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Dificultad respiratoria intensa:] esfuerzo evidente para respirar, hundimiento del pecho, ruidos anormales o coloración azulada.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Pérdida de la conciencia:] ausencia de respuesta ante la voz o los estímulos.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Convulsiones:] movimientos involuntarios, rigidez corporal o pérdida repentina de la respuesta.
                 li
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Sangrado abundante:] pérdida de sangre que no se controla mediante presión directa.
                 li.mb-0
-                  i.fas.fa-circle
+                  span.lista-ul__vineta
                   span.mb-0 #[b Cianosis:] coloración azulada o violácea en los labios, la piel o las uñas.
 
     p.mt-5(data-aos="fade-down") Esta clasificación orienta la observación y ayuda a reconocer cuándo se requiere seguimiento, valoración o atención inmediata. Los signos deben interpretarse de manera conjunta, ya que el estado general puede cambiar rápidamente y exigir la activación del servicio de emergencias.
