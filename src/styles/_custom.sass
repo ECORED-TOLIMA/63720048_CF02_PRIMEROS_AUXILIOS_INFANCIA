@@ -507,3 +507,11 @@ figcaption
   border: 0 !important
   &:before, &:after
     display: none !important
+
+// Banda del 2.4: `Rectángulo 456113`, (137,5902) 1328x747, degradado lavanda #E3D7FF -> azul
+// #97CBFF. OJO: el PDF la pinta VIOLETA OSCURA porque aplasta el blendMode, igual que el hero.
+// Es CLARA. La tarjeta blanca del slider va montada encima.
+.bg-banda-t2-24
+  background: url(../assets/curso/temas/t2/bg24.png) center/cover no-repeat
+  @media (min-width: 992px)
+    margin-inline: -3rem

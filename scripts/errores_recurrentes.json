@@ -73,6 +73,20 @@
       "revision_manuel_2026_07_30": "separaciones: `mt-5`→`mt-4` (2 en Tema 1 y el `titulo-sexto` de la Figura 3) y `mt-4`→`mt-2` en las notas pegadas a su párrafo (2 en Tema 6)"
     },
     {
+      "id": "pdf-como-autoridad-de-color",
+      "veces": 3,
+      "sintoma": "reproducir un color o un fondo del PDF que el XD tiene distinto",
+      "causa": "el PDF sale con la paleta vieja y aplasta mal los `blendMode`",
+      "regla": "el PDF sirve para encuadre, anchos, orden y qué estado va abierto; el color lo manda el XD",
+      "detecta": "comparar el fill del nodo con el píxel del PDF",
+      "visto_en": [
+        "CF01_22810005",
+        "CF1_63720048",
+        "CF2_63720048"
+      ],
+      "tercera_vez_2026_08_04": "la banda del 2.4 del Tema 2 de CF2 (`Rectángulo 456113`, 1328x747) sale VIOLETA OSCURA en el PDF y es un degradado CLARO lavanda #E3D7FF -> azul #97CBFF. Mismo aplastado de blendMode que el hero. Se exporta el rect solo y se leen sus esquinas"
+    },
+    {
       "id": "cajon-sin-pestana",
       "veces": 2,
       "sintoma": "un `.cajon` de más o de menos respecto al XD",
@@ -153,18 +167,6 @@
       "causa": "BASE fuerza `$white` en `.titulo-principal__numero span`, y `$color-acento-contenido` no es el del XD",
       "regla": "el badge lleva el color del nodo y el número va OSCURO",
       "detecta": "muestrear el badge del render contra el rect del XD",
-      "visto_en": [
-        "CF1_63720048",
-        "CF01_22810005"
-      ]
-    },
-    {
-      "id": "pdf-como-autoridad-de-color",
-      "veces": 2,
-      "sintoma": "reproducir un color o un fondo del PDF que el XD tiene distinto",
-      "causa": "el PDF sale con la paleta vieja y aplasta mal los `blendMode`",
-      "regla": "el PDF sirve para encuadre, anchos, orden y qué estado va abierto; el color lo manda el XD",
-      "detecta": "comparar el fill del nodo con el píxel del PDF",
       "visto_en": [
         "CF1_63720048",
         "CF01_22810005"
