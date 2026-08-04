@@ -1,1 +1,1 @@
-module.exports = 'Ecored Base PKG'
+module.exports = 'Técnicas de primeros auxilios en primera infancia'

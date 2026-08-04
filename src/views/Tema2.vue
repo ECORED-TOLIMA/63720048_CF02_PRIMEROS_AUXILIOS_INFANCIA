@@ -5,17 +5,13 @@
     .titulo-principal.color-acento-contenido
       .titulo-principal__numero
         span 2
-      h1 Tema 2
+      h1 Evaluación inicial del lesionado
 
 </template>
 
 <script>
 export default {
   name: 'Tema2',
-  data: () => ({
-    // variables de vue
-  }),
+  data: () => ({}),
 }
 </script>
-
-<style lang="sass"></style>

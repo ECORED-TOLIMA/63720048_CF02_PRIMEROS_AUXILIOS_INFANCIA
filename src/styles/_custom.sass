@@ -1,17 +1,32 @@
 @use 'variables' as *
+// Medidas del XD (coords de página): hero (136,100) 1328x559, ilustración (857,153) 506x506,
+// ficha del escudo (857,507) 90x90 y ficha del maletín (1270,293) 90x90.
+// La ilustración se ancla al borde DERECHO y ABAJO de su columna (que en el hero coinciden con
+// el borde de la tarjeta), así que las fichas se posicionan en px desde esa esquina: es estable
+// aunque el `.container` mida 1320 en vez de los 1328 del XD.
+.banner-principal__img
+  display: flex
+  justify-content: flex-end
+  padding-right: 100px !important      // 1464 - 1363 = 101 en el XD
+  & > img                              // SOLO la ilustración: las fichas van dentro de un div
+    width: 506px
+    max-width: none
+    height: auto
+  & > div > img
+    width: 100%
 .banner-principal-decorativo
-  &-1
+  &-1                       // ficha del escudo (abajo izquierda de la ilustración)
     animation: float1 2.8s ease-in-out infinite alternate
     position: absolute
-    top: 68%
-    left: -10%
-    width: 20%
-  &-2
+    right: 454px
+    bottom: 77px
+    width: 90px
+  &-2                       // ficha del maletín (arriba derecha)
     animation: float1 2.5s ease-in-out infinite alternate
     position: absolute
-    top: 30%
-    right: 10%
-    width: 20%
+    right: 41px
+    bottom: 291px
+    width: 90px
 
 
 @keyframes float1
@@ -21,36 +36,235 @@
   100%
     transform: translateY(0px)
 
-.col-lg-7.col-xxl-5.ps-4.ps-sm-5.py-4.py-sm-5.banner-principal__info
-  flex: 0 0 auto !important
-  width: 58.33333333% !important
+// El XD limita el texto del hero a 490px de ancho: es el `col-xxl-5` que trae el kit, así que
+// NO se ensancha a 58.33% como venía en BASE (era de otro curso).
+
 .banner-principal__img 
   padding-bottom: 0 !important;
 //.banner-principal__row .banner-principal__img 
 //    width: 33%;
     
+// El fondo del hero es CLARO (degradado lavanda -> azul del XD) y el texto del XD es #12263F:
+// BASE lo fuerza a blanco y quedaría ilegible.
 .banner-principal p, .banner-principal h1, .banner-principal h2, .banner-principal h3, .banner-principal h4, .banner-principal h5, .banner-principal h6
-  color: $white !important  
+  color: $color-sistema-texto !important
 
+// En este curso el texto de los botones va NEGRO:
+// BASE lo fuerza a $white y en el XD es oscuro.
 .boton *, .boton--sm *,
 .barra-avance__boton--regresar span
-  color: $white !important
+  color: $color-sistema-texto !important
 .banner-interno__titulo h1, .banner-interno__titulo h2, 
 .banner-interno__titulo h3, .banner-interno__titulo h4, 
 .banner-interno__titulo h5, .banner-interno__titulo h6
   color: $color-sistema-texto !important  
+// El ícono y los números de los temas van NEGROS, como en el XD.
 .titulo-principal.color-acento-contenido .titulo-principal__numero span
-  color: $white !important
+  color: $color-sistema-texto !important
+
+// Captura headless: `?noaos` deja visible todo lo animado y mata la transición del acordeón
+// (si no, el ítem abierto sale colapsado a media transición).
+html.noaos
+  [data-aos]
+    opacity: 1 !important
+    transform: none !important
+    transition: none !important
+  .acordion__contenido
+    transition: none !important
 figcaption 
     font-weight: normal !important
 
 .banner-interno__titulo__icono i
     color: $color-acento-botones !important;
 
+// El banner de cabecera de las secciones tiene su PROPIO grupo en el XD (1600x220, no el
+// 1328x559 de la portada): `Enmascarar grupo 1119228`. El componente del kit reusa
+// `fondoBannerPrincipal`, así que se sobreescribe aquí.
+.banner-interno__fondo
+  background-image: url(../assets/curso/portada/banner-interno.png) !important
+
 
 /**************************************************************/
 /***CUSTOM STYLES***/
 /**************************************************************/
+
+// ============================================================================
+// COLOR Y RADIO: EXACTAMENTE LOS DEL NODO DEL XD
+// ----------------------------------------------------------------------------
+// «Los colores de los elementos background deben ser exactamente el color propuesto en el XD» y
+// «el estilo de los background debe ser exactamente como lo plantea el xd, al igual que el estilo
+// de las imágenes, si es con las esquinas redondas o sin ellas».
+//   · NO se traduce la paleta del arte a los hex de la hoja de spec (lo intenté y hubo que
+//     revertirlo entero). La hoja de spec sólo manda en las variables de la plantilla.
+//   · Las clases `.bg-N` son SÓLO color, sin radio. El radio va aparte, leído del `r=[...]` del
+//     rect: hay rects sin `r` (cuadrados), con 5, con 10, con 20 y con radios asimétricos.
+// ============================================================================
+.bg-1
+  background-color: #FFE6DE      // salmón claro
+.bg-2
+  background-color: #F4EDFE      // lila muy claro
+.bg-3
+  background-color: #DDEEFE      // azul muy claro
+.bg-4
+  background-color: #8EC5FC      // azul primario
+.bg-5
+  background-color: #B8F4CE      // verde claro
+.bg-6
+  background-color: #DBC2FA      // lila
+.bg-7
+  background-color: #FFC0AC      // salmón
+
+// Radios del XD. `.r-0` es explícito para dejar claro que ese rect NO lleva radio.
+.r-0
+  border-radius: 0 !important
+.r-5
+  border-radius: 5px !important
+.r-10
+  border-radius: 10px !important
+.r-20
+  border-radius: 20px !important
+.r-izq-20                         // r=[20,0,0,20]: sólo el lado izquierdo (tarjetas pegadas)
+  border-radius: 20px 0 0 20px !important
+.r-der-20                         // r=[0,20,20,0]: sólo el lado derecho
+  border-radius: 0 20px 20px 0 !important
+.r-tl-tr-10                       // r=[10,10,0,0]
+  border-radius: 10px 10px 0 0 !important
+.r-bl-br-10                       // r=[0,0,10,10]
+  border-radius: 0 0 10px 10px !important
+
+// `.cajon` de este curso: caja #DDEEFE con la pestaña de 25x8 en #8EC5FC arriba a la izquierda.
+.cajon.color1
+  background-color: #DDEEFE
+  border-radius: 10px
+  &:before
+    height: 8px
+    background-color: #8EC5FC
+
+// Fondos decorativos full-bleed: PNG exportados del XD con el alto y el ancho del XD.
+// `margin-inline: -6.2rem` es la medida del diseño para que la banda salga del
+// ancho de la tarjeta como en el diseño. En tablet/móvil se recorta o el bloque se desborda por
+// la derecha.
+.bg-fondo-1, .bg-fondo-2, .bg-fondo-3, .bg-fondo-4, .bg-fondo-5, .bg-fondo-6, .bg-fondo-7, .bg-fondo-8, .bg-fondo-9
+  background-repeat: no-repeat
+  background-size: cover
+  margin-inline: -6.2rem !important
+  @media screen and (max-width: $bp-max-md)
+    margin-inline: -1.5rem !important
+  @media screen and (max-width: $bp-min-sm)
+    margin-inline: 0 !important        // en móvil, ni un píxel fuera: el acordeón se desbordaba
+// las `.bg-fondo-N` con su `background-image` se añaden AQUÍ a medida que se exporta el
+// fondo decorativo de cada bloque del XD (si se declara la clase sin el PNG, vite no compila)
+
+// Lista numerada: el cuadro de la viñeta es #FFC0AC con el número **en negrilla** y oscuro
+// (medido en el XD: los números son `Roboto-Bold 16px`). Y **sangría francesa**: cuando el texto
+// salta de línea, la segunda línea se alinea con la primera, no debajo de la viñeta
+// (todas las listas del curso llevan este estilo).
+.lista-numerada--clara, .lista-numerada--cuadro
+  li
+    padding-left: 32px          // 24 de la viñeta + 8 de separación
+    text-indent: -32px
+  .lista-ol--cuadro__vineta
+    background-color: #FFC0AC
+    color: $color-sistema-texto
+    min-width: 24px
+    height: 24px
+    border-radius: 4px
+    font-weight: $base-bold-font-weight
+    text-indent: 0
+    span
+      font-weight: $base-bold-font-weight
+
+// Misma sangría francesa en las listas de viñeta (corazón)
+.lista-ul--compacta li
+  padding-left: 26px
+  text-indent: -26px
+  > i:first-of-type
+    text-indent: 0
+.lista-numerada--clara li
+  border-bottom-color: $color-sistema-f !important
+
+// Viñetas de corazón: salmón #FFC0AC, como en el XD, y sin el margen de 10px del kit.
+.lista-ul--compacta
+  li
+    margin-bottom: 0
+    > i:first-of-type
+      color: #FFC0AC
+
+// Caja con el badge del ícono montado SOBRE el borde superior y CENTRADO (XD: caja 1020x140 con
+// un cuadro de 70x70 que arranca 35px por encima, centrado horizontalmente).
+.tarjeta--badge-arriba
+  border-radius: 10px
+  margin-top: 35px
+  padding-top: 0
+  display: flow-root          // idem: evita que colapse el margin negativo del figure
+  figure
+    margin: -35px 0 20px
+    text-align: center
+    img
+      width: 70px
+      display: block
+      margin-left: auto
+      margin-right: auto
+
+// Acordeón: en el XD los ítems son 1020x170/90 con `r=20`; el abierto en #F4EDFE y los cerrados
+// en #B8F4CE, con el botón circular del acento-botón a la derecha.
+.acordion--principios
+  max-width: 100%
+  overflow-x: hidden
+  .acordion__item, .tarjeta
+    background-color: #B8F4CE !important
+    border-radius: 20px
+  .acordion__activo
+    background-color: #F4EDFE !important
+  .acordion__accion__btn--a, .acordion__accion__btn--b
+    background-color: $color-acento-botones
+    color: $color-sistema-texto
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 1.25rem
+
+// LineaTiempoD: barras 544x38 con `r=5`; el badge del abierto es #16D95E y los cerrados #B8F4CE.
+.linea-tiempo--caracteristicas
+  .linea-tiempo-d__item__number
+    background-color: #B8F4CE
+    color: $color-sistema-texto
+    border-radius: 5px
+  .linea-tiempo-d__item--selected
+    .linea-tiempo-d__item__number
+      background-color: #16D95E !important
+      color: $color-sistema-texto !important
+    .tarjeta
+      background-color: #F4EDFE !important
+  .tarjeta
+    background-color: #B8F4CE !important
+    border-radius: 5px
+
+// Chevrones del SlyderF: en el XD son del acento-botón.
+.slyder--principios
+  .slyder-f__btn i
+    color: $color-acento-botones
+
+// Tarjeta con el círculo del ícono montado SOBRE el borde superior. Medido en el XD:
+// tarjeta 292x260 con `r=20`, círculo de 150 que arranca 75px por encima del borde (o sea la
+// mitad del círculo queda fuera) y centrado horizontalmente sobre la tarjeta.
+.tarjeta--icono-arriba
+  margin-top: 75px
+  padding: 0 20px 24px
+  height: calc(100% - 75px)
+  display: flow-root          // sin esto el margin -75px del figure COLAPSA con el del padre
+  figure
+    margin: -75px 0 12px
+    text-align: center
+    img
+      width: 150px
+      display: block
+      margin-left: auto
+      margin-right: auto
+
 .p-full-width
   padding: 3rem 3.5rem!important;
 .bg-full-width
@@ -84,7 +298,7 @@ figcaption
 @media screen and (max-width: $bp-max-md)
   .mb-cus
     margin-bottom: 2em  !important  
-  .col-lg-7.col-xxl-5.ps-4.ps-sm-5.py-4.py-sm-5.banner-principal__info
+  .banner-principal__info
     width: 90% !important
 
   
@@ -102,5 +316,106 @@ figcaption
   .mb-cus
     margin-bottom: 2em  !important
 
-  
- 
+
+// Tablas del tema 2: el kit deja el thead gris; en el XD va con el acento-contenido y el texto
+// oscuro, y las filas alternas en el 1-VC muy claro.
+.tabla--normativa, .tabla--redes
+  table
+    thead th
+      background-color: #FFC0AC
+      color: $color-sistema-texto
+      border: none
+    tbody tr:nth-child(even)
+      background-color: #F6F6F6      // muestreado del XD (Rectángulo 454433), no es un color de la paleta
+
+// TarjetaAudio del pódcast: el kit pone el texto en itálica y la barra gris; en el XD el marco es
+// del acento-botón con el texto recto.
+.tarjeta-audio--podcast
+  border: 2px solid $color-acento-botones
+  border-radius: 30px
+  padding: 10px 20px
+  .tarjeta-audio__texto, .audio__texto
+    font-style: normal !important
+  .audio__btn
+    background-color: $color-acento-botones !important
+
+// En móvil el contenido de una banda decorativa va a 12 columnas, igual de ancho que el cajón de
+// arriba`): el `.p-5` del envoltorio lo estrechaba, y el `.col-11`
+// y los `.col-lg-10` de dentro tienen que ocupar todo.
+@media screen and (max-width: $bp-max-md)
+  .bg-fondo-1, .bg-fondo-2, .bg-fondo-3, .bg-fondo-4, .bg-fondo-5, .bg-fondo-6, .bg-fondo-7, .bg-fondo-8, .bg-fondo-9
+    .p-5
+      padding: 1.5rem 0 !important
+    > .col-12
+      padding-left: 0
+      padding-right: 0
+    .row
+      margin-left: 0
+      margin-right: 0
+    [class*="col-"]
+      padding-left: 0
+      padding-right: 0
+    .col-11
+      flex: 0 0 auto
+      width: 100%
+
+// En móvil NINGUNA fila de tarjetas puede quedar pegada a la siguiente (error repetido
+// en el Tema 3: «en móvil deben tener una pequeña separación como lo hiciste en el tema 1»).
+// Va a nivel de la tarjeta, no del fondo decorativo, porque hay filas que no están sobre una banda.
+@media screen and (max-width: $bp-max-md)
+  .row > [class*="col-"] > .tarjeta,
+  .row > [class*="col-"] > .tarjeta--boton,
+  .row > [class*="col-"] > [class*="bg-"]
+    margin-bottom: 2rem
+  .row > [class*="col-"]:last-child > .tarjeta,
+  .row > [class*="col-"]:last-child > .tarjeta--boton,
+  .row > [class*="col-"]:last-child > [class*="bg-"]
+    margin-bottom: 0
+  .tarjeta--icono-arriba
+    margin-bottom: 1rem
+
+// ============================================================================
+// TARJETA HOVER = `.tarjeta--boton` DEL KIT (catálogo, `CATALOGO/src/views/Tema10.vue`)
+// ----------------------------------------------------------------------------
+// El componente NO se inventa, es la
+// `.tarjeta--boton` del kit con un modificador de color, y la estructura del catálogo es
+//   .tarjeta--boton.color-N.p-4 > .row.justify-content-center.mb-3 > .col-7 > figure > img
+//                              + h3.text-center + p.text-small.mb-0
+// (Yo había creado una clase `.tarjeta--over` propia: es la cuarta vez que cae la misma piedra.)
+//
+// El kit deja la tarjeta gris y pinta el color del modificador AL PASAR EL RATÓN. El XD de este
+// curso la quiere **verde `#B8F4CE` en reposo y lila `#F4EDFE` en hover**, con el contenedor del
+// icono pasando de `#16D95E` a `#DBC2FA` — y el diseño dibuja los DOS juegos de iconos, así que van
+// apilados y se cruzan con `opacity` (no con `display`: así no hay salto ni segunda petición).
+// ============================================================================
+.tarjeta--boton.color-1
+  background-color: #B8F4CE
+  border-radius: 20px
+  &:active, &:focus, &:hover
+    background-color: #F4EDFE
+    *
+      color: $color-sistema-texto
+  figure
+    position: relative
+    img
+      transition: opacity .3s ease-in-out
+    .icono-hover
+      position: absolute
+      inset: 0
+      opacity: 0
+  &:hover, &:focus-within
+    figure
+      .icono
+        opacity: 0
+      .icono-hover
+        opacity: 1
+
+// `.bg-white` la usa el catálogo para la tarjeta interior de los bloques de audio
+.bg-white
+  background-color: $white
+
+.img-infografica__item, .img-infografica-b__item 
+    width: 4.5%
+
+.img-infografica.color-acento-botones .img-infografica__item__numero, .img-infografica-b.color-acento-botones .img-infografica__item__numero 
+    color: #000000

@@ -56,12 +56,27 @@ $color-institucional: #39A900
 
 // Colores Curso ---------------------------------------
 
-$color-primario: #88dff5
-$color-secundario: #ba59e7
-$color-acento-contenido: #FF4A69
-$color-acento-botones: #39A900
-$color-adicional-1: #CDDC39
-$color-adicional-2: #00BCD4
+$color-primario: #8EC5FC          // azul   (rect y hex escrito coinciden)
+$color-secundario: #DBC2FA        // lila   (rect del XD)
+$color-acento-contenido: #FFC0AC  // salmón (rect del XD; el hex escrito decía #FFB866)
+// El verde sale del RECT del XD: el hex escrito en la hoja de swatches (#85E336) no aparece ni una
+// vez como fill en el artboard, o sea que es una etiqueta muerta.
+$color-acento-botones: #16D95E
+$color-adicional-1: #DDEEFE       // 1-VC
+$color-adicional-2: #F4EDFE       // 2-VC
+$color-terciario: #F6F0E8
+
+// Variables del XD tal cual las pinta el arte
+$color-1-vc: #DDEEFE
+$color-1-v:  #F3F9FF
+$color-1-vo: #394F65
+$color-2-vc: #F4EDFE
+$color-2-v:  #FCFBFF
+$color-2-vo: #5B5666
+$color-3-vc: #FFE6DE
+$color-3-v:  #FFF8EF
+$color-3-vo: #594023
+$color-4-vc: #B8F4CE
 
 // Color Tipografias -----------------------------------
 $color-headers: $color-sistema-texto
@@ -186,7 +201,7 @@ $bp-max-xs: 576px
 .actividad
   background-color: #F2F2F2  
 // Imágen banner principal -----------------------------
-$banner-principal-img-y: '' // 'arriba','abajo',''
+$banner-principal-img-y: 'abajo' // en el XD la ilustración va PEGADA al borde inferior del hero
 $banner-principal-img-x: '' // 'derecha',''
 
 // .tarjeta-avatar -----------------------------------
