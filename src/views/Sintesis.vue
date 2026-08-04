@@ -1,29 +1,30 @@
 <template lang="pug">
 .curso-main-container.pb-3
   BannerInterno(icono="fas fa-sitemap" titulo="Síntesis")
-  .container.tarjeta.tarjeta--blanca.p-4.p-md-5
-    p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu tincidunt erat. Fusce cursus mauris in nulla egestas vulputate. Phasellus viverra accumsan libero, sed luctus diam maximus euismod. Mauris sem risus, tincidunt vel libero in, lobortis commodo ante. Sed pulvinar luctus orci in rhoncus. Nulla ut dapibus risus, ac tempor est. Donec nulla augue, vehicula quis malesuada vitae, fermentum non nisi. Donec tincidunt nibh a magna bibendum rutrum. 
-    
+  .container.tarjeta.tarjeta--blanca.p-4.p-md-5.mb-5
 
-    .row.justify-content-center
-      .col-lg-10.mb-5.bgs.p-4.brad
-        figure
-          img(src="@/assets/curso/sintesis.svg", alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu tincidunt erat. Fusce cursus mauris in nulla egestas vulputate. Phasellus viverra accumsan libero, sed luctus diam maximus euismod. Mauris sem risus, tincidunt vel libero in, lobortis commodo ante. Sed pulvinar luctus orci in rhoncus. Nulla ut dapibus risus, ac tempor est. Donec nulla augue, vehicula quis malesuada vitae, fermentum non nisi. Donec tincidunt nibh a magna bibendum rutrum. ")
+    p(data-aos="fade-down") El componente formativo desarrolla los fundamentos y procedimientos esenciales para la atención de emergencias en la primera infancia, integrando conocimientos de anatomía y fisiología básica, evaluación inicial del lesionado y aplicación del soporte vital básico. A partir de estos elementos, se fortalecen las capacidades para reconocer situaciones críticas, interpretar signos de alarma y ejecutar intervenciones oportunas y seguras.
+
+    p.mt-4(data-aos="fade-down") De igual forma, se abordan las principales lesiones y situaciones específicas que pueden presentarse en esta etapa, así como la movilización del lesionado, la comunicación con el menor y la articulación con el sistema de emergencias. Todo ello con el propósito de garantizar una atención integral, segura y oportuna que proteja la vida y la salud de niñas y niños en las diferentes situaciones de emergencia.
+
+    p.mt-4.mb-0(data-aos="fade-down") A continuación, el mapa conceptual organiza de manera visual los ejes temáticos del componente formativo y las relaciones que los articulan.
+
+    //- El mapa del XD mide 1228 px, que es justo el ancho útil de la tarjeta.
+    figure.mt-4(data-aos="fade-down")
+      img(src="@/assets/curso/sintesis.svg" alt="Técnicas de primeros auxilios en primera infancia organiza el componente en seis ejes: anatomía y fisiología básica, evaluación inicial del lesionado, soporte vital básico, lesiones y movilización, situaciones específicas y enfermedades prevalentes, y comunicación, emergencias y cadena de custodia, con sus subtemas. Así, evidencia que atender una emergencia es un proceso integral, del reconocimiento de los signos de alarma a la movilización segura y la articulación con el sistema de salud." style="width: 1228px").m-auto
+
+    .row.justify-content-center.mt-5
       .col-auto
-        a.anexo.mb-5(:href="obtenerLink('/downloads/Sintesis.pdf')" target="_blank")
+        a.anexo(:href="obtenerLink('/downloads/Sintesis.pdf')" target="_blank")
           .anexo__icono
             img(src="@/assets/bullets/icono-pdf.svg")
           .anexo__texto
             p Anexo. Síntesis
-
 </template>
 
 <script>
 export default {
   name: 'Sintesis',
-  data: () => ({
-    // variables de vue
-  }),
   mounted() {
     this.$nextTick(() => {
       this.$aosRefresh()

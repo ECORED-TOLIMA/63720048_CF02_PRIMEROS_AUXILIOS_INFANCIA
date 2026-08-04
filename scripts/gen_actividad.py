@@ -17,6 +17,9 @@ Lo que hay que tener en cuenta del componente (leerlo antes de tocar los datos):
 - El kit reserva la columna `col-5` de la imagen **sin `v-if`**, así que cada pregunta lleva
   imagen. Se reparte una por cada 4 preguntas (`imagen1..5`), que son los 5 marcadores del
   scaffold BASE (de otro curso; anotados en REVISION-PENDIENTES.md).
+- Los mensajes finales van en **`mensaje_final_aprobado`/`mensaje_final_reprobado`**, que es como
+  los lee `actividadCuestionario/Actividad.vue`. Con `mensaje_aprobado`/`mensaje_reprobado` (el
+  nombre que tenía este script) los dos mensajes del docx no se pintan y NO salta ningún error.
 - El umbral del 70 % está **hardcodeado** en el kit y coincide con lo que pide el docx.
 
 Uso: gen_actividad.py [--print]
@@ -47,6 +50,22 @@ def filas():
 def js(s):
     """Escapa una cadena para un literal JavaScript de comilla simple."""
     return s.replace('\\', '\\\\').replace("'", "\\'")
+
+
+def nombre_del_componente():
+    """El `Name` de `src/config/global.js`, para el campo `tema`.
+
+    El docx no trae ese dato (su «Nombre de la Actividad» es el `titulo`) y antes iba
+    hardcodeado al curso de Python con el que se escribió esto: un curso de primeros auxilios
+    salía con `tema: 'Fundamentos de programación en Python'`. El kit no pinta `tema`, así que
+    el error no se veía en pantalla — sólo leyendo el archivo.
+    """
+    ruta = f'{C.ENTREGABLE}/src/config/global.js'
+    if os.path.exists(ruta):
+        m = re.search(r"Name:\s*'((?:[^'\\]|\\.)*)'", open(ruta, encoding='utf-8').read())
+        if m:
+            return m.group(1)
+    return ''
 
 
 def main():
@@ -115,7 +134,7 @@ def main():
 </template>
 
 <script>
-//- GENERADO por `scripts/gen_actividad.py` desde `xds/1/22810005_CF01_AD.docx`.
+//- GENERADO por `scripts/gen_actividad.py` desde `{os.path.basename(AD)}`.
 //- No editar a mano: volver a correr el script si cambia el docx.
 import ActividadController from '@ecored-sena/boulder-kit/plugin/components/actividad/ActividadController.vue'
 
@@ -126,7 +145,7 @@ export default {{
   }},
   data: () => ({{
     cuestionario: {{
-      tema: 'Fundamentos de programación en Python',
+      tema: '{js(nombre_del_componente())}',
       titulo: '{js(campos.get("titulo", "Cuestionario"))}',
       introduccion:
         '<b>Objetivo:</b> {js(campos.get("objetivo", ""))}<br><br>{js(campos.get("instrucciones", ""))}',
@@ -134,8 +153,11 @@ export default {{
       barajarPreguntas: true,
       titulo_aprobado: '¡BUEN TRABAJO!',
       titulo_reprobado: 'VUELVA A INTENTARLO',
-      mensaje_aprobado: '{js(campos.get("aprobado", ""))}',
-      mensaje_reprobado: '{js(campos.get("reprobado", ""))}',
+      // `mensaje_final_*`, NO `mensaje_*`: es el nombre que lee
+      // `actividadCuestionario/Actividad.vue` del kit (1.0.9). Con el nombre corto los dos
+      // mensajes finales del docx no se pintan nunca y no salta ningún error.
+      mensaje_final_aprobado: '{js(campos.get("aprobado", ""))}',
+      mensaje_final_reprobado: '{js(campos.get("reprobado", ""))}',
       preguntas: [
 {TODOS},
       ],
