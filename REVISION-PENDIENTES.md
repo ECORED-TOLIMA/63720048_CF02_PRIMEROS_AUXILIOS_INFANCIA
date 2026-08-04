@@ -19,9 +19,37 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    El check `1g` de `verificar_maqueta.py` ya pasa, pero **sólo sabe detectar duplicados**: no
    puede saber que una foto es de otro curso. Que pase no significa que estén bien.
 
-2. **Temas 2 a 6 sin maquetar.** `src/views/Tema2..6.vue` siguen en el scaffold (17 líneas). Por eso
-   el check `4b` marca DESCUADRE en los cinco: el XD dibuja 4+4+1+1+1 pestañas de `.cajon` y hay 0
-   maquetadas. No es un fallo de maquetación, es trabajo que falta.
+2. **Temas 3 a 6 sin maquetar.** `src/views/Tema3..6.vue` siguen en el scaffold (17 líneas). Por eso
+   el check `4b` marca DESCUADRE en los cuatro: el XD dibuja 4+1+1+1 pestañas de `.cajon` y hay 0
+   maquetadas. No es un fallo de maquetación, es trabajo que falta. El Tema 2 ya está y da
+   `XD=4 maquetados=4 OK`.
+
+3. **El DI trae un bloque de apertura del Tema 2 que el diseño NO dibuja.** Son las líneas 140-155
+   del volcado del `_DI.docx`: la introducción del tema, los «cuatro aspectos fundamentales»
+   (nivel de conciencia, respiración, pulso, signos de alarma) y los **siete pasos** para hacer la
+   evaluación inicial de forma segura y ordenada.
+
+   No es que no lo encontrara: busqué las frases en el `graphicContent.agc` del artboard `Tema-2`,
+   en **todo** el `.xd` (incluido el pasteboard, por la regla `texto-dado-por-inexistente`) y en el
+   PDF del diseño. Cero coincidencias en los tres. El artboard arranca directamente con el
+   contenido del 2.1, y tampoco dibuja el subtítulo «2.1 Nivel de conciencia».
+
+   Lo maqueté como está en el diseño y **dejé fuera esas 15 líneas del DI**. Hay que decidirlo con
+   diseño instruccional: o el DI las quita, o el diseño las dibuja. Siguiendo el precedente de CF1
+   (su nota 3), el anclaje `t_2_1` del menú apunta al primer bloque del tema, que es justamente el
+   que habla del nivel de conciencia.
+
+4. **Las diapositivas 2 y 3 del slider de 2.4 se quedan sin foto.** En toda la región del slider el
+   artboard tiene **una sola imagen** (`Imagen 118`, 564x376): el diseño dibuja únicamente la
+   primera diapositiva. Repetir esa foto en las otras dos era inventarme material, y el check `1b`
+   lo caza como icono repetido. Si el diseñador aporta dos fotos más, se añaden a las
+   diapositivas 2 y 3 con la misma estructura de columnas que la primera.
+
+5. **La banda decorativa a sangre detrás del slider de 2.4 no está puesta.** En el XD el bloque va
+   sobre una banda de 1600x936 que sale del ancho de la tarjeta (el patrón `.bg-fondo-N` de
+   `_custom.sass`). Exportarla por `--rect` arrastra también el contenido de encima (la tarjeta
+   blanca, el texto y la foto), así que haría falta exportar sólo el grupo del fondo. El bloque
+   queda funcional y con el contenido correcto, pero sin la banda.
 
 ## Decisiones que tomé (por si hay que revertirlas)
 
@@ -49,7 +77,18 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    (ver la entrada `utilidad-bootstrap-pisa-la-clase-custom` del diccionario). Si hay que clavar
    los 461 del XD, va con un `min-height` explícito, nunca con `.h-100`.
 
-4. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
+4. **Las fotos del Tema 2 van con las esquinas rectas.** El inventario del artboard trae 131
+   máscaras CUADRADAS y sólo 4 con radio (292x290 y 294x332 con r=10, 1228x474 con r=20, 560x309
+   con r=10), y no conseguí emparejar esas cuatro con ninguna de las cinco fotos del tema. Me
+   quedé con lo que se ve en el render del artboard, que es esquina recta. Vale la pena
+   comprobarlo a ojo contra el XD: si alguna lleva radio, va con `.r-10` o `.r-20`.
+
+5. **El texto del Tema 2 se compuso por número de línea del `_DI.docx`, no transcribiéndolo.** Los
+   párrafos, las dos tablas, los cinco ítems del acordeón, los cinco pasos del pulso y los tres
+   niveles del slider salen del volcado de `docx_text.py`, así que son literales y no hay erratas
+   de copia.
+
+6. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
    `ActividadPregunta.vue` del kit (1.0.9), y dejarlo daba «¡Correcto! ¡Correcto! …». Es la única
    licencia sobre el texto del docx. Ojo: **CF1 sí lo dejó** y por eso arrastra esa duplicación.
 
