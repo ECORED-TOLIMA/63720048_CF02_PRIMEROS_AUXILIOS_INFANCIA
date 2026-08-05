@@ -163,22 +163,22 @@
           ol.lista-ol--cuadro.lista-numerada--cuadro.mb-0
             li
               span.lista-ol--cuadro__vineta A
-              |  Respiración: identificar dificultad, sonidos inusuales o cambios en el ritmo respiratorio.
+              |  #[b Respiración:] identificar dificultad, sonidos inusuales o cambios en el ritmo respiratorio.
             li
               span.lista-ol--cuadro__vineta B
-              |  Hidratación: observar sequedad en la boca, ausencia de lágrimas o disminución de la orina.
+              |  #[b Hidratación:] observar sequedad en la boca, ausencia de lágrimas o disminución de la orina.
             li
               span.lista-ol--cuadro__vineta C
-              |  Temperatura corporal: reconocer fiebre persistente, temperatura baja o variaciones repentinas.
+              |  #[b Temperatura corporal:] reconocer fiebre persistente, temperatura baja o variaciones repentinas.
             li
               span.lista-ol--cuadro__vineta D
-              |  Piel: verificar cambios de coloración, erupciones, inflamación o aparición de lesiones.
+              |  #[b Piel:] verificar cambios de coloración, erupciones, inflamación o aparición de lesiones.
             li
               span.lista-ol--cuadro__vineta E
-              |  Alimentación: prestar atención al rechazo de alimentos o líquidos y a la pérdida del apetito.
+              |  #[b Alimentación:] prestar atención al rechazo de alimentos o líquidos y a la pérdida del apetito.
             li.mb-0
               span.lista-ol--cuadro__vineta F
-              |  Comportamiento: reconocer somnolencia excesiva, irritabilidad, debilidad o menor respuesta a los estímulos.
+              |  #[b Comportamiento:] reconocer somnolencia excesiva, irritabilidad, debilidad o menor respuesta a los estímulos.
 
     p.mt-4(data-aos="fade-down") La observación conjunta de estos aspectos permite detectar oportunamente un posible deterioro de la salud y solicitar la atención necesaria, sin establecer diagnósticos ni administrar tratamientos por iniciativa propia.
 

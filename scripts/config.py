@@ -26,17 +26,28 @@ ENTREGABLE = os.path.dirname(SCRIPTS)
 FUENTES = os.path.join(ENTREGABLE, 'fuentes')
 
 
-def _uno(patron, que):
+def _uno(patron, que, hermano=None):
+    """El archivo fuente del curso. Si hay varios, gana el que se llama como su hermano.
+
+    ⚠️ `fuentes/` no contiene sólo las fuentes: ahí vive también el `REVISION-PENDIENTES.pdf` que se
+    entrega con el curso. Con un glob a secas, `*.pdf` devolvía dos y **todas las herramientas
+    morían de golpe** con un error que no dice de dónde viene. El `.xd` da el nombre bueno.
+    """
     hits = sorted(glob.glob(os.path.join(FUENTES, patron)))
     if not hits:
         raise SystemExit(f'no encontré ningún {que} en {FUENTES}')
+    if len(hits) > 1 and hermano:
+        base = os.path.splitext(os.path.basename(hermano))[0]
+        propios = [h for h in hits if os.path.splitext(os.path.basename(h))[0] == base]
+        if len(propios) == 1:
+            return propios[0]
     if len(hits) > 1:
         raise SystemExit(f'hay más de un {que} en {FUENTES}: {[os.path.basename(h) for h in hits]}')
     return hits[0]
 
 
 XD = _uno('*.xd', '.xd')
-PDF = _uno('*.pdf', '.pdf')
+PDF = _uno('*.pdf', '.pdf', hermano=XD)
 XDDIR = XD[:-3]
 RES = os.path.join(XDDIR, 'resources')
 

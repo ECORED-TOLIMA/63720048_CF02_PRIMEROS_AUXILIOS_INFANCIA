@@ -29,21 +29,21 @@
     //- #DBC2FA sin radio y (1010,804) 405x413 #FFE6DE redondeado por la derecha. El icono va DENTRO
     //- de la tarjeta, en su círculo blanco de 150 (`Grupo 1177470..72`), no montado sobre el borde.
     .tarjeta--container.row.mt-4
-      .col-md.tarjeta.bg-4.p-5
+      .col-md.tarjeta.bg-4.p-5(style="min-height: 413px")
         .row.justify-content-center.mb-4
           .col-6
             figure
               img(src="@/assets/curso/temas/t4/i1.svg" alt="").w-100
         h4.text-center Caídas durante el juego
         p.mb-0 Pueden ocurrir en el parque o en el patio de un hogar comunitario y ocasionar heridas, golpes o lesiones que requieren valoración inicial.
-      .col-md.tarjeta.bg-6.p-5
+      .col-md.tarjeta.bg-6.p-5(style="min-height: 413px")
         .row.justify-content-center.mb-4
           .col-6
             figure
               img(src="@/assets/curso/temas/t4/i2.svg" alt="").w-100
         h4.text-center Contacto con líquidos calientes
         p.mb-0 Puede producir quemaduras en la cocina u otros espacios del hogar y requiere una actuación inmediata para disminuir el daño.
-      .col-md.tarjeta.bg-1.p-5
+      .col-md.tarjeta.bg-1.p-5(style="min-height: 413px")
         .row.justify-content-center.mb-4
           .col-6
             figure

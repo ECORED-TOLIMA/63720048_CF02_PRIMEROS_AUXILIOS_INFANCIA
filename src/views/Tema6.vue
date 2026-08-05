@@ -29,31 +29,31 @@
     //- de 128 dentro, y chevrones verdes a los lados -> es un `SlyderF`. El DI lista CINCO aspectos:
     //- las dos que no se ven están en el pasteboard, en (6195,-10995) y (6547,-10995).
     SlyderF.slyder--principios.mt-4(columnas="col-md-6 col-lg-4")
-      .tarjeta.bg-4.r-20.p-4.h-100
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 400px")
         figure
           img(src="@/assets/curso/temas/t6/i1.svg" alt="" style="width: 128px").m-auto
         p.text-center.mt-3.mb-2
           b Acompañamiento emocional
         p.text-center.mb-0 Ayuda a disminuir el miedo, la angustia y la confusión que puede experimentar la niña o el niño.
-      .tarjeta.bg-4.r-20.p-4.h-100
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 400px")
         figure
           img(src="@/assets/curso/temas/t6/i2.svg" alt="" style="width: 128px").m-auto
         p.text-center.mt-3.mb-2
           b Comunicación durante la atención
         p.text-center.mb-0 Permite explicar las acciones mediante palabras sencillas, frases breves y un tono tranquilo.
-      .tarjeta.bg-4.r-20.p-4.h-100
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 400px")
         figure
           img(src="@/assets/curso/temas/t6/i3.svg" alt="" style="width: 128px").m-auto
         p.text-center.mt-3.mb-2
           b Activación del sistema de emergencias
         p.text-center.mb-0 Comunicarse con la línea de emergencias 123 para reportar con claridad la condición de la niña o del niño y su ubicación exacta.
-      .tarjeta.bg-4.r-20.p-4.h-100
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 400px")
         figure
           img(src="@/assets/curso/temas/t6/i4.svg" alt="" style="width: 128px").m-auto
         p.text-center.mt-3.mb-2
           b Protección de la información
         p.text-center.mb-0 Evita divulgar datos personales, imágenes o detalles que puedan afectar la intimidad de la persona involucrada.
-      .tarjeta.bg-4.r-20.p-4.h-100
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 400px")
         figure
           img(src="@/assets/curso/temas/t6/i5.svg" alt="" style="width: 128px").m-auto
         p.text-center.mt-3.mb-2
@@ -291,19 +291,19 @@
           .row.justify-content-center
             .col-11
               SlyderF.slyder--principios(columnas="col-md-6 col-lg-4")
-                .tarjeta.bg-4.r-20.p-4.h-100
+                .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
                   figure
                     img(src="@/assets/curso/temas/t6/i6.svg" alt="" style="width: 128px").m-auto
                   p.text-center.mt-3.mb-2
                     b Situación presentada
                   p.text-center.mb-0 Qué ocurrió y cómo sucedió, si esta información se conoce.
-                .tarjeta.bg-4.r-20.p-4.h-100
+                .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
                   figure
                     img(src="@/assets/curso/temas/t6/i7.svg" alt="" style="width: 128px").m-auto
                   p.text-center.mt-3.mb-2
                     b Ubicación exacta
                   p.text-center.mb-0 Dirección, municipio, barrio, punto de referencia y condiciones de acceso.
-                .tarjeta.bg-4.r-20.p-4.h-100
+                .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
                   figure
                     img(src="@/assets/curso/temas/t6/i8.svg" alt="" style="width: 128px").m-auto
                   p.text-center.mt-3.mb-2
