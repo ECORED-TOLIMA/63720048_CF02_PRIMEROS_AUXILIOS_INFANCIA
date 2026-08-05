@@ -432,12 +432,15 @@
     p.mt-4(data-aos="fade-down") Una vez verificadas estas condiciones, se puede seleccionar la técnica que responda a las características de la situación:
 
     //- Ficha: composición (269,9631) 396x391 —foto recortada + panel #8EC5FC 357x367 + adorno
-    //- #FFC0AC 91x91— y las barras del acordeón (765,9629) 544x190/38 con `r=5` -> `LineaTiempoD`.
+    //- #FFC0AC 91x91— y las barras (765,9629) 544x190/38 con `r=5` -> `LineaTiempoD`.
+    //- OJO: el `col` NO se saca del rect de la barra (544) sino del ANCHO DEL COMPONENTE, que
+    //- incluye el badge del número a su izquierda: medido en el PDF va de 705 a 1308 = 603 -> col-6.
+    //- Con col-5 + offset-1 salía en 814 y 491 de ancho.
     .row.align-items-center.justify-content-center.mt-4
       .col-lg-4.mb-4.mb-lg-0
         figure
           img(src="@/assets/curso/temas/t4/comp47.png" alt="" style="width: 396px").m-auto
-      .col-lg-5.offset-lg-1
+      .col-lg-6
         LineaTiempoD.linea-tiempo--caracteristicas.linea-bold
           .row(numero="1" titulo="Cargue en brazos")
             .col-12

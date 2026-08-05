@@ -19,13 +19,17 @@ Uso:  comparar_bloques.py <ruta> <pagina> [--desde Y] [--hasta Y] [--base URL] [
 El origen se ancla en el borde SUPERIOR de la tarjeta blanca (`.tarjeta--blanca`) en los dos lados,
 que es el único punto común: el banner del render y el del PDF no miden lo mismo.
 """
+import os
+import re
 import subprocess
 import sys
+import urllib.request
 
 import numpy as np
 from PIL import Image
 
 Image.MAX_IMAGE_PIXELS = None
+AQUI = os.path.dirname(os.path.abspath(__file__))
 PDF_DPI2 = 2                      # la caché del PDF está a 144 dpi = 2 px por punto
 
 
@@ -62,13 +66,33 @@ def franjas(a, x0, x1, umbral=6):
     return res
 
 
+def servidor():
+    """La URL del `npm run serve` que esté vivo.
+
+    Un puerto fijo por defecto es una trampa silenciosa: vite coge 5173 si está libre y 5174/5175
+    si no, y la herramienta comparaba contra un puerto vacío. No daba error — daba una tabla con
+    «FALTA EN MI RENDER» en 84 de 84 bloques, que parece un desastre de maquetación y no lo es.
+    """
+    base_vite = re.search(r"base:.*?'(/[^']+/)'", open(os.path.join(AQUI, '..', 'vite.config.js'))
+                          .read())
+    ruta = base_vite.group(1) if base_vite else '/'
+    for puerto in (5173, 5174, 5175, 5176):
+        try:
+            url = f'http://localhost:{puerto}{ruta}'
+            urllib.request.urlopen(url, timeout=1).read(1)
+            return url
+        except Exception:
+            continue
+    raise SystemExit(f'no hay ningún servidor sirviendo {ruta}: arranca `npm run serve`')
+
+
 def main():
     if len(sys.argv) < 3:
         print(__doc__)
         return 1
     ruta, pagina = sys.argv[1], int(sys.argv[2])
     desde, hasta = arg('--desde', 0, int), arg('--hasta', 10**9, int)
-    base = arg('--base', 'http://localhost:5175/CF2_63720048/', str)
+    base = arg('--base', servidor(), str)
     tol = arg('--tol', 8, int)
     tmp = '/tmp/comparar-bloques'
     subprocess.run(['mkdir', '-p', tmp], check=True)

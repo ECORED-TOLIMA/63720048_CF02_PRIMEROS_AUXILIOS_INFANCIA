@@ -30,7 +30,27 @@ import sys
 import time
 import urllib.request
 
-BASE = 'http://localhost:5173/CF1_63720048/'
+def servidor():
+    """La URL del `npm run serve` que esté vivo, leyendo el `base` del propio `vite.config.js`.
+
+    Antes había aquí un literal con el base de OTRO entregable y un puerto fijo. Vite coge 5173 si
+    está libre y 5174/5175 si no, así que el literal se queda obsoleto en cuanto hay dos servidores
+    abiertos — y el fallo no se ve: la herramienta mide una página que no es la tuya.
+    """
+    aqui = os.path.dirname(os.path.abspath(__file__))
+    m = re.search(r"base:.*?'(/[^']+/)'", open(os.path.join(aqui, '..', 'vite.config.js')).read())
+    ruta = m.group(1) if m else '/'
+    for puerto in (5173, 5174, 5175, 5176):
+        try:
+            url = f'http://localhost:{puerto}{ruta}'
+            urllib.request.urlopen(url, timeout=1).read(1)
+            return url
+        except Exception:
+            continue
+    return f'http://localhost:5173{ruta}'      # los checks estáticos no necesitan servidor
+
+
+BASE = servidor()
 RUTAS = ['', 'introduccion', 'curso/tema1', 'curso/tema2', 'curso/tema3', 'curso/tema4',
          'curso/tema5', 'curso/tema6', 'sintesis', 'actividad', 'glosario', 'referencias',
          'creditos']
