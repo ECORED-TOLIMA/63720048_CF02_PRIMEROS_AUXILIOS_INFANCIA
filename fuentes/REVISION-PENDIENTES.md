@@ -11,15 +11,15 @@ información para revisar, no trabajo pendiente.
 
 ## 1. Estado del entregable
 
-| Pantalla | Estado | Verificación |
-|---|---|---|
-| Portada, Introducción | del maquetador | intactas |
-| Tema 1, 2 y 3 | del maquetador | intactas |
-| **Tema 4** · Lesiones, traumatismos y movilización | maquetado | alto 10 650 frente a 10 453 del artboard (**+1,9 %**); cajones 1/1 |
-| **Tema 5** · Situaciones específicas | maquetado | 22 diferencias de bloque sobre 51 franjas; cajones 1/1 |
-| **Tema 6** · Comunicación y cadena de custodia | maquetado | cajones 1/1; sin desbordes en móvil |
-| **Síntesis** | maquetada | el anexo es la pág. 10 de este curso; el mapa da **0,945** al reexportarlo |
-| **Actividad** | maquetada | 20 preguntas, barajado doble, contrastada contra las tablas del `_AD.docx` |
+| Pantalla                                           | Estado         | Verificación                                                               |
+| -------------------------------------------------- | -------------- | -------------------------------------------------------------------------- |
+| Portada, Introducción                              | del maquetador | intactas                                                                   |
+| Tema 1, 2 y 3                                      | del maquetador | intactas                                                                   |
+| **Tema 4** · Lesiones, traumatismos y movilización | maquetado      | alto 10 650 frente a 10 453 del artboard (**+1,9 %**); cajones 1/1         |
+| **Tema 5** · Situaciones específicas               | maquetado      | 22 diferencias de bloque sobre 51 franjas; cajones 1/1                     |
+| **Tema 6** · Comunicación y cadena de custodia     | maquetado      | cajones 1/1; sin desbordes en móvil                                        |
+| **Síntesis**                                       | maquetada      | el anexo es la pág. 10 de este curso; el mapa da **0,945** al reexportarlo |
+| **Actividad**                                      | maquetada      | 20 preguntas, barajado doble, contrastada contra las tablas del `_AD.docx` |
 
 En todas: **0 vistas rotas**, **0 elementos animados que no lleguen a aparecer** y **0 desbordes
 horizontales a 485 px**.
@@ -39,18 +39,26 @@ Esto es lo único que no puedo resolver yo.
    check automático de imágenes repetidas pasa, pero **sólo sabe detectar duplicados**: no puede
    saber que una foto es de otro curso.
 
+   Respuesta: Esto lo soluciono yo
+
 2. **El pódcast del 6.1 no tiene audio.** El DI sólo da el nombre del guion
    (`63720048_CF02_Guion_podcast`) y el XD dibuja el reproductor. Va un **MP3 mudo de 180 s** con ese
    nombre exacto para que el componente funcione y muestre la duración. Cuando llegue el audio real,
    basta con sustituir el archivo.
 
+   Respuesta: Este audio en mp3, lo cargo yo.
+
 3. **No hay URL de vídeo en ninguna fuente** para la Introducción: sólo aparece el nombre del guion.
+
+   Respuesta: este video lo cargo yo cuando este el correcto.
 
 4. **El DI trae un bloque de apertura del Tema 2 que el diseño NO dibuja** (líneas 140-155 del
    volcado): la introducción del tema, los «cuatro aspectos fundamentales» y los siete pasos de la
    evaluación inicial. Busqué las frases en el artboard, en **todo** el `.xd` —pasteboard incluido— y
    en el PDF: cero coincidencias en los tres. **Hay que decidirlo con diseño instruccional: o el DI
    las quita, o el diseño las dibuja.**
+
+   Respuesta: tu tienes razon, es un error de falta de informacion en el xd, ya se solicito la correccion. una vez ellos realicen, te paso el archivo xd actualizado para actualizar el componente.
 
 ---
 
@@ -61,19 +69,25 @@ Esto es lo único que no puedo resolver yo.
 5. **El texto sale del `_DI.docx`, transcrito, no redactado.** Párrafos, tablas, acordeones, listas,
    sliders y tarjetas salen del volcado del documento, así que son literales.
 
+   Esta perfecto, el texto debe ser exacto como esta en el DI
+
 6. **La lista A-E del 4.7 y las cinco precauciones del DEA (3.4) van SIN negrilla**, aunque el XD las
-    dibuja en `Roboto-Bold`: los runs del DOCX no llevan negrilla y la regla firme es que manda el
-    formato del documento. Si se prefiere el XD, es cambiar el criterio.
+   dibuja en `Roboto-Bold`: los runs del DOCX no llevan negrilla y la regla firme es que manda el
+   formato del documento. Si se prefiere el XD, es cambiar el criterio.
+
+   Esta perfecto, el texto debe ser exacto como esta en el DI
 
 7. **Los títulos del acordeón del 4.6 van sin los dos puntos finales** que el XD dibuja en dos de los
-    tres. Los dos puntos son el separador del texto corrido del DI, no parte del término.
+   tres. Los dos puntos son el separador del texto corrido del DI, no parte del término.
+
+   Esta perfecto, el texto debe ser exacto como esta en el DI
 
 8. **Los tres rótulos de las tarjetas de apertura del Tema 3 los pone el XD, no el DI**, que deja el
-    «:» que los introduce sin enumerarlos.
+   «:» que los introduce sin enumerarlos.
 
 9. **En la actividad, `titulo` es el TIPO y `tema` el nombre.** El encabezado del `_AD.docx` dice
-    «ACTIVIDAD DIDÁCTICA **CUESTIONARIO**» y eso es lo que el kit pinta como título; «Misión: salvar
-    vidas» es el nombre de la actividad y va en `tema`. Estaban al revés.
+   «ACTIVIDAD DIDÁCTICA **CUESTIONARIO**» y eso es lo que el kit pinta como título; «Misión: salvar
+   vidas» es el nombre de la actividad y va en `tema`. Estaban al revés.
 
 10. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx**, porque el kit ya pinta
     esa etiqueta y si no sale duplicada. Es la única licencia sobre el texto del documento.
@@ -122,7 +136,7 @@ Esto es lo único que no puedo resolver yo.
 20. **El DI duplica cuatro párrafos dentro de su propia celda** (los cierres del 4.7, el 5.1, el 5.3 y
     el Tema 6). Se maquetaron una sola vez; conviene corregirlo en la fuente.
 
-21. **Los tres paneles ocultos de las pestañas del 5.1 traen un *lorem ipsum* de la plantilla del
+21. **Los tres paneles ocultos de las pestañas del 5.1 traen un _lorem ipsum_ de la plantilla del
     kit** («This is a normal paragraph (p element)…») que el diseñador no borró. No se transcribió; el
     texto bueno es el que va después y coincide con el DI.
 
@@ -185,3 +199,7 @@ Para que se sepa qué respalda cada «está bien»:
 
 **Lo que NO está verificado:** la revisión visual pantalla por pantalla de los temas 1, 2 y 3, que son
 del maquetador y no he tocado.
+
+**Pendiente por realizar:**
+
+- en el tema 6.2 en el subtema Información que debe comunicarse, el xd plantea un carrusel de 7 tarjetas, pero tu no hiciste el carrusel. revisalo.
