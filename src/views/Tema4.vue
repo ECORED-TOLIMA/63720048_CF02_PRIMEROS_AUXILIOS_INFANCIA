@@ -300,7 +300,7 @@
     //- marco de 12px (#8EC5FC 584x330 + #DBC2FA 214x330). Los 4 estados que no se ven están en el
     //- PASTEBOARD, en x=521 y=-4808/-4448/-4088/-3728, con su foto.
     .row.bg-banda-t4-45.mt-4
-      .col-12.p-4.p-md-5
+      .col-12
         .tarjeta.tarjeta--blanca.p-4.p-md-5
           SlyderA.slyder-a--curso(tipo="b")
             .row.align-items-center

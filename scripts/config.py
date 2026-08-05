@@ -17,6 +17,7 @@ Aquí se deducen del propio árbol:
 """
 import glob
 import os
+import shutil
 import sys
 import zipfile
 
@@ -55,10 +56,26 @@ CACHE_PDF = os.environ.get(
 
 
 def descomprimir():
-    """Descomprime el `.xd` (es un zip) la primera vez. Idempotente."""
-    if not os.path.isdir(XDDIR):
-        with zipfile.ZipFile(XD) as z:
-            z.extractall(XDDIR)
+    """Descomprime el `.xd` (es un zip) si hace falta.
+
+    ⚠️ Antes la condición era sólo `if not os.path.isdir(XDDIR)`. Eso NO es idempotente cuando el
+    `.xd` CAMBIA: si el diseñador manda una versión nueva, la carpeta ya existe y todas las
+    herramientas siguen leyendo la vieja **sin avisar de nada**. Pasó de verdad — el `.xd` del
+    2026-08-05 traía el artboard del Tema 2 y el pasteboard modificados (+448 KB) y se estuvo
+    trabajando una mañana entera contra el descomprimido del día anterior.
+    Ahora se compara la fecha del zip con la del descomprimido y se rehace si el zip es más nuevo.
+    """
+    marca = os.path.join(XDDIR, '.mtime-xd')
+    actual = str(os.path.getmtime(XD))
+    if os.path.isdir(XDDIR):
+        anterior = open(marca).read() if os.path.exists(marca) else None
+        if anterior == actual:
+            return XDDIR
+        shutil.rmtree(XDDIR)
+        print(f'· el .xd cambió: se rehace {XDDIR}', file=sys.stderr)
+    with zipfile.ZipFile(XD) as z:
+        z.extractall(XDDIR)
+    open(marca, 'w').write(actual)
     return XDDIR
 
 

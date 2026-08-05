@@ -544,6 +544,13 @@ figcaption
   background: url(../assets/curso/temas/t4/f6.png) center/cover no-repeat
   @media (min-width: 992px)
     margin-inline: -3rem
+  // El hueco entre la banda y la tarjeta blanca se MIDE, no se coge del `p-md-5`: el XD deja la
+  // banda en 1328 y la tarjeta en 1263, o sea 32,5 px por lado. Con `p-md-5` (48) la tarjeta salía
+  // de 1223 en vez de 1263.
+  > .col-12
+    padding: 1.5rem 0
+    @media (min-width: 992px)
+      padding: 2rem
 
 // Colores del `SlyderA` en este curso, medidos en el XD del 4.5: los dos botones son círculos de
 // 50 px del acento-botón (`Elipse 4699/4700`, #16D95E) con el chevron BLANCO, los bullets van del
