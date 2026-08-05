@@ -150,7 +150,23 @@ Esto es lo único que no puedo resolver yo.
 
 ---
 
-## 6. Qué está verificado, y cómo
+## 6. Aplicado de la segunda revisión del maquetador
+
+Los seis hallazgos de `Hallazgos-582026.docx`, y el que quedaba abierto del primer documento:
+
+- **Tema 2, slider del 2.4:** botones y bullets con los colores del XD (`Elipse 4699/4700`, verde
+  `#16D95E`; activo `#8EC5FC`) y **las tres diapositivas con su foto** — las dos que faltaban estaban
+  en el pasteboard, en `x=−5528`. Cierra también el hallazgo 1.11 del primer documento.
+- **Tema 4:** el párrafo del cierre del 4.1 va DENTRO de su columna, no a ancho completo encima; las
+  dos parejas de cajas de aviso van **pegadas**, como en el XD (4779+150=4929 y 5717+130=5847).
+- **Tema 5:** mismo caso del párrafo en el cierre del 5.2.
+- **Badge del corazón:** va **centrado sobre el borde** de la caja, mitad fuera y mitad dentro. La
+  utilidad `.p-4` pisaba el `padding-top: 0` de la clase y lo dejaba casi entero dentro.
+- **Tema 6, carrusel del 6.2:** se desbordaban las tarjetas vecinas por los dos lados. Envolverlo en
+  la banda decorativa con `margin-inline` negativo le ensancha el contenedor; va al nivel de la
+  tarjeta, como en los temas 1 y 3. **La banda de 1328x254 de ese bloque queda sin poner.**
+
+## 7. Qué está verificado, y cómo
 
 Para que se sepa qué respalda cada «está bien»:
 

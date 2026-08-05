@@ -283,39 +283,36 @@
 
     p.mt-4(data-aos="fade-down") Durante la llamada, se deben proporcionar los datos esenciales para orientar la respuesta:
 
-    //- Ficha: tres tarjetas (290/637/983, 5695) 327x347 #8EC5FC r=20 con chevrones -> `SlyderF`,
-    //- sobre la banda (137,5764) 1328x254
-    .row.bg-fondo-t6-datos.mt-4
-      .col-12
-        .p-5
-          .row.justify-content-center
-            .col-11
-              SlyderF.slyder--principios(columnas="col-md-6 col-lg-4")
-                .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
-                  figure
-                    img(src="@/assets/curso/temas/t6/i6.svg" alt="" style="width: 128px").m-auto
-                  p.text-center.mt-3.mb-2
-                    b Situación presentada
-                  p.text-center.mb-0 Qué ocurrió y cómo sucedió, si esta información se conoce.
-                .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
-                  figure
-                    img(src="@/assets/curso/temas/t6/i7.svg" alt="" style="width: 128px").m-auto
-                  p.text-center.mt-3.mb-2
-                    b Ubicación exacta
-                  p.text-center.mb-0 Dirección, municipio, barrio, punto de referencia y condiciones de acceso.
-                .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
-                  figure
-                    img(src="@/assets/curso/temas/t6/i8.svg" alt="" style="width: 128px").m-auto
-                  p.text-center.mt-3.mb-2
-                    b Persona afectada
-                  p.text-center.mb-0 Edad aproximada y estado actual de la niña o del niño.
+    //- Ficha: tres tarjetas (290/637/983, 5695) 327x347 #8EC5FC r=20 con chevrones -> `SlyderF`.
+    //- El XD pone detrás una banda de 1328x254, pero envolver el slider en un contenedor con
+    //- `margin-inline` negativo le ensancha el `__main` y asoman las tarjetas vecinas por los dos
+    //- lados. Va como en los temas 1 y 3: al nivel de la tarjeta. La banda queda en los pendientes.
+    SlyderF.slyder--principios.mt-4(columnas="col-md-6 col-lg-4")
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
+        figure
+          img(src="@/assets/curso/temas/t6/i6.svg" alt="" style="width: 128px").m-auto
+        p.text-center.mt-3.mb-2
+          b Situación presentada
+        p.text-center.mb-0 Qué ocurrió y cómo sucedió, si esta información se conoce.
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
+        figure
+          img(src="@/assets/curso/temas/t6/i7.svg" alt="" style="width: 128px").m-auto
+        p.text-center.mt-3.mb-2
+          b Ubicación exacta
+        p.text-center.mb-0 Dirección, municipio, barrio, punto de referencia y condiciones de acceso.
+      .tarjeta.bg-4.r-20.p-4.h-100(style="min-height: 347px")
+        figure
+          img(src="@/assets/curso/temas/t6/i8.svg" alt="" style="width: 128px").m-auto
+        p.text-center.mt-3.mb-2
+          b Persona afectada
+        p.text-center.mb-0 Edad aproximada y estado actual de la niña o del niño.
 
     p.mt-4(data-aos="fade-down") Estos datos permiten que el operador comprenda la situación y proporcione instrucciones apropiadas. Si alguna información se desconoce, debe indicarse con claridad, sin realizar suposiciones ni emitir diagnósticos.
 
     //- Ficha: badge (765,6145) 70x70 #8EC5FC r=42 sobre la caja (290,6180) 1020x140 #DBC2FA r=10
     .row.justify-content-center.mt-5
       .col-lg-10
-        .tarjeta--badge-arriba.bg-6.p-4(data-aos="fade-down")
+        .tarjeta--badge-arriba.bg-6(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t6/badge.svg" alt="")
           p.text-center.mb-0 Durante la llamada a la línea de emergencias 123, se debe informar qué ocurrió, dónde sucedió, cómo se encuentra la niña o el niño y cuáles acciones se han realizado.

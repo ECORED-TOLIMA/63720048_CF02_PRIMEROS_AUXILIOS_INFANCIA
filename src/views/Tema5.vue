@@ -43,7 +43,7 @@
     //- Ficha: badge (765,965) 70x70 #8EC5FC r=42 sobre la caja (290,1000) 1020x140 #DBC2FA r=10
     .row.justify-content-center.mt-5
       .col-lg-10
-        .tarjeta--badge-arriba.bg-6.p-4(data-aos="fade-down")
+        .tarjeta--badge-arriba.bg-6(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t5/badge.svg" alt="")
           p.text-center.mb-0 La atención oportuna comienza con una observación cuidadosa. Reconocer qué ocurrió, cómo responde la niña o el niño y cuáles cambios requieren ayuda inmediata permite actuar con mayor seguridad.
@@ -93,7 +93,7 @@
     //- Ficha: badge (765,2155) + caja (290,2190) 1020x140 #DBC2FA r=10
     .row.justify-content-center.mt-5
       .col-lg-10
-        .tarjeta--badge-arriba.bg-6.p-4(data-aos="fade-down")
+        .tarjeta--badge-arriba.bg-6(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t5/badge.svg" alt="")
           p.text-center.mb-0 Ante una situación específica, intervenir de forma segura significa realizar solamente las acciones necesarias, evitar maniobras improvisadas y solicitar ayuda cuando aparezcan signos de gravedad.
@@ -215,11 +215,11 @@
         figure.d-md-none
           img(src="@/assets/curso/temas/t5/1.svg" alt="").w-100
 
-    p.mt-4(data-aos="fade-down") El reconocimiento de las enfermedades prevalentes en la primera infancia favorece la prevención y la detección temprana de cambios en el estado de salud. La observación de signos y síntomas, junto con el acceso oportuno a los servicios de salud, permite orientar una atención adecuada y reducir el riesgo de complicaciones.
 
     //- Ficha: icono (186,5167) 84x84 con el texto en x=290 · ilustración (1122,5072) 292x185 -> col-3
     .row.align-items-center.mt-4
       .col-lg-9
+        p(data-aos="fade-down") El reconocimiento de las enfermedades prevalentes en la primera infancia favorece la prevención y la detección temprana de cambios en el estado de salud. La observación de signos y síntomas, junto con el acceso oportuno a los servicios de salud, permite orientar una atención adecuada y reducir el riesgo de complicaciones.
         .row.align-items-start
           .col-auto.mb-3.mb-lg-0
             figure
@@ -251,7 +251,7 @@
     //- Ficha: badge (765,5880) + caja (290,5915) 1020x160 #DBC2FA r=10
     .row.justify-content-center.mt-5
       .col-lg-10
-        .tarjeta--badge-arriba.bg-6.p-4(data-aos="fade-down")
+        .tarjeta--badge-arriba.bg-6(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t5/badge.svg" alt="")
           p.text-center.mb-0 El reconocimiento temprano de los signos de alarma permite solicitar atención oportuna y reducir el riesgo de complicaciones. Estas manifestaciones no deben minimizarse ni tratarse mediante medicamentos o procedimientos sin orientación profesional.

@@ -204,7 +204,11 @@ figcaption
 .tarjeta--badge-arriba
   border-radius: 10px
   margin-top: 35px
-  padding-top: 0
+  // El padding lo pone la clase, NO una utilidad `.p-4`: la utilidad de Bootstrap lleva
+  // `!important` y pisaba el `padding-top: 0`, así que el `margin: -35px` del figure arrancaba 24 px
+  // más abajo y el badge quedaba casi entero DENTRO de la caja. En el XD el badge va CENTRADO sobre
+  // el borde superior (70x70 en y=965 sobre la caja en y=1000: 35 fuera y 35 dentro).
+  padding: 0 1.5rem 1.5rem
   display: flow-root          // idem: evita que colapse el margin negativo del figure
   figure
     margin: -35px 0 20px
@@ -582,6 +586,15 @@ figcaption
 .bg-fondo-t6-datos
   background: url(../assets/curso/temas/t6/bg1.png) center/cover no-repeat
   margin-inline: -6.2rem !important
+  overflow: hidden
+  // El `ScrollHorizontal` del `SlyderF` NO recorta. Dentro de una banda con `margin-inline` negativo
+  // el contenedor se ensancha, el slider calcula sus columnas sobre ese ancho y asoman las tarjetas
+  // vecinas por los dos lados. Se le devuelve el ancho de contenido (1228, el de la tarjeta blanca)
+  // y se recorta ahí mismo.
+  > .col-12
+    max-width: 1228px
+    margin-inline: auto
+    overflow: hidden
   @media screen and (max-width: $bp-max-md)
     margin-inline: -1.5rem !important
   @media screen and (max-width: $bp-min-sm)

@@ -77,11 +77,11 @@
             .col-12
               p.mb-0 Son lesiones causadas por el calor, las sustancias químicas, la electricidad o la radiación. Por ejemplo, un lactante puede quemarse al entrar en contacto con un líquido caliente. Se debe retirar la fuente que ocasionó la lesión y enfriar la zona con agua corriente fresca durante 20 minutos. No se deben aplicar hielo, cremas ni remedios caseros, ni romper las ampollas. Posteriormente, la zona se cubre suavemente con una gasa o material limpio.
 
-    p.mt-5(data-aos="fade-down") Durante la atención, se debe conservar la calma y observar señales de alarma, como sangrado que no se detiene, dolor intenso, dificultad para respirar, pérdida de respuesta o quemaduras extensas. Ante estas manifestaciones, se debe activar el sistema de emergencias mediante la línea 123.
 
     //- Ficha: nota (185,2181) 916x130 #F4EDFE r=10 -> col-9 · ilustración (1121,2084) 292x227 -> col-3
     .row.align-items-center.mt-4
       .col-lg-9.mb-4.mb-lg-0
+        p(data-aos="fade-down") Durante la atención, se debe conservar la calma y observar señales de alarma, como sangrado que no se detiene, dolor intenso, dificultad para respirar, pérdida de respuesta o quemaduras extensas. Ante estas manifestaciones, se debe activar el sistema de emergencias mediante la línea 123.
         .bg-2.r-10.p-4(data-aos="fade-down")
           p.mb-0 La aplicación adecuada de estas medidas contribuye a controlar la lesión y prevenir complicaciones. En el siguiente apartado, se presentan las acciones iniciales para reconocer y manejar las lesiones osteomusculares ocasionadas por caídas, golpes u otros traumatismos.
       .col-lg-3
@@ -225,7 +225,7 @@
                 img(src="@/assets/curso/temas/t4/i4.svg" alt="" style="width: 84px")
             .col
               p.mb-0 #[b Trauma craneoencefálico:] corresponde a una lesión en la cabeza que puede afectar el cerebro y alterar el estado general de la niña o el niño. Por ejemplo, después de una caída desde una cama, si presenta vómito repetido, somnolencia, convulsiones o cambios en el comportamiento, se deben evitar movimientos bruscos, vigilar su estado y solicitar atención especializada.
-        .bg-2.p-4.mt-4(data-aos="fade-down")
+        .bg-2.p-4(data-aos="fade-down")
           .row.align-items-center
             .col-auto.mb-3.mb-lg-0
               figure
@@ -266,7 +266,7 @@
                 img(src="@/assets/curso/temas/t4/i6.svg" alt="" style="width: 84px")
             .col
               p.mb-0 #[b Movilización de emergencia:] se realiza cuando permanecer en el lugar representa un riesgo mayor que mover a la niña o al niño. Por ejemplo, si ocurre un incendio o una fuga de gas en la vivienda, se debe trasladar a un sitio seguro, protegiendo cabeza, cuello y cuerpo durante el desplazamiento.
-        .bg-2.p-4.mt-4(data-aos="fade-down")
+        .bg-2.p-4(data-aos="fade-down")
           .row.align-items-center
             .col-auto.mb-3.mb-lg-0
               figure
@@ -461,7 +461,7 @@
     //- centrado y montado 35px por encima -> `.tarjeta--badge-arriba`, que ya existe.
     .row.justify-content-center.mt-5
       .col-lg-10
-        .tarjeta--badge-arriba.bg-6.p-4(data-aos="fade-down")
+        .tarjeta--badge-arriba.bg-6(data-aos="fade-down")
           figure
             img(src="@/assets/curso/temas/t4/badge.svg" alt="")
           p.text-center.mb-0 El traslado no consiste únicamente en cambiar de lugar a la persona lesionada. Su propósito es protegerla durante un desplazamiento indispensable, sin aumentar el dolor ni agravar las lesiones existentes.

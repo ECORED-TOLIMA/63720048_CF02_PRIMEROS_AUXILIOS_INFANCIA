@@ -253,67 +253,71 @@
     //- aplasta a violeta oscuro por el blendMode: es CLARA. La tarjeta del slider va encima.
     .row.bg-banda-t2-24.mt-4
       .col-12.p-4.p-md-5
-        SlyderA.tarjeta.tarjeta--blanca.p-4.p-md-5(tipo="b")
-          .row.align-items-center
-            .col-lg-6.mb-4.mb-lg-0
-              h4 Observación (Seguimiento)
-              ul.lista-ul.mb-0
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Irritabilidad leve:] cambio moderado en el comportamiento que requiere acompañamiento y seguimiento.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Malestar general:] presencia de incomodidad, cansancio o disminución temporal del estado habitual.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Lesiones leves:] heridas superficiales, golpes menores o molestias que no comprometen el estado general.
-                li.mb-0
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Cambios leves en la actividad:] disminución moderada del juego, el movimiento o la interacción.
-            .col-lg-6
-              figure.m-0.marco-degradado
-                img(src="@/assets/curso/temas/t2/f5.png" alt="")
-          .row.align-items-center
-            .col-12
-              h4 Alerta (Valoración oportuna)
-              ul.lista-ul.mb-0
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Respiración rápida o irregular:] cambio en la frecuencia o el ritmo respiratorio que requiere vigilancia.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Dolor intenso:] molestia que causa llanto persistente, limita el movimiento o altera el comportamiento.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Fiebre persistente:] aumento de la temperatura que se mantiene o se acompaña de decaimiento.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Debilidad o decaimiento:] disminución evidente de la energía, la actividad o la capacidad de respuesta.
-                li.mb-0
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Cambios importantes en el comportamiento:] somnolencia inusual, irritabilidad intensa, confusión o dificultad para interactuar.
-          .row.align-items-center
-            .col-12
-              h4 Grave (Atención inmediata)
-              ul.lista-ul.mb-0
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Ausencia de respiración:] falta de movimientos respiratorios y de entrada o salida de aire.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Dificultad respiratoria intensa:] esfuerzo evidente para respirar, hundimiento del pecho, ruidos anormales o coloración azulada.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Pérdida de la conciencia:] ausencia de respuesta ante la voz o los estímulos.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Convulsiones:] movimientos involuntarios, rigidez corporal o pérdida repentina de la respuesta.
-                li
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Sangrado abundante:] pérdida de sangre que no se controla mediante presión directa.
-                li.mb-0
-                  span.lista-ul__vineta
-                  span.mb-0 #[b Cianosis:] coloración azulada o violácea en los labios, la piel o las uñas.
+        .tarjeta.tarjeta--blanca.p-4.p-md-5
+          SlyderA.slyder-a--curso(tipo="b")
+            .row.align-items-center
+              .col-lg-6.mb-4.mb-lg-0
+                h4 Observación (Seguimiento)
+                ul.lista-ul.mb-0
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Irritabilidad leve:] cambio moderado en el comportamiento que requiere acompañamiento y seguimiento.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Malestar general:] presencia de incomodidad, cansancio o disminución temporal del estado habitual.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Lesiones leves:] heridas superficiales, golpes menores o molestias que no comprometen el estado general.
+                  li.mb-0
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Cambios leves en la actividad:] disminución moderada del juego, el movimiento o la interacción.
+              .col-lg-6
+                figure.m-0.marco-degradado
+                  img(src="@/assets/curso/temas/t2/f5.png" alt="")
+            .row.align-items-center
+              .col-lg-6.mb-4.mb-lg-0
+                h4 Alerta (Valoración oportuna)
+                ul.lista-ul.mb-0
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Respiración rápida o irregular:] cambio en la frecuencia o el ritmo respiratorio que requiere vigilancia.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Dolor intenso:] molestia que causa llanto persistente, limita el movimiento o altera el comportamiento.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Fiebre persistente:] aumento de la temperatura que se mantiene o se acompaña de decaimiento.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Debilidad o decaimiento:] disminución evidente de la energía, la actividad o la capacidad de respuesta.
+                  li.mb-0
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Cambios importantes en el comportamiento:] somnolencia inusual, irritabilidad intensa, confusión o dificultad para interactuar.
+              .col-lg-6
+                figure.m-0.marco-degradado
+                  img(src="@/assets/curso/temas/t2/s2.png" alt="")
+            .row.align-items-center
+              .col-lg-6.mb-4.mb-lg-0
+                h4 Grave (Atención inmediata)
+                ul.lista-ul.mb-0
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Ausencia de respiración:] falta de movimientos respiratorios y de entrada o salida de aire.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Dificultad respiratoria intensa:] esfuerzo evidente para respirar, hundimiento del pecho, ruidos anormales o coloración azulada.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Pérdida de la conciencia:] ausencia de respuesta ante la voz o los estímulos.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Convulsiones:] movimientos involuntarios, rigidez corporal o pérdida repentina de la respuesta.
+                  li
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Sangrado abundante:] pérdida de sangre que no se controla mediante presión directa.
+                  li.mb-0
+                    span.lista-ul__vineta
+                    span.mb-0 #[b Cianosis:] coloración azulada o violácea en los labios, la piel o las uñas.
 
     p.mt-5(data-aos="fade-down") Esta clasificación orienta la observación y ayuda a reconocer cuándo se requiere seguimiento, valoración o atención inmediata. Los signos deben interpretarse de manera conjunta, ya que el estado general puede cambiar rápidamente y exigir la activación del servicio de emergencias.
 
@@ -333,3 +337,5 @@ export default {
   name: 'Tema2',
 }
 </script>
+.col-lg-6 figure.m-0.marco-degradado img(src="@/assets/curso/temas/t2/s3.png"
+alt="")
