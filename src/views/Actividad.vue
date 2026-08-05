@@ -19,14 +19,17 @@ export default {
   },
   data: () => ({
     cuestionario: {
-      tema: 'Técnicas de primeros auxilios en primera infancia',
-      titulo: 'Misión: salvar vidas',
+      // Mapa de celdas del `_AD.docx`: el encabezado «ACTIVIDAD DIDÁCTICA CUESTIONARIO» da el TIPO,
+      // que es lo que el kit pinta como título; «Nombre de la Actividad» va en `tema`.
+      tema: 'Misión: salvar vidas',
+      titulo: 'Cuestionario',
       introduccion:
         '<b>Objetivo:</b> Aplicar los conocimientos y habilidades adquiridas para atender emergencias en la primera infancia, identificando situaciones de riesgo, evaluando al lesionado y ejecutando acciones de primeros auxilios de forma oportuna, segura y conforme a los protocolos establecidos.<br><br>Esta actividad le permitirá determinar el grado de apropiación de los contenidos del componente formativo Técnicas de primeros auxilios en primera infancia. Antes de su realización, se recomienda la lectura del componente formativo mencionado. Es opcional (no es calificable), y puede realizarse todas las veces que se desee. Lea la pregunta de cada ítem y seleccione la respuesta correcta.',
       // el kit sólo muestra 10 de las 20: barajar es OBLIGATORIO
       barajarPreguntas: true,
-      titulo_aprobado: '¡BUEN TRABAJO!',
-      titulo_reprobado: 'VUELVA A INTENTARLO',
+      // `titulo_aprobado` y `titulo_reprobado` NO se escriben: el docx no los da y el kit ya trae
+      // sus defaults (`¡BUEN TRABAJO!` y `VUELVE A INTENTARLO`, ActividadResultados.vue:92-99).
+      // Estaban puestos a mano y uno decía «VUELVA» en vez de «VUELVE».
       // `mensaje_final_*`, NO `mensaje_*`: es el nombre que lee
       // `actividadCuestionario/Actividad.vue` del kit (1.0.9). Con el nombre corto los dos
       // mensajes finales del docx no se pintan nunca y no salta ningún error.
