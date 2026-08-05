@@ -66,7 +66,7 @@
     //- botón circular verde #16D95E r=24 a la derecha -> es la `.acordion--principios` que ya existe.
     .row.justify-content-center.mt-4
       .col-lg-10
-        AcordionA.acordion--principios(tipo="b")
+        AcordionA.acordion--principios(tipo="b" clase-tarjeta="tarjeta acordion-tarjeta--curso")
           .row(titulo="Heridas")
             .col-12
               p.mb-0 Son lesiones que afectan la piel o los tejidos y pueden producir cortes, raspaduras, dolor o sangrado. Por ejemplo, una niña puede rasparse la rodilla al caer en el parque. Se debe limpiar la zona con agua, cubrirla con una gasa o material limpio y evitar su manipulación. Si la herida es profunda, contiene un objeto incrustado o continúa sangrando, se debe solicitar atención médica.
@@ -370,7 +370,7 @@
     //- Ficha: abierto (290,8257) 1020x190 #F4EDFE r=20 y dos cerrados 1020x90 #B8F4CE r=20
     .row.justify-content-center.mt-4
       .col-lg-10
-        AcordionA.acordion--principios(tipo="b")
+        AcordionA.acordion--principios(tipo="b" clase-tarjeta="tarjeta acordion-tarjeta--curso")
           .row(titulo="1. Movilización de emergencia")
             .col-12
               p.mb-0 Se emplea cuando existe una amenaza inmediata que impide permanecer en el lugar. Por ejemplo, si durante una inundación el agua comienza a ingresar rápidamente a la vivienda, la niña o el niño debe ser llevado a una zona segura. El desplazamiento se realiza solamente hasta eliminar la exposición al peligro y facilitar la atención requerida.

@@ -217,10 +217,22 @@ figcaption
 
 // Acordeón: en el XD los ítems son 1020x170/90 con `r=20`; el abierto en #F4EDFE y los cerrados
 // en #B8F4CE, con el botón circular del acento-botón a la derecha.
+//
+// El color de la tarjeta va por la prop `clase-tarjeta` del componente, NO por CSS: `cardClass()`
+// pone `tarjeta tarjeta--blanca` cuando la prop viene vacía, así que sobreescribirlo obligaba a un
+// `!important` contra `.tarjeta--blanca`. Pasando la clase, no hay pelea de especificidad.
+//   AcordionA.acordion--principios(tipo="b" clase-tarjeta="tarjeta acordion-tarjeta--curso")
+.acordion-tarjeta--curso
+  background-color: #B8F4CE
+  border-radius: 20px
+
 .acordion--principios
   max-width: 100%
   overflow-x: hidden
-  .acordion__item, .tarjeta
+  // Compatibilidad con las vistas que NO pasan la prop (los temas 1-3, que están cerrados y no se
+  // tocan): ahí `cardClass()` sigue poniendo `tarjeta tarjeta--blanca` y hace falta el override.
+  // Las vistas nuevas pasan `clase-tarjeta` y no entran por aquí.
+  .tarjeta--blanca
     background-color: #B8F4CE !important
     border-radius: 20px
   .acordion__activo
