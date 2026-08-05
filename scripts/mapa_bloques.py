@@ -65,16 +65,25 @@ def main():
             pos.setdefault(nom, (int(x), int(y), int(w), int(h)))
 
     # 2. fill y radio por nombre de nodo
+    #
+    # ⚠️ `--con-tamano` DESCARTA los `Trazado …`: su bbox vive dentro del `path` y xd_read no lo
+    # sabe calcular. Pero una caja de color dibujada como `path` es un BLOQUE, no decoración — en el
+    # Tema 4 los dos avisos de trauma (1020x150 #DDEEFE y #F4EDFE) son `Trazado` y desaparecían de
+    # la ficha, que es justo la que tiene que ser completa. Las posiciones ya las da
+    # `gen_asset.py --lista`, así que el pase SIN el flag sólo aporta el fill y el radio que faltan.
     estilo = {}
-    for ln in corre('xd_read.py', ['--con-tamano']).splitlines():
-        m = re.match(r'\[(\w+)\].*?·\s*(.+)$', ln)
-        if m:
-            estilo[m.group(2).strip()] = re.sub(r'^\[\w+\].*?(rect|path|circle|ellipse|line)\b',
-                                                r'\1', ln).split('·')[0].strip()
-        elif ln.startswith('[IMG]'):
-            u = re.search(r'uid=(\w+)', ln)
-            if u:
-                estilo['uid=' + u.group(1)] = 'FOTO ' + u.group(1)[:10]
+    for extra in (['--con-tamano'], []):
+        for ln in corre('xd_read.py', extra).splitlines():
+            m = re.match(r'\[(\w+)\].*?·\s*(.+)$', ln)
+            if m:
+                estilo.setdefault(
+                    m.group(2).strip(),
+                    re.sub(r'^\[\w+\].*?(rect|path|circle|ellipse|line)\b', r'\1', ln)
+                    .split('·')[0].strip())
+            elif ln.startswith('[IMG]'):
+                u = re.search(r'uid=(\w+)', ln)
+                if u:
+                    estilo.setdefault('uid=' + u.group(1), 'FOTO ' + u.group(1)[:10])
 
     # 3. pestañas de 25x8: el rect que empieza justo debajo es un `.cajon`
     pestanas = [(x, y) for nom, (x, y, w, h) in pos.items() if (w, h) == (25, 8)]
@@ -84,6 +93,32 @@ def main():
     filas = sorted(((y, x, w, h, nom) for nom, (x, y, w, h) in pos.items()
                     if desde <= y <= hasta and w >= minw
                     and ('--todo' in sys.argv or estilo.get(nom))))
+
+    # 3b. colapsar las PILAS DE SOMBRA. Una sombra difusa del XD no es un blur: son 15-20 copias de
+    # la misma forma, del mismo fill, encogiéndose unos pocos px cada una. Contarlas como bloques
+    # (lo que pasó al dejar entrar los `path`) llena la ficha de ruido y esconde los bloques reales.
+    # Se reconocen por eso mismo: mismo fill y bbox a menos de 14 px del anterior. Se deja el mayor.
+    if '--todo' not in sys.argv:
+        limpias, pila = [], []
+
+        def cierra():
+            if pila:
+                mayor = max(pila, key=lambda f: f[2] * f[3])
+                limpias.append(mayor if len(pila) < 3 else (*mayor[:4], f'{mayor[4]} (x{len(pila)})'))
+
+        for f in filas:
+            if pila:
+                p = pila[-1]
+                pegada = (abs(f[0] - p[0]) <= 14 and abs(f[1] - p[1]) <= 14
+                          and estilo.get(f[4]) == estilo.get(p[4]))
+                if pegada:
+                    pila.append(f)
+                    continue
+            cierra()
+            pila = [f]
+        cierra()
+        filas = limpias
+
     # 4. filas de rects iguales con uno de otro color -> hover
     porfila = {}
     for y, x, w, h, nom in filas:

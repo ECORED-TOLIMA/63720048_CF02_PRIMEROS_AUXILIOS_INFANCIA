@@ -1,0 +1,11 @@
+f1.png	PNG (regenerado)	Enmascarar grupo 1119228 - rect visible 1600x220 en (0,70), corr=0.391
+f2.png	PNG (regenerado)	Enmascarar grupo 1119291 - rect visible 396x281 en (185,2553), corr=0.994
+f3.png	PNG (regenerado)	Enmascarar grupo 1119277 - rect visible 292x227 en (185,4287), corr=0.981
+f4.png	PNG (regenerado)	Enmascarar grupo 1119292 - rect visible 396x261 en (185,5426), corr=0.999
+f5.png	PNG (regenerado)	Enmascarar grupo 1119279 - rect visible 614x257 en (185,6422), corr=0.568
+f6.png	PNG (regenerado)	Enmascarar grupo 1119230 - rect visible 1328x561 en (136,6807), corr=0.283
+f7.png	PNG (regenerado)	Enmascarar grupo 1119137 - rect visible 560x309 en (809,6903), corr=0.995
+f8.png	PNG (regenerado)	Enmascarar grupo 1119293 - rect visible 396x261 en (186,7414), corr=0.982
+f9.png	PNG (regenerado)	Enmascarar grupo 1119294 - rect visible 396x310 en (1017,7917), corr=0.998
+f10.png	PNG (regenerado)	Enmascarar grupo 1119295 - rect visible 396x275 en (185,8978), corr=0.996
+f11.png	PNG (regenerado)	Enmascarar grupo 1119237 - rect visible 396x380 en (269,9631), corr=0.859

@@ -49,9 +49,10 @@
     },
     {
       "id": "estilo-de-texto-inventado",
-      "veces": 3,
+      "veces": 4,
       "visto_en": [
-        "CF1_63720048"
+        "CF1_63720048",
+        "CF2_63720048"
       ],
       "sintoma": "un texto en negrilla, cursiva o tachado que en el DOCX no lo lleva (o al revés). Real en CF1: los `Tipo A/B/C` de la Tabla 4 los puse en negrilla y en el DOCX no lo están",
       "causa": "decidir el énfasis por criterio propio en vez de leer el formato del run del DOCX",
@@ -61,16 +62,58 @@
     },
     {
       "id": "medir-a-ojo",
-      "veces": 3,
+      "veces": 4,
       "visto_en": [
         "CF1_63720048",
-        "CF01_22810005"
+        "CF01_22810005",
+        "CF2_63720048"
       ],
       "sintoma": "una columna, un alto, un padding o una separación que no es la del diseño: el bloque queda más ancho, más alto o más suelto",
       "causa": "elegir el `col-lg-N`, el `p-N` o el `mt-N` por parecido con otro bloque en vez de medir el rect del XD",
       "regla": "MEDIR SIEMPRE contra el XD: el ancho (w/1228 -> N/12), el ALTO, el padding (posición del primer texto menos la del rect) y la separación (y del rect siguiente menos el borde del anterior). Nada se hereda de un bloque parecido",
       "detecta": "inventario_xd.py §1 da w x h y la posición de cada rect. El alto se mide contra el rect de la TARJETA BLANCA del artboard (1328xH), no contra la ventana: el fondo de página es #F3F9FF, así que 'última fila no blanca' devuelve el alto de la ventana y da cifras falsas (+49% a +145%).",
       "revision_manuel_2026_07_30": "separaciones: `mt-5`→`mt-4` (2 en Tema 1 y el `titulo-sexto` de la Figura 3) y `mt-4`→`mt-2` en las notas pegadas a su párrafo (2 en Tema 6)"
+    },
+    {
+      "id": "cajon-sin-pestana",
+      "veces": 3,
+      "sintoma": "un `.cajon` de más o de menos respecto al XD",
+      "causa": "decidir por parecido, sin buscar la pestaña de 25x8",
+      "regla": "sólo las cajas con pestaña de 25x8 son `.cajon`",
+      "detecta": "verificar_maqueta.py §4b",
+      "check": "cajones",
+      "visto_en": [
+        "CF1_63720048",
+        "CF2_63720048"
+      ]
+    },
+    {
+      "id": "fondo-decorativo",
+      "veces": 3,
+      "sintoma": "la banda decorativa no llega a los bordes, o el contenido queda pegado a los lados",
+      "causa": "`margin-inline` insuficiente y contenido sin envolver",
+      "regla": "PNG con el tamaño del XD + `cover` + `margin-inline: -6.2rem`, contenido en `.row.justify-content-center > .col-11`; en móvil `0` y a 12 columnas",
+      "detecta": "comparar 1:1 con el PDF y medir por CDP el mismo `left`/`width` que el cajón de al lado",
+      "visto_en": [
+        "CF1_63720048",
+        "CF01_22810005",
+        "CF2_63720048"
+      ]
+    },
+    {
+      "id": "icono-repetido",
+      "veces": 3,
+      "sintoma": "dos tarjetas del mismo slider con el MISMO icono",
+      "causa": "quedarse sin iconos exportados y reusar uno «parecido» para no parar",
+      "regla": "cada tarjeta lleva SU icono: si falta, se exporta; nunca se repite uno",
+      "detecta": "`grep -oE \"temas/t./[a-z0-9]+\\.(png|svg)\" src/views/TemaN.vue | sort | uniq -c` — cualquier cuenta > 1 dentro del mismo tema es sospechosa",
+      "check": "iconos-repetidos",
+      "visto_en": [
+        "CF1_63720048",
+        "CF2_63720048"
+      ],
+      "revision_manuel_2026_07_30": "11 referencias repetidas: Tema 2 (i2, i3, i7 x3, i8, i9) y Tema 6 (i8, i9, i10, i14 x3, i15, i16). Manuel exportó los 13 iconos que faltaban.",
+      "pendiente": "los 2 de Tema1.vue (i15, i16) siguen repetidos en la entrega final: ni Manuel los tocó"
     },
     {
       "id": "pdf-como-autoridad-de-color",
@@ -87,42 +130,18 @@
       "tercera_vez_2026_08_04": "la banda del 2.4 del Tema 2 de CF2 (`Rectángulo 456113`, 1328x747) sale VIOLETA OSCURA en el PDF y es un degradado CLARO lavanda #E3D7FF -> azul #97CBFF. Mismo aplastado de blendMode que el hero. Se exporta el rect solo y se leen sus esquinas"
     },
     {
-      "id": "cajon-sin-pestana",
+      "id": "col-por-ancho-de-imagen",
       "veces": 2,
-      "sintoma": "un `.cajon` de más o de menos respecto al XD",
-      "causa": "decidir por parecido, sin buscar la pestaña de 25x8",
-      "regla": "sólo las cajas con pestaña de 25x8 son `.cajon`",
-      "detecta": "verificar_maqueta.py §4b",
-      "check": "cajones",
-      "visto_en": [
-        "CF1_63720048"
-      ]
-    },
-    {
-      "id": "fondo-decorativo",
-      "veces": 2,
-      "sintoma": "la banda decorativa no llega a los bordes, o el contenido queda pegado a los lados",
-      "causa": "`margin-inline` insuficiente y contenido sin envolver",
-      "regla": "PNG con el tamaño del XD + `cover` + `margin-inline: -6.2rem`, contenido en `.row.justify-content-center > .col-11`; en móvil `0` y a 12 columnas",
-      "detecta": "comparar 1:1 con el PDF y medir por CDP el mismo `left`/`width` que el cajón de al lado",
+      "sintoma": "una foto lateral con más aire del que tiene en el diseño (o menos)",
+      "causa": "elegir el par de columnas «de memoria» (8/4) en vez de calcularlo con el ancho medido",
+      "regla": "`col = round(ancho_px / 1228 x 12)`, con 1228 = ancho útil de la tarjeta blanca. 292px -> col-lg-3 (NO col-lg-4); 392px -> col-lg-4; 396/397px -> col-lg-4",
+      "detecta": "por cada `img … style=\"width: Npx\"`, comparar el `col-lg-K` que lo envuelve con `round(N/1228*12)`",
+      "check": "col-por-ancho",
       "visto_en": [
         "CF1_63720048",
-        "CF01_22810005"
-      ]
-    },
-    {
-      "id": "icono-repetido",
-      "veces": 2,
-      "sintoma": "dos tarjetas del mismo slider con el MISMO icono",
-      "causa": "quedarse sin iconos exportados y reusar uno «parecido» para no parar",
-      "regla": "cada tarjeta lleva SU icono: si falta, se exporta; nunca se repite uno",
-      "detecta": "`grep -oE \"temas/t./[a-z0-9]+\\.(png|svg)\" src/views/TemaN.vue | sort | uniq -c` — cualquier cuenta > 1 dentro del mismo tema es sospechosa",
-      "check": "iconos-repetidos",
-      "visto_en": [
-        "CF1_63720048"
+        "CF2_63720048"
       ],
-      "revision_manuel_2026_07_30": "11 referencias repetidas: Tema 2 (i2, i3, i7 x3, i8, i9) y Tema 6 (i8, i9, i10, i14 x3, i15, i16). Manuel exportó los 13 iconos que faltaban.",
-      "pendiente": "los 2 de Tema1.vue (i15, i16) siguen repetidos en la entrega final: ni Manuel los tocó"
+      "revision_manuel_2026_07_30": "5 casos, todos con foto de 292px en `col-lg-4`: 2.3, 2.4 y 2.5. Las de 396px, que ya tenía en col-lg-4, no las tocó -> la fórmula es la buena."
     },
     {
       "id": "infografia-no-siempre-igual",
@@ -135,6 +154,18 @@
       "regla": "las infografías NO son todas iguales: el número de puntos, dónde caen (sobre los elementos de la ilustración, no siempre a los lados), el ancho de la columna y la variante móvil se adaptan a cada una. La receta da la estructura, no las coordenadas",
       "detecta": "mirar la ilustración exportada y colocar cada punto sobre el elemento que le corresponde; comprobar por CDP que el punto cae encima",
       "revision_manuel_2026_07_30": "Figura 3: las tarjetas son `.color-primario` (azul #8EC5FC), no `.color-acento-botones`; el punto mide 4.5% (el kit trae 2.5%); y las x/y son 20/80 x 20/50/80, no mi plantilla 15/85 x 30/50/70"
+    },
+    {
+      "id": "listas-sin-negrilla-ni-sangria",
+      "veces": 2,
+      "sintoma": "la viñeta en peso normal y la 2ª línea debajo de la viñeta",
+      "causa": "no mirar el peso del XD ni pensar el salto de línea",
+      "regla": "viñeta en negrilla + sangría francesa (`padding-left:32px; text-indent:-32px`) en TODAS",
+      "detecta": "revisar una lista que salte de línea",
+      "visto_en": [
+        "CF1_63720048",
+        "CF2_63720048"
+      ]
     },
     {
       "id": "movil-desborde",
@@ -247,6 +278,18 @@
       "revision_manuel_2026_07_30": "Figura 1 de Tema 1, el mapa de la Síntesis y las dos infografías de puntos calientes"
     },
     {
+      "id": "asset-envuelto-en-fondo-que-ya-trae",
+      "veces": 1,
+      "sintoma": "la ilustración sale con doble fondo: el del SVG y el `.bg-N.p-3` con el que la envolví",
+      "causa": "reproducir el color que se ve detrás de la imagen sin abrir el asset",
+      "regla": "ABRIR el asset antes de envolverlo: si ya trae su fondo y su radio, va solo. Y si el vector está mal exportado, se reexporta, no se disimula con un contenedor",
+      "detecta": "figure con clase `bg-*`/`r-*` cuyo `img` es un `.svg` con fondo propio",
+      "check": null,
+      "visto_en": [
+        "CF2_63720048"
+      ]
+    },
+    {
       "id": "asset-inexistente",
       "veces": 1,
       "sintoma": "la vista entera en gris",
@@ -260,17 +303,40 @@
       ]
     },
     {
-      "id": "col-por-ancho-de-imagen",
+      "id": "banda-de-fondo-sin-row-propia",
       "veces": 1,
-      "sintoma": "una foto lateral con más aire del que tiene en el diseño (o menos)",
-      "causa": "elegir el par de columnas «de memoria» (8/4) en vez de calcularlo con el ancho medido",
-      "regla": "`col = round(ancho_px / 1228 x 12)`, con 1228 = ancho útil de la tarjeta blanca. 292px -> col-lg-3 (NO col-lg-4); 392px -> col-lg-4; 396/397px -> col-lg-4",
-      "detecta": "por cada `img … style=\"width: Npx\"`, comparar el `col-lg-K` que lo envuelve con `round(N/1228*12)`",
-      "check": "col-por-ancho",
+      "sintoma": "las tarjetas/figura de dentro de una banda decorativa salen pegadas a los bordes o más anchas de lo que dice el XD",
+      "causa": "colgar el contenido directamente de la `.row` que lleva la clase del fondo",
+      "regla": "la banda es `.row.bg-* > .col-12 > .p-5`, y DENTRO cada componente lleva su PROPIA `.row.justify-content-center > .col-lg-N` con el N medido del XD. La banda va a 12 columnas; el contenido, al suyo",
+      "detecta": "en el Pug, hijos que no sean `.col-12` colgando de una `.row` con clase `bg-fondo-*`",
+      "check": null,
       "visto_en": [
-        "CF1_63720048"
-      ],
-      "revision_manuel_2026_07_30": "5 casos, todos con foto de 292px en `col-lg-4`: 2.3, 2.4 y 2.5. Las de 396px, que ya tenía en col-lg-4, no las tocó -> la fórmula es la buena."
+        "CF2_63720048"
+      ]
+    },
+    {
+      "id": "bloque-de-color-maquetado-como-parrafo",
+      "veces": 1,
+      "sintoma": "un párrafo suelto donde el XD dibuja una caja de color",
+      "causa": "leer el texto y no el rect que lo envuelve",
+      "regla": "si en la ficha hay un rect con fill detrás del texto, es un bloque (`.cajon` si tiene pestaña de 25x8, si no `.bg-N`), nunca un `p` suelto",
+      "detecta": "comparar_bloques.py: sale un bloque del artboard sin pareja en el render",
+      "check": null,
+      "visto_en": [
+        "CF2_63720048"
+      ]
+    },
+    {
+      "id": "cajon-con-radio-inventado",
+      "veces": 1,
+      "sintoma": "`.cajon` con `border-radius: 10px` cuando el rect del XD y el catálogo lo tienen recto",
+      "causa": "dar por hecho que toda caja de aviso va redondeada",
+      "regla": "el radio del `.cajon` sale del rect del XD; si no trae `r`, va SIN border-radius. Vale para la clase, no solo para la instancia",
+      "detecta": "grep 'border-radius' en las clases .cajon de _custom.sass y contrastar con el `r` del rect del XD",
+      "check": null,
+      "visto_en": [
+        "CF2_63720048"
+      ]
     },
     {
       "id": "columna-vacia",
@@ -332,6 +398,18 @@
         "CF1_63720048",
         "CF01_22810005",
         "CF2"
+      ]
+    },
+    {
+      "id": "figura-sin-variante-movil",
+      "veces": 1,
+      "sintoma": "en móvil se ve la figura de escritorio encogida e ilegible",
+      "causa": "no buscar la variante móvil, que el XD deja SIEMPRE al lado de la figura",
+      "regla": "toda figura informativa lleva dos imágenes: `figure.d-none.d-md-block` (la del artboard) y `figure.d-md-none` (la variante apilada que el XD dibuja al lado). Si no la encuentras, no es que no exista: mira al lado del componente y en el pasteboard",
+      "detecta": "vistas con un `figure > img` de una figura numerada sin ningún `d-md-none` hermano",
+      "check": null,
+      "visto_en": [
+        "CF2_63720048"
       ]
     },
     {
@@ -401,17 +479,6 @@
       "revision_manuel_2026_07_30": "6.4: mi `ol.lista-ol--cuadro.lista-numerada--cuadro` era `ul.lista-ul.lista-ul--compacta` con `i.fas.fa-heart`"
     },
     {
-      "id": "listas-sin-negrilla-ni-sangria",
-      "veces": 1,
-      "sintoma": "la viñeta en peso normal y la 2ª línea debajo de la viñeta",
-      "causa": "no mirar el peso del XD ni pensar el salto de línea",
-      "regla": "viñeta en negrilla + sangría francesa (`padding-left:32px; text-indent:-32px`) en TODAS",
-      "detecta": "revisar una lista que salte de línea",
-      "visto_en": [
-        "CF1_63720048"
-      ]
-    },
-    {
       "id": "margen-negativo-colapsado",
       "veces": 1,
       "sintoma": "un icono que debía sobresalir queda dentro de la tarjeta, o descentrado",
@@ -429,6 +496,18 @@
       "causa": "en Pug, `b Término:` en una línea y `| resto` en la siguiente no dejan espacio entre los dos nodos",
       "regla": "el término en negrilla dentro de un párrafo se escribe con la interpolación en LÍNEA: `span #[b Término:] resto del texto`",
       "detecta": "grep de `\\n *| ` justo después de una línea `b …` en las vistas; y se ve en cualquier captura",
+      "visto_en": [
+        "CF2_63720048"
+      ]
+    },
+    {
+      "id": "offset-innecesario",
+      "veces": 1,
+      "sintoma": "`col-lg-4.offset-lg-1` (u otro offset) para centrar un bloque que el XD pone a 10 columnas",
+      "causa": "ajustar la posición a ojo con un offset en vez de medir el ancho y centrar la fila",
+      "regla": "centrar con `justify-content-center` en la `.row` y el `col-lg-N` medido; el offset sólo si el XD deja el bloque REALMENTE descentrado",
+      "detecta": "grep 'offset-' en las vistas y comprobar la x del rect en la ficha de spec_pantalla.py",
+      "check": null,
       "visto_en": [
         "CF2_63720048"
       ]
@@ -528,6 +607,30 @@
         "CF1_63720048"
       ],
       "revision_manuel_2026_08_04": "`global.js` cambió SÓLO porque una cadena larga no estaba partida"
+    },
+    {
+      "id": "slider-sin-colores-ni-imagenes",
+      "veces": 1,
+      "sintoma": "el slider sale con los botones y los bullets verdes del kit, y con imagen sólo en el primer slide",
+      "causa": "maquetar sólo el slide visible del artboard y no pintar el componente",
+      "regla": "los botones adelante/atrás y los bullets se pintan con el color del XD, y CADA slide lleva su imagen: las de los estados ocultos están a un lado del componente en el artboard o en el pasteboard",
+      "detecta": "contar los `figure` del slider contra el número de bullets dibujados en el XD",
+      "check": null,
+      "visto_en": [
+        "CF2_63720048"
+      ]
+    },
+    {
+      "id": "tarjetas-pegadas-mal-estructuradas",
+      "veces": 1,
+      "sintoma": "fila de paneles de colores pegados armada con `.col-lg-4 > .bg-N.r-izq-20` y el icono montado por fuera",
+      "causa": "componer la fila a mano en vez de usar el contenedor del kit",
+      "regla": "es `.tarjeta--container.row > .col-md.tarjeta.bg-N.p-5`, que ya redondea sólo las esquinas exteriores; el icono va DENTRO, en `.row.justify-content-center > .col-6 > figure`",
+      "detecta": "grep 'r-izq-\\|r-der-' en filas de tarjetas de la misma altura",
+      "check": null,
+      "visto_en": [
+        "CF2_63720048"
+      ]
     },
     {
       "id": "texto-dado-por-inexistente",

@@ -119,13 +119,32 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    XD, y no un modificador `color-*` del kit: con `.color-acento-contenido` salía salmón. El
    componente no pinta fondo propio, lo toma de la clase de color que se le ponga.
 
-11. **Los iconos de los tres paneles de apertura del Tema 4 van sin su círculo blanco.** En el XD
-   cada icono está dentro de un círculo blanco; los assets exportados traen sólo la línea. Se
-   colocaron centrados y sin el círculo. Si se quiere clavar, hay que exportar icono+círculo por
-   `--rect`.
+11. ~~Los iconos de los tres paneles de apertura del Tema 4 van sin su círculo blanco.~~
+   **RESUELTO**: se exportan por `--rect` sobre el círculo entero (`Grupo 1177470..72`, 150x150 en
+   (315/727/1138, 855)), así que el SVG ya trae el círculo y no hace falta CSS.
 
-12. **La primera diapositiva del slider del 4.5 es la única con foto**, por lo mismo que en los
-   temas 2 y 3: el artboard dibuja una sola diapositiva y trae una sola imagen.
+12. ~~La primera diapositiva del slider del 4.5 es la única con foto.~~ **RESUELTO**: las otras
+   cuatro estaban en el PASTEBOARD, en x=521 con y=−4808/−4448/−4088/−3728, con su marco de
+   584x330. Se sacan con `--rect 533 <y+11> 560 309` y `XD_AB=pasteboard`.
+
+15. **La lista A-E del 4.7 va SIN negrilla aunque el XD la dibuja en `Roboto-Bold`.** Los runs del
+   `_DI.docx` no llevan `<w:b/>` en esos cinco puntos, y la regla firme es que manda el formato del
+   DOCX. Si se prefiere el XD, es quitar el criterio y ponerlos en `b`.
+
+16. **Los títulos del acordeón del 4.6 van sin los dos puntos finales** que el XD dibuja en dos de
+   los tres («1. Movilización de emergencia:», «3. Movilización asistida:»). Los dos puntos son el
+   separador del texto corrido del DI, no parte del término, y el tercero no los lleva.
+
+17. **El Tema 4 no tiene ninguna «Figura N», así que no lleva variantes móviles de figura.** Las
+   imágenes del tema son fotos y ilustraciones de acompañamiento, no figuras informativas.
+
+18. **El encabezado de las tablas necesita su modificador.** `.tabla-a.color-acento-contenido` NO
+   pinta el `thead`: el kit lo deja gris. La Tabla 3 lo pide con `.tabla--traslado`; **las Tablas 1
+   y 2 del Tema 2 siguen con el encabezado gris** porque no llevan ningún modificador.
+
+19. **Pendiente del Tema 2 (hallazgo 1.11), no tocado por ser tema cerrado:** el `SlyderA` del 2.4
+   sigue con los botones y los bullets del kit y con foto sólo en la primera diapositiva. La clase
+   `.slyder-a--curso` que se creó para el 4.5 le vale tal cual.
 
 13. **El texto de los temas 2, 3 y 4 se compuso por número de línea del `_DI.docx`, no
    transcribiéndolo.** Los párrafos, las tres tablas, los acordeones, las listas numeradas, las de

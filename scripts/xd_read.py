@@ -85,7 +85,13 @@ def main():
             nodos.append(('SHP', x, y, w, h, info, grupo))
 
     d = json.load(open(agc))
-    for c in d['children'][0]['artboard'].get('children', []):
+    # El `.agc` del PASTEBOARD no lleva el envoltorio `children[0].artboard`: los nodos cuelgan de
+    # `children` directamente. Ahí viven los estados ocultos de sliders y acordeones (y sus fotos),
+    # que son la mitad del contenido de una pantalla con carrusel.
+    hijos = d.get('children') or []
+    if hijos and 'artboard' in hijos[0]:
+        hijos = hijos[0]['artboard'].get('children', [])
+    for c in hijos:
         walk(c, 0, 0)
 
     nodos.sort(key=lambda n: (round(n[2]), round(n[1])))

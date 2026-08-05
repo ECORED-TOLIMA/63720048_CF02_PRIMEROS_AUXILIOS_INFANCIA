@@ -335,7 +335,9 @@ figcaption
 
 // Tablas del tema 2: el kit deja el thead gris; en el XD va con el acento-contenido y el texto
 // oscuro, y las filas alternas en el 1-VC muy claro.
-.tabla--normativa, .tabla--redes
+// `.color-acento-contenido` en el `.tabla-a` NO pinta el `thead`: el kit lo deja en su gris. Hay
+// que pedirlo aquí, y por eso toda tabla de este curso lleva además su modificador.
+.tabla--normativa, .tabla--redes, .tabla--traslado
   table
     thead th
       background-color: #FFC0AC
@@ -343,6 +345,14 @@ figcaption
       border: none
     tbody tr:nth-child(even)
       background-color: #F6F6F6      // muestreado del XD (Rectángulo 454433), no es un color de la paleta
+
+// La Tabla 3 empieza en GRIS: las filas del XD van #F6F6F6 / blanco / #F6F6F6 / blanco / #F6F6F6
+// (rects 454433..454435), o sea las IMPARES. Qué fila abre el alternado se mira, no se hereda.
+.tabla--traslado
+  table tbody tr
+    background-color: $white
+    &:nth-child(odd)
+      background-color: #F6F6F6
 
 // TarjetaAudio del pódcast: el kit pone el texto en itálica y la barra gris; en el XD el marco es
 // del acento-botón con el texto recto.
@@ -514,6 +524,51 @@ figcaption
   background: url(../assets/curso/temas/bg/1.png) center/cover no-repeat
   @media (min-width: 992px)
     margin-inline: -3rem
+
+// Banda del 4.5: `Enmascarar grupo 1119230`, (136,6807) 1328x747. CUARTA vez que el PDF miente con
+// una banda: la pinta violeta oscura y el grupo del XD es lavanda claro. Es OTRO asset que el del
+// 2.4 (md5 distinto y la esquina da #DAC DF4 frente a #C1C6F4), así que va su propia clase.
+.bg-banda-t4-45
+  background: url(../assets/curso/temas/t4/f6.png) center/cover no-repeat
+  @media (min-width: 992px)
+    margin-inline: -3rem
+
+// Colores del `SlyderA` en este curso, medidos en el XD del 4.5: los dos botones son círculos de
+// 50 px del acento-botón (`Elipse 4699/4700`, #16D95E) con el chevron BLANCO, los bullets van del
+// mismo verde y el activo en #8EC5FC. El kit los deja en su gris y hay que pintarlos siempre.
+.slyder-a--curso
+  .slyder-a__btn--sigt, .slyder-a__btn--atrs
+    background-color: $color-acento-botones
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    color: $white
+    i
+      color: $white
+  .slyder-a__bullets__item
+    background-color: $color-acento-botones
+  .slyder-a__bullets__item--active
+    background-color: $color-primario
+
+// Tabla 3 del Tema 4: los divisores del PDF caen en 498, 706, 913 y 1101 sobre una tabla de 1020
+// que va de 290 a 1310, o sea columnas de 208/208/207/188/209 px. NO se heredan de las tablas del
+// Tema 2, que miden otra cosa.
+.tabla--traslado
+  table
+    th, td
+      &:nth-child(1)
+        width: 20.4%
+      &:nth-child(2)
+        width: 20.4%
+      &:nth-child(3)
+        width: 20.3%
+      &:nth-child(4)
+        width: 18.4%
+      &:nth-child(5)
+        width: 20.5%
 
 // Marco de la foto del slider del 2.4: en el XD son dos rects detrás de la foto —#8EC5FC 584x330
 // en (798,5987) y #DBC2FA 214x330 en (1168,5987)— con la foto (810,5998) 560x309 encima, así que
