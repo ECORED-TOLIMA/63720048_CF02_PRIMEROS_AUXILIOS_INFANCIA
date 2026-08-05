@@ -14,7 +14,7 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    El scaffold traía 10 archivos que eran 5 imágenes duplicadas (`imagen1=imagen7`,
    `imagen2=imagen8`, `imagen3=imagen9`, `imagen4=imagen10`, `imagen5=imagen6`). Borré los 5
    duplicados sin usar; siguen en el historial de git. `gen_actividad.py` reparte una imagen por
-   cada 4 preguntas (`imagen1..5`), como en CF1.
+   cada 4 preguntas (`imagen1..5`).
 
    El check `1g` de `verificar_maqueta.py` ya pasa, pero **sólo sabe detectar duplicados**: no
    puede saber que una foto es de otro curso. Que pase no significa que estén bien.
@@ -40,9 +40,9 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    contenido del 2.1, y tampoco dibuja el subtítulo «2.1 Nivel de conciencia».
 
    Lo maqueté como está en el diseño y **dejé fuera esas 15 líneas del DI**. Hay que decidirlo con
-   diseño instruccional: o el DI las quita, o el diseño las dibuja. Siguiendo el precedente de CF1
-   (su nota 3), el anclaje `t_2_1` del menú apunta al primer bloque del tema, que es justamente el
-   que habla del nivel de conciencia.
+   diseño instruccional: o el DI las quita, o el diseño las dibuja. Mientras tanto, el anclaje
+   `t_2_1` del menú apunta al primer bloque del tema, que es justamente el que habla del nivel de
+   conciencia.
 
 4. **Las diapositivas 2 y 3 del slider de 2.4 se quedan sin foto.** En toda la región del slider el
    artboard tiene **una sola imagen** (`Imagen 118`, 564x376): el diseño dibuja únicamente la
@@ -71,13 +71,12 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    En **SVG**, no PNG, por la regla `raster-en-vez-de-svg`: el mapa es vectorial y lleva la
    tipografía incrustada.
 
-2. **El `alt` del mapa son dos frases y 71 palabras**, la misma forma y longitud que el de CF1
-   (67 palabras), que es el que pasó la revisión: qué organiza el mapa (los seis ejes) y qué
-   permite concluir. La regla `alt-inventariado` avisa a partir de ~45 palabras, pero enumerar los
+2. **El `alt` del mapa son dos frases y 71 palabras**, con la forma acordada: qué organiza el
+   mapa (los seis ejes) y qué permite concluir. La regla `alt-inventariado` avisa a partir de ~45 palabras, pero enumerar los
    seis ejes es el contenido de la figura.
 
 3. **En el Tema 1 los tres paneles del 1.2 quedan en 314 px de alto y el XD los dibuja 405×461.**
-   La altura la manda el contenido, igual que en CF1. Antes medían 389 px —más cerca del XD— pero
+   La altura la manda el contenido. Antes medían 389 px —más cerca del XD— pero
    sólo por accidente: eran los 75 px del bug de `.h-100` sobre `.tarjeta--icono-arriba`
    (ver la entrada `utilidad-bootstrap-pisa-la-clase-custom` del diccionario). Si hay que clavar
    los 461 del XD, va con un `min-height` explícito, nunca con `.h-100`.
@@ -115,9 +114,9 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
    icono repetido; se sacaron por `--rect` en sus seis coordenadas: (533,446), (631,2712),
    (185,4544), (631,5454), (628,7563) y (637,9014).
 
-10. **El panel de la `.bloque-texto-g` del 4.5 va `.bg-4` (#8EC5FC)**, que es el fill del rect del
-   XD, y no un modificador `color-*` del kit: con `.color-acento-contenido` salía salmón. El
-   componente no pinta fondo propio, lo toma de la clase de color que se le ponga.
+10. **El panel de la `.bloque-texto-g` del 4.5 va `.color-primario`**, que en este curso es
+   `#8EC5FC`, el fill del rect del XD. El componente no pinta fondo propio: lo toma de la clase de
+   color que se le ponga, así que con `.color-acento-contenido` salía salmón.
 
 11. ~~Los iconos de los tres paneles de apertura del Tema 4 van sin su círculo blanco.~~
    **RESUELTO**: se exportan por `--rect` sobre el círculo entero (`Grupo 1177470..72`, 150x150 en
@@ -153,10 +152,34 @@ decisiones que tomé para no parar. Todo lo demás sale de las fuentes.
 
 14. **La retroalimentación de la actividad va SIN el «¡Correcto!» del docx.** Lo pinta ya
    `ActividadPregunta.vue` del kit (1.0.9), y dejarlo daba «¡Correcto! ¡Correcto! …». Es la única
-   licencia sobre el texto del docx. Ojo: **CF1 sí lo dejó** y por eso arrastra esa duplicación.
+   licencia sobre el texto del docx.
 
 ## Avisos del verificador que no son fallos
 
 - `1h` marca `$color-sistema-b` y `$color-acento-botones` en la frontera de `textColor()`, pero
   **ninguna de las dos se usa en las vistas** (0 usos), así que no hay nada que comprobar a ojo.
 - `4c` (altos contra el XD) sigue sin implementar en el verificador; el alto se mide a mano.
+
+## Revisión visual — lo que está mirado y lo que no
+
+**Mirado bloque a bloque contra el render del artboard:** el Tema 4 entero. Cierra en **10 650 px
+contra 10 453 del artboard (+1,9 %)** y los bordes medidos cuadran: banda del 4.5 en 140..1459
+(XD 136..1464), componente del 4.7 en 708..1307 (XD 705..1308) y los tres paneles pegados del
+1.º bloque con el mismo radio por esquina que el XD.
+
+**Sin revisar bloque a bloque:** los Temas 5 y 6 (sin maquetar) y la Actividad.
+
+**Los Temas 1, 2 y 3 son la versión del maquetador** y no se tocan. De ahí quedan dos cosas
+abiertas que **no** son mías de corregir pero conviene tener a la vista:
+
+- el hallazgo 1.11 de su documento sigue sin aplicar en su propio `Tema2.vue`: el `SlyderA` del 2.4
+  conserva los botones y los bullets grises del kit y sólo la primera diapositiva tiene foto. La
+  clase `.slyder-a--curso` creada para el 4.5 le sirve tal cual, y las fotos que faltan están en el
+  pasteboard;
+- las Tablas 1 y 2 del Tema 2 salen con el encabezado gris: `.tabla-a.color-acento-contenido` **no
+  pinta el `thead`**, hace falta un modificador como el `.tabla--traslado` de la Tabla 3;
+- y en su `Tema1.vue` la primera de las tres tarjetas pegadas repite el título y el texto de la
+  segunda («Pulmones» en las líneas 171 y 179); debería decir «Vías respiratorias».
+
+**El check que falta en el verificador** es el `4c`: comparar el alto renderizado de
+`.container.tarjeta--blanca` con el alto del artboard del `mapa-artboards.json`. Hoy se mide a mano.
