@@ -113,7 +113,8 @@
         "CF2_63720048"
       ],
       "revision_manuel_2026_07_30": "11 referencias repetidas: Tema 2 (i2, i3, i7 x3, i8, i9) y Tema 6 (i8, i9, i10, i14 x3, i15, i16). Manuel exportó los 13 iconos que faltaban.",
-      "pendiente": "los 2 de Tema1.vue (i15, i16) siguen repetidos en la entrega final: ni Manuel los tocó"
+      "pendiente": "los 2 de Tema1.vue (i15, i16) siguen repetidos en la entrega final: ni Manuel los tocó",
+      "excepcion": "un ADORNO que el XD repite a propósito no es un icono repetido: en el Tema 5 de CF2 el badge del corazón es el MISMO nodo (`Rectángulo 456429`) en tres bloques. Antes de dar por bueno el aviso del check 1b, contar las veces que aparece ese nodo en el artboard: si el XD lo repite, se repite."
     },
     {
       "id": "pdf-como-autoridad-de-color",

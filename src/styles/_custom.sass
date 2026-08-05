@@ -537,6 +537,31 @@ figcaption
   @media (min-width: 992px)
     margin-inline: -3rem
 
+// `TabsA` del 5.1. ⚠️ El kit trae el COMPONENTE (`TabsA.vue`) pero **ni una línea de CSS** para
+// `.tabs-a`, y `.color-*--borde` que usa el catálogo tampoco existe en ningún sitio: son ganchos
+// vacíos, como `.tarjeta--container`. Así que los estilos se escriben con las medidas de la ficha:
+// pestañas 295x50 con `r=5` (`col-xl-3` da 307, que es la columna), #B8F4CE las cerradas y #16D95E
+// la abierta; panel 916x248 (`col-xl-9`) blanco con un filete #FCF9FF de 4 px, muestreado del PDF.
+.tabs--situaciones
+  .tabs-a__tab
+    width: 100%
+    min-height: 50px
+    display: flex
+    align-items: center
+    padding: 0 20px
+    border: 0
+    border-radius: 5px
+    background-color: #B8F4CE
+    color: $color-sistema-texto
+    font-weight: $base-bold-font-weight
+    text-align: left
+  .tabs-a__tab__selected
+    background-color: $color-acento-botones
+  .tabs-a__content-item
+    background-color: $white
+    border: 4px solid #FCF9FF
+    border-radius: 5px
+
 // Banda del 4.5: `Enmascarar grupo 1119230`, (136,6807) 1328x747. CUARTA vez que el PDF miente con
 // una banda: la pinta violeta oscura y el grupo del XD es lavanda claro. Es OTRO asset que el del
 // 2.4 (md5 distinto y la esquina da #DAC DF4 frente a #C1C6F4), así que va su propia clase.
@@ -547,6 +572,17 @@ figcaption
   // El hueco entre la banda y la tarjeta blanca se MIDE, no se coge del `p-md-5`: el XD deja la
   // banda en 1328 y la tarjeta en 1263, o sea 32,5 px por lado. Con `p-md-5` (48) la tarjeta salía
   // de 1223 en vez de 1263.
+  > .col-12
+    padding: 1.5rem 0
+    @media (min-width: 992px)
+      padding: 2rem
+
+// Banda del 5.3: `Enmascarar grupo 1119299`, (136,6171) 1328x747. Su propio asset, no el del 4.5.
+// Mismo hueco medido: banda 1328, tarjeta blanca 1263 -> 32,5 px por lado.
+.bg-banda-t5-53
+  background: url(../assets/curso/temas/t5/f7.png) center/cover no-repeat
+  @media (min-width: 992px)
+    margin-inline: -3rem
   > .col-12
     padding: 1.5rem 0
     @media (min-width: 992px)

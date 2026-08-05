@@ -183,3 +183,24 @@ abiertas que **no** son mías de corregir pero conviene tener a la vista:
 
 **El check que falta en el verificador** es el `4c`: comparar el alto renderizado de
 `.container.tarjeta--blanca` con el alto del artboard del `mapa-artboards.json`. Hoy se mide a mano.
+
+## Tema 5 — decisiones y avisos
+
+20. **El badge del corazón sale tres veces y el check `1b` lo marca como icono repetido.** Es un
+   falso positivo: en el XD es **el mismo nodo** (`Rectángulo 456429`, en 965, 2155 y 5880), o sea
+   que el diseño lo repite a propósito. Queda anotado como excepción en el diccionario.
+
+21. **El `TabsA` del 5.1 abre la primera pestaña; el XD dibuja abierta la segunda.** El componente
+   del kit siempre arranca en la primera y no expone una prop para cambiarlo. Cuál se dibuja abierta
+   es una decisión de presentación del artboard, no contenido, así que se deja el comportamiento del
+   kit. Los cuatro paneles y sus cuatro iconos sí están completos (tres salieron del pasteboard).
+
+22. **El kit NO trae estilos para `.tabs-a`**: `TabsA.vue` existe como componente pero no hay ni una
+   línea de CSS, y `.color-*--borde` que usa el catálogo tampoco existe en ningún sitio. Los estilos
+   del 5.1 se escribieron con las medidas de la ficha (pestañas 295x50 `r=5`, #B8F4CE / #16D95E;
+   panel blanco con filete #FCF9FF de 4 px, muestreado del PDF).
+
+23. **La infografía del 5.2 es de puntos calientes, no una figura.** El rótulo
+   `INFOGRAFIA PUNTOS CALIENTES` y los seis textos están en el pasteboard, en (2982,−7967). La
+   imagen base se exportó sin las píldoras ni los «+», y los seis puntos van en % del contenedor:
+   11,5/39 · 27/71 · 42,5/39 · 58/71 · 73,4/39 · 89/71.
