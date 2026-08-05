@@ -577,6 +577,16 @@ figcaption
     @media (min-width: 992px)
       padding: 2rem
 
+// Banda del bloque de datos del 6.2: (137,5764) 1328x254, la que va detrás del `SlyderF`.
+// Sigue el patrón `.bg-fondo-*`: PNG con el tamaño del XD y el contenido a 11 columnas dentro.
+.bg-fondo-t6-datos
+  background: url(../assets/curso/temas/t6/bg1.png) center/cover no-repeat
+  margin-inline: -6.2rem !important
+  @media screen and (max-width: $bp-max-md)
+    margin-inline: -1.5rem !important
+  @media screen and (max-width: $bp-min-sm)
+    margin-inline: 0 !important
+
 // Banda del 5.3: `Enmascarar grupo 1119299`, (136,6171) 1328x747. Su propio asset, no el del 4.5.
 // Mismo hueco medido: banda 1328, tarjeta blanca 1263 -> 32,5 px por lado.
 .bg-banda-t5-53

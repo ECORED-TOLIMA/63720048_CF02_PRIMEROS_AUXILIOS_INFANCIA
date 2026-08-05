@@ -204,3 +204,21 @@ abiertas que **no** son mías de corregir pero conviene tener a la vista:
    `INFOGRAFIA PUNTOS CALIENTES` y los seis textos están en el pasteboard, en (2982,−7967). La
    imagen base se exportó sin las píldoras ni los «+», y los seis puntos van en % del contenedor:
    11,5/39 · 27/71 · 42,5/39 · 58/71 · 73,4/39 · 89/71.
+
+## Tema 6 — decisiones y avisos
+
+24. **El pódcast no tiene audio en ninguna fuente.** El DI sólo da el nombre del guion
+   (`63720048_CF02_Guion_podcast`); el XD dibuja el reproductor y nada más. Va un **MP3 mudo de
+   180 s** con ese nombre exacto, para que `TarjetaAudio` funcione y muestre la duración. En cuanto
+   llegue el audio real, es sustituir el archivo.
+
+25. **El enlace del botón «Descargar» SÍ está en el DI** y se usó tal cual:
+   `https://safgncacportalwebprod01.blob.core.windows.net/media-portalweb-prd/MANUAL-DEL-SISTEMA-DE-CADENA-DE-CUSTODIA.pdf`
+
+26. **Las dos tarjetas que faltan del `SlyderF` del 6.1 salieron del pasteboard**, en
+   (6195,−10995) y (6547,−10995): el artboard dibuja tres y el DI lista cinco aspectos
+   («Protección de la información» y «Preservación de la escena»).
+
+27. **Las nueve pastillas del tema usan el mismo icono**, `house-medical-solid-full` en el XD, que
+   es el `ic-pastilla.png` ya exportado en el Tema 3. No es un icono repetido por descuido: el XD
+   repite el nodo.
