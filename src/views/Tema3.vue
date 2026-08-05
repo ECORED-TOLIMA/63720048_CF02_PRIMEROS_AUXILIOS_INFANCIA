@@ -167,7 +167,14 @@
               span.lista-ol--cuadro__vineta 10
               |  #[b Continuar las maniobras:] mantener la RCP hasta que la niña o el niño muestre signos de respuesta, llegue el personal especializado, el entorno deje de ser seguro o quien brinda la atención no pueda continuar.
 
-    p.mt-5(data-aos="fade-down") La aplicación ordenada de estas acciones contribuye a mantener la circulación sanguínea y el aporte de oxígeno durante la emergencia. Las maniobras deben adaptarse al tamaño y a las condiciones físicas de la niña o del niño, sin aplicar una fuerza excesiva y de acuerdo con la capacitación recibida.
+
+    .row.justify-content-center.mt-4
+      .col-lg-10
+        .row.align-items-center
+          .col-lg-12
+            .cajon.color1.p-4
+              p La aplicación ordenada de estas acciones contribuye a mantener la circulación sanguínea y el aporte de oxígeno durante la emergencia. Las maniobras deben adaptarse al tamaño y a las condiciones físicas de la niña o del niño, sin aplicar una fuerza excesiva y de acuerdo con la capacitación recibida.
+
 
     Separador
 
@@ -177,8 +184,8 @@
     //- Ficha: ilustración (186,3958) 292x166 sobre la caja (186,3986) 292x138 #F4EDFE r=[20,20,0,0]
     .row.align-items-start
       .col-lg-3.mb-4.mb-lg-0
-        figure.bg-2.r-tl-tr-10.p-3
-          img(src="@/assets/curso/temas/t3/ilus1.png" alt="").w-100
+        figure.r-tl-tr-10.p-3
+          img(src="@/assets/curso/temas/t3/1.svg" alt="").w-100
       .col-lg-9
         p(data-aos="fade-down") La obstrucción de la vía aérea por cuerpo extraño (OVACE) es una emergencia que ocurre cuando un alimento u objeto bloquea de manera parcial o total el paso del aire hacia los pulmones. En lactantes, niñas y niños, esta situación puede evolucionar rápidamente; por ello, es fundamental reconocer las señales de alerta y actuar de manera oportuna y segura.
         p.mb-0(data-aos="fade-down") La obstrucción puede presentarse mientras se consumen alimentos o cuando se introducen objetos pequeños en la boca. El riesgo aumenta con alimentos duros, redondos o difíciles de masticar, así como con monedas, botones, piezas de juguetes y otros elementos que se encuentran al alcance de la población infantil.
@@ -192,8 +199,8 @@
 
     .row.justify-content-center.mt-4
       .col-lg-10
-        .cajon.color1.p-4.p-md-5(data-aos="fade-down")
-          ul.lista-ul--color.mb-0
+        .bg-3.p-4.p-md-5(data-aos="fade-down")
+          ul.lista-ul.lista-ul--compacta
             li
               i.fas.fa-heart
               span.mb-0 #[b Obstrucción parcial:] la niña o el niño puede toser con fuerza, emitir sonidos, respirar y responder. En este caso, se debe permitir que continúe tosiendo, observar su evolución y evitar maniobras innecesarias.
@@ -258,7 +265,7 @@
         .bg-2.p-4.p-md-5(data-aos="fade-down")
           .row.align-items-center
             .col-lg-8
-              ul.lista-ul--color.mb-0
+              ul.lista-ul.lista-ul--compacta
                 li
                   i.fas.fa-heart
                   span.mb-0 #[b Solicitar ayuda:] activar el sistema de emergencias mediante la línea 123.
@@ -381,7 +388,7 @@
                   |  Reducir al mínimo las interrupciones de las compresiones torácicas.
             .col-lg-4.d-none.d-lg-block
               figure.m-0
-                img(src="@/assets/curso/temas/t3/ilus2.png" alt="" style="width: 222px").m-auto
+                img(src="@/assets/curso/temas/t3/2.svg" alt="" style="width: 222px").m-auto
 
     //- Ficha: icono (186,7213) 84x84 #FFC0AC r=10
     .row.align-items-start.mt-5

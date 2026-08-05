@@ -23,31 +23,34 @@
     //- que descuenta los 75 px que el círculo del icono saca por arriba. La utilidad de Bootstrap
     //- es `height: 100% !important` y pisa ese calc, así que la tarjeta acaba midiendo la columna
     //- ENTERA más los 75 px de margen y se sale 75 px por abajo, encima del bloque siguiente.
-    .row.mt-5.bg-fondo-t1-sistemas
-      .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
-          figure
-            img(src="@/assets/curso/temas/t1/i1.svg" alt="")
-          h4.text-center Sistema circulatorio
-          p.text-center.mb-0 Transporta la sangre, el oxígeno y los nutrientes por todo el organismo. Su reconocimiento permite valorar el pulso e identificar alteraciones de la circulación.
-      .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
-          figure
-            img(src="@/assets/curso/temas/t1/i2.svg" alt="")
-          h4.text-center Sistema respiratorio
-          p.text-center.mb-0 Permite el intercambio de oxígeno y dióxido de carbono. Su funcionamiento orienta la identificación de dificultades respiratorias o de una obstrucción de la vía aérea.
-      .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
-          figure
-            img(src="@/assets/curso/temas/t1/i3.svg" alt="")
-          h4.text-center Sistema tegumentario
-          p.text-center.mb-0 Protege el cuerpo mediante la piel y contribuye a regular la temperatura. Su valoración permite identificar heridas, quemaduras y signos de infección.
-      .col-lg-3(data-aos="fade-down")
-        .tarjeta.bg-4.r-20.tarjeta--icono-arriba
-          figure
-            img(src="@/assets/curso/temas/t1/i4.svg" alt="")
-          h4.text-center Sistema musculoesquelético
-          p.text-center.mb-0 Brinda soporte al cuerpo y permite el movimiento. Su reconocimiento facilita la identificación de fracturas, esguinces y luxaciones.
+    .row.bg-fondo-t1-sistemas
+      .col-12
+        .p-5
+          .row.justify-content-center
+            .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t1/i1.svg" alt="")
+                h4.text-center Sistema circulatorio
+                p.text-center.mb-0 Transporta la sangre, el oxígeno y los nutrientes por todo el organismo. Su reconocimiento permite valorar el pulso e identificar alteraciones de la circulación.
+            .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t1/i2.svg" alt="")
+                h4.text-center Sistema respiratorio
+                p.text-center.mb-0 Permite el intercambio de oxígeno y dióxido de carbono. Su funcionamiento orienta la identificación de dificultades respiratorias o de una obstrucción de la vía aérea.
+            .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t1/i3.svg" alt="")
+                h4.text-center Sistema tegumentario
+                p.text-center.mb-0 Protege el cuerpo mediante la piel y contribuye a regular la temperatura. Su valoración permite identificar heridas, quemaduras y signos de infección.
+            .col-lg-3(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t1/i4.svg" alt="")
+                h4.text-center Sistema musculoesquelético
+                p.text-center.mb-0 Brinda soporte al cuerpo y permite el movimiento. Su reconocimiento facilita la identificación de fracturas, esguinces y luxaciones.
 
     //- El bloque del XD va inset: la nota ocupa (290,1351) 708x150 y la foto (1018,1240) 292x261,
     //- o sea 1020 px centrados en los 1228 útiles.
@@ -89,7 +92,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i5.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i5-h.svg" alt="")
           h3.text-center Corazón
-          p.text-small.text-center.mb-0 Órgano muscular que impulsa la sangre mediante contracciones rítmicas y mantiene su circulación hacia los pulmones y el resto del organismo. Durante una emergencia, la valoración del pulso contribuye a reconocer posibles alteraciones de la actividad cardíaca.
+          p.mb-0 Órgano muscular que impulsa la sangre mediante contracciones rítmicas y mantiene su circulación hacia los pulmones y el resto del organismo. Durante una emergencia, la valoración del pulso contribuye a reconocer posibles alteraciones de la actividad cardíaca.
       .col-sm-6.col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
         .tarjeta--boton.color-1.p-4(style="min-height: 449px")
           .row.justify-content-center.mb-3
@@ -98,7 +101,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i6.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i6-h.svg" alt="")
           h3.text-center Arterias
-          p.text-small.text-center.mb-0 Vasos sanguíneos que conducen la sangre desde el corazón hacia los órganos y tejidos. En los lactantes, la arteria braquial constituye uno de los puntos utilizados para verificar el pulso durante la valoración de la circulación.
+          p.mb-0 Vasos sanguíneos que conducen la sangre desde el corazón hacia los órganos y tejidos. En los lactantes, la arteria braquial constituye uno de los puntos utilizados para verificar el pulso durante la valoración de la circulación.
       .col-sm-6.col-lg-3.mb-4.mb-sm-0(data-aos="fade-down")
         .tarjeta--boton.color-1.p-4(style="min-height: 449px")
           .row.justify-content-center.mb-3
@@ -107,7 +110,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i7.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i7-h.svg" alt="")
           h3.text-center Venas
-          p.text-small.text-center.mb-0 Vasos sanguíneos que retornan la sangre desde los tejidos hacia el corazón. Este recorrido permite que la sangre con menor cantidad de oxígeno sea dirigida posteriormente hacia los pulmones para participar nuevamente en el proceso de oxigenación.
+          p.mb-0 Vasos sanguíneos que retornan la sangre desde los tejidos hacia el corazón. Este recorrido permite que la sangre con menor cantidad de oxígeno sea dirigida posteriormente hacia los pulmones para participar nuevamente en el proceso de oxigenación.
       .col-sm-6.col-lg-3(data-aos="fade-down")
         .tarjeta--boton.color-1.p-4(style="min-height: 449px")
           .row.justify-content-center.mb-3
@@ -116,25 +119,31 @@
                 img.icono(src="@/assets/curso/temas/t1/i8.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i8-h.svg" alt="")
           h3.text-center Capilares
-          p.text-small.text-center.mb-0 Vasos sanguíneos microscópicos que conectan las ramificaciones más pequeñas de las arterias y las venas. En ellos se produce el intercambio de oxígeno, nutrientes y sustancias de desecho entre la sangre y los diferentes tejidos.
+          p.mb-0 Vasos sanguíneos microscópicos que conectan las ramificaciones más pequeñas de las arterias y las venas. En ellos se produce el intercambio de oxígeno, nutrientes y sustancias de desecho entre la sangre y los diferentes tejidos.
 
     .row.justify-content-center.mt-5
       .col-lg-10
         p(data-aos="fade-down") El reconocimiento de estas estructuras permite relacionar el funcionamiento circulatorio con signos como palidez, piel fría, sangrado, pulso débil o llenado capilar prolongado. Durante una emergencia, estos hallazgos deben valorarse de forma conjunta para identificar oportunamente un posible compromiso de la circulación y solicitar la atención correspondiente.
 
     .row.justify-content-center
-      .col-lg-11
+      .col-lg-10
         .bg-2.r-10.p-4(data-aos="fade-down")
           p.mb-0 La siguiente figura representa la ubicación del corazón y la distribución general de los principales vasos sanguíneos. Su observación permite comprender cómo estas estructuras conforman una red que mantiene el recorrido de la sangre por el organismo.
 
-    .titulo-sexto.color-acento-contenido.mb-3.mt-5
-      h5 Figura 1.
-      span Sistema circulatorio en la primera infancia
+        .titulo-sexto.color-acento-contenido.mt-5
+          h5 Figura 1.
+          span Sistema circulatorio en la primera infancia
 
     .row.justify-content-center.bg-fondo-t1-figura
-      .col-lg-10
-        figure(data-aos="fade-down")
-          img(src="@/assets/curso/temas/t1/fig1.png" alt="Figura 1. Sistema circulatorio en la primera infancia. La ilustración representa la ubicación del corazón y el recorrido de los principales vasos sanguíneos en el cuerpo de una niña y un niño. Permite reconocer cómo estas estructuras conforman una red que distribuye la sangre por todo el organismo.").w-100
+      .col-12
+        .p-5
+          .row.justify-content-center(style="margin-top: -35px")
+            .col-lg-10
+                figure.d-none.d-md-block(data-aos="fade-down")
+                  img(src="@/assets/curso/temas/t1/fig1.png" alt="Figura 1. Sistema circulatorio en la primera infancia. La ilustración representa la ubicación del corazón y el recorrido de los principales vasos sanguíneos en el cuerpo de una niña y un niño. Permite reconocer cómo estas estructuras conforman una red que distribuye la sangre por todo el organismo.").w-100
+                figure.d-md-none
+                  img(src="@/assets/curso/temas/t1/1.png" alt="").w-100
+      
 
     p.mt-4(data-aos="fade-down") El adecuado funcionamiento del organismo depende de la acción coordinada de sus diferentes sistemas. En este proceso, la respiración cumple una función esencial al permitir la incorporación del oxígeno necesario para la vida y la eliminación del dióxido de carbono, aspectos que se abordan en el sistema respiratorio.
 
@@ -152,27 +161,32 @@
         .bg-2.r-10.p-4.mt-4(data-aos="fade-down")
           p.mb-0 Las estructuras respiratorias actúan de manera coordinada durante la entrada y salida del aire. Reconocer su función permite comprender el proceso respiratorio e identificar oportunamente posibles alteraciones. Sus principales componentes son los siguientes:
 
-    //- Tres paneles pegados: #8EC5FC r=[20,0,0,20] (186,4180) 405x461, #DBC2FA sin radio
-    //- (591,4180) 419x461 y #FFE6DE (1009,4180) 405x461 redondeado por la derecha.
-    .row.g-0.mt-5
-      .col-lg-4
-        .bg-4.r-izq-20.p-4.tarjeta--icono-arriba(data-aos="fade-down")
-          figure
-            img(src="@/assets/curso/temas/t1/i9.svg" alt="")
-          h4.text-center Vías respiratorias
-          p.text-center.mb-0 Conducen el aire desde la nariz o la boca hasta los pulmones, a través de la faringe, la laringe y la tráquea. Por ejemplo, un alimento o un objeto pequeño puede bloquear este recorrido y ocasionar una obstrucción de la vía aérea por cuerpo extraño (OVACE).
-      .col-lg-4
-        .bg-6.p-4.tarjeta--icono-arriba(data-aos="fade-down")
-          figure
-            img(src="@/assets/curso/temas/t1/i10.svg" alt="")
-          h4.text-center Pulmones
-          p.text-center.mb-0 Realizan el intercambio de oxígeno y dióxido de carbono entre el aire y la sangre. Por ejemplo, una alteración en este proceso puede manifestarse mediante dificultad para respirar, respiración acelerada o coloración azulada en los labios.
-      .col-lg-4
-        .bg-1.r-der-20.p-4.tarjeta--icono-arriba(data-aos="fade-down")
-          figure
-            img(src="@/assets/curso/temas/t1/i11.svg" alt="")
-          h4.text-center Músculos respiratorios
-          p.text-center.mb-0 Permiten los movimientos de inspiración y espiración mediante la acción del diafragma y los músculos intercostales. Por ejemplo, el hundimiento de la piel entre las costillas, denominado tiraje, puede indicar un aumento del esfuerzo respiratorio.
+
+    .tarjeta--container.row.mb-5.mt-4
+      .col-md.tarjeta.bg-4.p-5
+        .row.justify-content-center.mb-4
+          .col-6
+            figure
+              img(src='@/assets/curso/temas/t1/i9.svg', alt='Texto que describa la imagen')          
+        h4.text-center Pulmones
+        p.mb-0 Realizan el intercambio de oxígeno y dióxido de carbono entre el aire y la sangre. Por ejemplo, una alteración en este proceso puede manifestarse mediante dificultad para respirar, respiración acelerada o coloración azulada en los labios.
+      
+      .col-md.tarjeta.bg-6.p-5
+        .row.justify-content-center.mb-4
+          .col-6
+            figure
+              img(src='@/assets/curso/temas/t1/i10.svg', alt='Texto que describa la imagen')          
+        h4.text-center Pulmones
+        p.mb-0 Realizan el intercambio de oxígeno y dióxido de carbono entre el aire y la sangre. Por ejemplo, una alteración en este proceso puede manifestarse mediante dificultad para respirar, respiración acelerada o coloración azulada en los labios.
+      .col-md.tarjeta.bg-1.p-5
+        .row.justify-content-center.mb-4
+          .col-6
+            figure
+              img(src='@/assets/curso/temas/t1/i11.svg', alt='Texto que describa la imagen')          
+        h4.text-center Músculos respiratorios
+        p.mb-0 Permiten los movimientos de inspiración y espiración mediante la acción del diafragma y los músculos intercostales. Por ejemplo, el hundimiento de la piel entre las costillas, denominado tiraje, puede indicar un aumento del esfuerzo respiratorio.
+
+
 
     p.mt-5(data-aos="fade-down") La observación de la respiración permite reconocer signos de alarma, como movimientos anormales del tórax, ruidos respiratorios, cambios en la coloración de la piel o dificultad para hablar, llorar o toser. Estas manifestaciones deben valorarse de manera conjunta, puesto que pueden indicar una disminución de la entrada de aire y requerir atención inmediata.
 
@@ -209,10 +223,10 @@
     .row.justify-content-center.mt-4
       .col-lg-10
         .bg-3.p-4.p-md-5(data-aos="fade-down")
-          ul.lista-ul--color.mb-0
+          ul.lista-ul.lista-ul--compacta
             li
               i.fas.fa-heart
-              span.mb-0 #[b Heridas:] producen una pérdida de continuidad de la piel. Por ejemplo, un raspón durante el juego puede ocasionar dolor, sangrado y riesgo de infección.
+              span #[b Heridas:] producen una pérdida de continuidad de la piel. Por ejemplo, un raspón durante el juego puede ocasionar dolor, sangrado y riesgo de infección.
             li
               i.fas.fa-heart
               span.mb-0 #[b Quemaduras:] lesionan la piel por acción del calor, la electricidad, sustancias químicas u otros agentes. Por ejemplo, pueden producirse por el contacto accidental con agua caliente.
@@ -293,7 +307,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i12.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i12-h.svg" alt="")
           h3.text-center Esguince
-          p.text-small.text-center.mb-0 Afecta un ligamento por estiramiento o desgarro. Por ejemplo, puede producirse cuando una niña o un niño se tuerce el tobillo durante el juego.
+          p.mb-0 Afecta un ligamento por estiramiento o desgarro. Por ejemplo, puede producirse cuando una niña o un niño se tuerce el tobillo durante el juego.
       .col-sm-6.col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
         .tarjeta--boton.color-1.p-4(style="min-height: 358px")
           .row.justify-content-center.mb-3
@@ -302,7 +316,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i13.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i13-h.svg" alt="")
           h3.text-center Luxación
-          p.text-small.text-center.mb-0 Ocurre cuando un hueso se desplaza fuera de su articulación. Puede manifestarse mediante dolor intenso, deformidad visible y dificultad para mover la zona.
+          p.mb-0 Ocurre cuando un hueso se desplaza fuera de su articulación. Puede manifestarse mediante dolor intenso, deformidad visible y dificultad para mover la zona.
       .col-sm-6.col-lg-3.mb-4.mb-sm-0(data-aos="fade-down")
         .tarjeta--boton.color-1.p-4(style="min-height: 358px")
           .row.justify-content-center.mb-3
@@ -311,7 +325,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i14.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i14-h.svg" alt="")
           h3.text-center Fractura
-          p.text-small.text-center.mb-0 Corresponde a la ruptura parcial o total de un hueso. Por ejemplo, puede presentarse después de una caída y causar dolor, inflamación o deformidad.
+          p.mb-0 Corresponde a la ruptura parcial o total de un hueso. Por ejemplo, puede presentarse después de una caída y causar dolor, inflamación o deformidad.
       .col-sm-6.col-lg-3(data-aos="fade-down")
         .tarjeta--boton.color-1.p-4(style="min-height: 358px")
           .row.justify-content-center.mb-3
@@ -320,7 +334,7 @@
                 img.icono(src="@/assets/curso/temas/t1/i15.svg" alt="")
                 img.icono-hover(src="@/assets/curso/temas/t1/i15-h.svg" alt="")
           h3.text-center Contusión
-          p.text-small.text-center.mb-0 Se produce por un golpe que lesiona los tejidos sin romper la piel. Por ejemplo, puede ocasionar dolor, inflamación y cambio de coloración.
+          p.mb-0 Se produce por un golpe que lesiona los tejidos sin romper la piel. Por ejemplo, puede ocasionar dolor, inflamación y cambio de coloración.
 
     p.mt-5(data-aos="fade-down") La presencia de dolor intenso, deformidad, inflamación progresiva o incapacidad para mover una extremidad puede indicar una lesión que requiere atención especializada. La zona afectada debe mantenerse en reposo y en la posición encontrada, evitando movimientos que puedan agravar el daño.
 
@@ -376,7 +390,7 @@
 
     p(data-aos="fade-down") La valoración inicial permite identificar los sistemas corporales afectados y establecer las acciones prioritarias de atención. Para ello, se deben observar los signos presentes, relacionarlos con la posible lesión y determinar si existe riesgo para la vida de la niña o el niño. A continuación, se describen las principales alteraciones:
 
-    .row.align-items-center.mt-4
+    .row.align-items-center.mt-4.justify-content-center
       .col-lg-6.mb-4.mb-lg-0
         LineaTiempoD.linea-tiempo--caracteristicas.linea-bold
           .row(numero="1" titulo="Circulatorias")
@@ -391,7 +405,7 @@
           .row(numero="4" titulo="Musculoesqueléticas")
             .col-12
               p.mb-0 Se manifiestan mediante dolor, inflamación, deformidad o limitación del movimiento y pueden afectar el soporte corporal. Por ejemplo, después de una caída que ocasione una posible fractura, se debe inmovilizar la zona, evitar movimientos innecesarios y realizar un traslado seguro, sin intentar acomodar el hueso afectado.
-      .col-lg-4.offset-lg-1.d-none.d-lg-block
+      .col-lg-4.d-none.d-lg-block
         figure
           img(src="@/assets/curso/temas/t1/f8.png" alt="" style="width: 396px").m-auto
 

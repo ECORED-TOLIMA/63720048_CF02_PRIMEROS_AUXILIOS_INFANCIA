@@ -28,14 +28,20 @@
 
     p.mt-4(data-aos="fade-down") A continuación, la siguiente figura presenta los cuatro niveles que conforman la escala AVPU y las respuestas asociadas a cada uno.
 
-    .titulo-sexto.color-acento-contenido.mb-3.mt-5
-      h5 Figura 2.
-      span Escala AVPU para valorar el nivel de conciencia
+    .row.justify-content-center
+      .col-lg-10
+        .titulo-sexto.color-acento-contenido.mb-3.mt-5
+          h5 Figura 2.
+          span Escala AVPU para valorar el nivel de conciencia
 
     .row.justify-content-center
       .col-lg-10
         figure(data-aos="fade-down")
           img(src="@/assets/curso/temas/t2/fig2.png" alt="Figura 2. Escala AVPU para valorar el nivel de conciencia. Presenta los cuatro niveles de la escala —alerta, respuesta verbal, respuesta al dolor y ausencia de respuesta— con la reacción que describe el estado de la niña o el niño en cada uno.").w-100
+
+        figure.d-md-none
+          img(src="@/assets/curso/temas/t2/1.svg" alt="").w-100
+
 
     p.mt-4(data-aos="fade-down") Para dar continuidad a la evaluación inicial, se deben observar los movimientos del tórax y el abdomen, así como la frecuencia y el ritmo respiratorios. También es importante identificar sonidos anormales o señales de esfuerzo al respirar. Estos aspectos permiten reconocer posibles alteraciones y orientar adecuadamente la valoración de la respiración.
 
