@@ -52,7 +52,13 @@ def main():
                               capture_output=True, text=True, env=os.environ).stdout
 
     # 1. posición y tamaño buenos, y los grupos exportables
-    pos, grupos = {}, []
+    #
+    # ⚠️ `pos` es una LISTA, no un dict por nombre. El XD reutiliza el mismo nodo en varios sitios
+    # —en el Tema 5 el `Rectángulo 456428` de la caja del badge sale TRES veces— y un
+    # `setdefault(nombre, …)` se queda con la primera y **tira las demás sin avisar**: la ficha
+    # daba un bloque donde el diseño tiene tres. Es la misma trampa del nombre repetido que ya
+    # costaba una foto al exportar por `--grupo`. Se deduplica por (nombre, x, y), nunca por nombre.
+    pos, grupos, vistos = [], [], set()
     for ln in corre('gen_asset.py', ['--lista']).splitlines():
         m = re.match(r'\s*(group|shape)\s+(\[MASK\]\s+)?(-?\d+)\s+(-?\d+)\s+(\d+)x(\d+)\s+(.+)', ln)
         if not m:
@@ -62,7 +68,11 @@ def main():
         if tipo == 'group':
             grupos.append((int(y), int(x), int(w), int(h), nom, bool(mask)))
         else:
-            pos.setdefault(nom, (int(x), int(y), int(w), int(h)))
+            clave = (nom, int(x), int(y))
+            if clave in vistos:
+                continue
+            vistos.add(clave)
+            pos.append((nom, (int(x), int(y), int(w), int(h))))
 
     # 2. fill y radio por nombre de nodo
     #
@@ -86,11 +96,11 @@ def main():
                     estilo.setdefault('uid=' + u.group(1), 'FOTO ' + u.group(1)[:10])
 
     # 3. pestañas de 25x8: el rect que empieza justo debajo es un `.cajon`
-    pestanas = [(x, y) for nom, (x, y, w, h) in pos.items() if (w, h) == (25, 8)]
+    pestanas = [(x, y) for nom, (x, y, w, h) in pos if (w, h) == (25, 8)]
 
     # Los `Trazado …` sin fill son la decoración del fondo (las ondas del hero, los degradados
     # concéntricos del pasteboard): con `--todo` se ven, pero estorban para leer la pantalla.
-    filas = sorted(((y, x, w, h, nom) for nom, (x, y, w, h) in pos.items()
+    filas = sorted(((y, x, w, h, nom) for nom, (x, y, w, h) in pos
                     if desde <= y <= hasta and w >= minw
                     and ('--todo' in sys.argv or estilo.get(nom))))
 
@@ -143,7 +153,7 @@ def main():
         # categoría de error más repetida — el bloque maquetado 40 px estrecho y sin su fondo.
         print('\n=== DECORACIÓN (trazados sin fill indexado) que SE SALE del contenido (x<186 o'
               ' derecha>1414)')
-        for y, x, w, h, nom in sorted((y, x, w, h, nom) for nom, (x, y, w, h) in pos.items()
+        for y, x, w, h, nom in sorted((y, x, w, h, nom) for nom, (x, y, w, h) in pos
                                       if not estilo.get(nom) and desde <= y <= hasta
                                       and w >= 200 and (x < 186 or x + w > 1414)):
             print(f'  ({x:>5},{y:>6}) {w:>5}x{h:<5} sobresale '
