@@ -7,6 +7,104 @@
         span 2
       h1 Evaluación inicial del lesionado
 
+    .row.align-items-center.mt-4.justify-content-center(data-aos="fade-down")
+      .col-lg-4.d-none.d-lg-block
+        figure
+          img(src='@/assets/curso/temas/t2/1.png', alt='', style="width: 390px").m-auto
+      .col-lg-8
+        .row.align-items-start.mt-4.bg-3.p-3.r-10
+          .col-lg-2.mb-lg-0.mb-4
+            figure(data-aos="fade-down")
+              img(src='@/assets/curso/temas/t2/2.svg', style='width: 100px').m-auto
+          
+          .col
+            p La evaluación inicial permite reconocer de manera rápida y organizada el estado general de la persona lesionada. Su propósito es identificar las alteraciones que pueden comprometer la vida, establecer prioridades de atención y determinar si se requiere activar inmediatamente el servicio de emergencias.
+
+        p.mt-2 En la primera infancia, esta valoración exige observar cuidadosamente las respuestas de la niña o el niño, debido a que su estado puede cambiar en poco tiempo. Además de comprobar el nivel de conciencia, la respiración y el pulso, se deben identificar hemorragias, cambios en la coloración de la piel, movimientos inusuales y otras manifestaciones de alarma.
+
+    p.mt-4 Para orientar este proceso, se consideran cuatro aspectos fundamentales:
+
+    .row.bg-fondo-t1-sistemas
+      .col-12
+        .p-5
+          .row.justify-content-center
+            .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t2/3.svg" alt="")
+                h4.text-center Nivel de conciencia
+                p.text-center.mb-0 Permite identificar si la niña o el niño permanece alerta, responde a la voz, reacciona ante otros estímulos o no presenta respuesta. 
+            .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t2/4.svg" alt="")
+                h4.text-center Respiración
+                p.text-center.mb-0 Permite comprobar la entrada y salida del aire, así como observar la frecuencia, el ritmo, los ruidos anormales y el esfuerzo realizado para respirar. .
+            .col-lg-3.mb-4.mb-lg-0(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t2/5.svg" alt="")
+                h4.text-center Pulso
+                p.text-center.mb-0 Permite reconocer la actividad cardíaca y el estado de la circulación mediante la comprobación de su presencia, frecuencia, ritmo e intensidad. 
+            .col-lg-3(data-aos="fade-down")
+              .tarjeta.bg-4.r-20.tarjeta--icono-arriba
+                figure
+                  img(src="@/assets/curso/temas/t2/6.svg" alt="")
+                h4.text-center Signos de alarma
+                p.text-center.mb-0 Corresponden a manifestaciones que pueden indicar una condición grave, como dificultad respiratoria intensa, convulsiones, sangrado abundante, coloración azulada o pérdida de la conciencia. 
+
+    p.mt-4 Estos aspectos deben valorarse de manera conjunta, ya que una alteración puede estar relacionada con otras manifestaciones. Por ejemplo, la ausencia de respuesta acompañada de una respiración anormal requiere una actuación inmediata. Para realizar la evaluación inicial de forma segura y ordenada, se proponen los siguientes pasos:
+
+    .row.justify-content-center.mt-4
+      .col-lg-10
+        .bg-2.p-4.p-md-5(data-aos="fade-down")
+          ul.lista-ol--cuadro.mb-0
+            li
+              span.lista-ol--cuadro__vineta A
+              |  Comprobar que el lugar no presente riesgos para la persona lesionada, quien brinda la primera respuesta u otras personas.
+
+
+            li
+              span.lista-ol--cuadro__vineta B
+              |  Hablarle a la persona y observar si responde a la voz, al contacto o a otros estímulos. 
+
+
+            li
+              span.lista-ol--cuadro__vineta C
+              |  Observar los movimientos del tórax y el abdomen, escuchar posibles sonidos y reconocer si existe dificultad para respirar. 
+
+
+            li
+              span.lista-ol--cuadro__vineta D
+              |  Identificar su presencia y observar sus principales características, siempre que se cuente con la preparación necesaria. 
+
+
+            li.mb-0
+              span.lista-ol--cuadro__vineta E
+              |  Buscar hemorragias graves, convulsiones, cambios en la coloración, lesiones visibles o un deterioro repentino del estado general. 
+
+            li
+              span.lista-ol--cuadro__vineta F
+              |  Activar el servicio de emergencias cuando se identifique una alteración grave o exista riesgo para la vida. 
+
+
+            li.mb-0
+              span.lista-ol--cuadro__vineta G
+              |  Acompañar a la persona lesionada y observar cualquier cambio hasta la llegada del personal especializado. 
+
+
+    .row.justify-content-center.mt-4
+      .col-lg-10
+        .row.align-items-center
+          .col-lg-12
+            .cajon.color1.p-4
+              p El seguimiento de estos pasos permite realizar una valoración organizada, reconocer oportunamente posibles alteraciones y evitar acciones que puedan agravar la situación. Esta primera observación proporciona información esencial para profundizar en el estado de la persona lesionada, comenzando por la valoración del nivel de conciencia.
+
+
+    separador
+    #t_2_1.titulo-segundo.color-acento-contenido
+      h2 2.1 Nivel de conciencia
+
     //- Ficha: icono (186,413) 84x84 #FFC0AC r=10 · nota (186,534) 812x120 #F4EDFE r=10 ·
     //- foto (1018,316) 396x338
     .row.align-items-start.mt-4
