@@ -105,81 +105,17 @@
               |  #[b Continuar las maniobras:] mantener la RCP hasta que el lactante muestre signos de respuesta, llegue el personal especializado, el entorno deje de ser seguro o quien brinda la atención no pueda continuar.
 
     //- Ficha: icono (186,2227) 84x84 #FFC0AC r=10
-    .row.align-items-start.mt-5
+    .row.align-items-start.mt-5.mb-4
       .col-auto.mb-3.mb-lg-0
         figure
           img(src="@/assets/curso/temas/t3/ic3.png" alt="" style="width: 84px")
       .col
         p(data-aos="fade-down") La aplicación ordenada de estas acciones contribuye a mantener la circulación y el aporte de oxígeno durante una emergencia. Las maniobras deben realizarse con precaución, sin ejercer una fuerza excesiva y conforme a los protocolos vigentes y la capacitación recibida.
-        p.mb-0(data-aos="fade-down") Después de reconocer la técnica de RCP en lactantes, es necesario comprender cómo se adapta este procedimiento a la población infantil. En niñas y niños, la valoración, la profundidad de las compresiones y la técnica empleada deben ajustarse a su edad, tamaño y condiciones físicas, como se explica a continuación.
-
+        p.mb-0(data-aos="fade-down") Después de reconocer la técnica de RCP en lactantes, es necesario comprender otra situación de emergencia frecuente durante la primera infancia: la obstrucción de la vía aérea por cuerpo extraño. A diferencia del paro cardiorrespiratorio, esta condición puede presentarse mientras la niña o el niño está consciente, por lo que exige señales de identificación y maniobras diferentes. Por esta razón, a continuación se aborda la obstrucción de la vía aérea por cuerpo extraño (OVACE), sus manifestaciones y las acciones seguras para atenderla.
     Separador
 
     #t_3_2.titulo-segundo.color-acento-contenido(data-aos="fade-down")
-      h2 3.2 RCP en población infantil
-
-    //- Ficha: foto (186,2608) 292x267 a la izquierda
-    .row.align-items-start
-      .col-lg-3.mb-4.mb-lg-0
-        figure
-          img(src="@/assets/curso/temas/t3/f3.png" alt="" style="width: 292px").m-auto
-      .col-lg-9
-        p(data-aos="fade-down") La reanimación cardiopulmonar (RCP) en la población infantil se aplica cuando la niña o el niño no responde y no respira normalmente o solo jadea. Su finalidad es mantener temporalmente la circulación sanguínea y el aporte de oxígeno a los órganos vitales mientras llega la atención especializada.
-        .cajon.color1.p-4.mt-4(data-aos="fade-down")
-          p Este procedimiento se realiza en niñas y niños desde un año hasta la aparición de signos de pubertad. Cuando estos signos están presentes, se aplican las técnicas de RCP correspondientes a las personas adultas.
-          p.mb-0 Antes de iniciar las maniobras, se debe verificar la seguridad del entorno y valorar la respuesta y la respiración. Si la niña o el niño no responde y no respira normalmente, se debe solicitar ayuda, activar el sistema de emergencias mediante la línea 123 e iniciar la RCP, según la capacitación recibida.
-
-    p.mt-4(data-aos="fade-down") Para realizar el procedimiento de manera organizada, se deben aplicar las siguientes acciones:
-
-    //- Ficha: banda (290,2954) 1020x610 #F4EDFE
-    .row.justify-content-center.mt-4
-      .col-lg-10
-        .bg-2.p-4.p-md-5(data-aos="fade-down")
-          ul.lista-ol--cuadro.mb-0
-            li
-              span.lista-ol--cuadro__vineta 1
-              |  #[b Verificar la seguridad:] comprobar que el lugar no represente peligro para la niña, el niño ni para quien brinda la atención.
-            li
-              span.lista-ol--cuadro__vineta 2
-              |  #[b Valorar la respuesta:] estimular suavemente a la niña o al niño y observar si responde mediante movimientos, sonidos o gestos.
-            li
-              span.lista-ol--cuadro__vineta 3
-              |  #[b Observar la respiración:] verificar si respira normalmente o solo jadea, sin prolongar innecesariamente la valoración.
-            li
-              span.lista-ol--cuadro__vineta 4
-              |  #[b Solicitar ayuda:] pedir apoyo a las personas cercanas y activar el sistema de emergencias mediante la línea 123.
-            li
-              span.lista-ol--cuadro__vineta 5
-              |  #[b Ubicar a la niña o al niño:] colocarlo boca arriba sobre una superficie firme y plana para facilitar las maniobras.
-            li
-              span.lista-ol--cuadro__vineta 6
-              |  #[b Posicionar las manos:] ubicar el talón de una mano en el centro del pecho, sobre la mitad inferior del esternón. Según el tamaño de la niña o del niño, se puede utilizar una o ambas manos.
-            li
-              span.lista-ol--cuadro__vineta 7
-              |  #[b Aplicar las compresiones:] comprimir el tórax aproximadamente un tercio de su profundidad, equivalente a unos 5 cm.
-            li
-              span.lista-ol--cuadro__vineta 8
-              |  #[b Mantener el ritmo:] realizar entre 100 y 120 compresiones por minuto, permitir la expansión completa del tórax y reducir las interrupciones.
-            li
-              span.lista-ol--cuadro__vineta 9
-              |  #[b Combinar compresiones y ventilaciones:] realizar ciclos de 30 compresiones y 2 ventilaciones cuando participa un solo reanimador, o de 15 compresiones y 2 ventilaciones cuando intervienen dos reanimadores capacitados.
-            li.mb-0
-              span.lista-ol--cuadro__vineta 10
-              |  #[b Continuar las maniobras:] mantener la RCP hasta que la niña o el niño muestre signos de respuesta, llegue el personal especializado, el entorno deje de ser seguro o quien brinda la atención no pueda continuar.
-
-
-    .row.justify-content-center.mt-4
-      .col-lg-10
-        .row.align-items-center
-          .col-lg-12
-            .cajon.color1.p-4
-              p La aplicación ordenada de estas acciones contribuye a mantener la circulación sanguínea y el aporte de oxígeno durante la emergencia. Las maniobras deben adaptarse al tamaño y a las condiciones físicas de la niña o del niño, sin aplicar una fuerza excesiva y de acuerdo con la capacitación recibida.
-
-
-    Separador
-
-    #t_3_3.titulo-segundo.color-acento-contenido(data-aos="fade-down")
-      h2 3.3 Obstrucción de la vía aérea por cuerpo extraño (OVACE)
+      h2 3.2 Obstrucción de la vía aérea por cuerpo extraño (OVACE)
 
     //- Ficha: ilustración (186,3958) 292x166 sobre la caja (186,3986) 292x138 #F4EDFE r=[20,20,0,0]
     .row.align-items-start
@@ -294,8 +230,8 @@
 
     Separador
 
-    #t_3_4.titulo-segundo.color-acento-contenido(data-aos="fade-down")
-      h2 3.4 Uso del desfibrilador externo automático (DEA)
+    #t_3_3.titulo-segundo.color-acento-contenido(data-aos="fade-down")
+      h2 3.3 Uso del desfibrilador externo automático (DEA)
 
     //- Ficha: foto (1122,6176) 292x217
     .row.align-items-start

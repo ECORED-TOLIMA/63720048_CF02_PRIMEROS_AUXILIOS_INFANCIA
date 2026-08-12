@@ -103,18 +103,13 @@ export default {
           },
           {
             numero: '3.2',
-            titulo: 'RCP en población infantil',
+            titulo: 'Obstrucción de la vía aérea por cuerpo extraño (OVACE)',
             hash: 't_3_2',
           },
           {
             numero: '3.3',
-            titulo: 'Obstrucción de la vía aérea por cuerpo extraño (OVACE)',
-            hash: 't_3_3',
-          },
-          {
-            numero: '3.4',
             titulo: 'Uso del desfibrilador externo automático (DEA)',
-            hash: 't_3_4',
+            hash: 't_3_3',
           },
         ],
       },
@@ -234,7 +229,7 @@ export default {
       {
         icono: 'fas fa-file-pdf',
         titulo: 'Descargar PDF',
-        download: 'downloads/dist.pdf',
+        download: 'downloads/63720048_CF02_CFA_DU.pdf',
       },
       {
         icono: 'fas fa-download',

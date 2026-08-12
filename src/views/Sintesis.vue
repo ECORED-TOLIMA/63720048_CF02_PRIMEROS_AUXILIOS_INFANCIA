@@ -7,11 +7,9 @@
 
     p.mt-4(data-aos="fade-down") De igual forma, se abordan las principales lesiones y situaciones específicas que pueden presentarse en esta etapa, así como la movilización del lesionado, la comunicación con el menor y la articulación con el sistema de emergencias. Todo ello con el propósito de garantizar una atención integral, segura y oportuna que proteja la vida y la salud de niñas y niños en las diferentes situaciones de emergencia.
 
-    p.mt-4.mb-0(data-aos="fade-down") A continuación, el mapa conceptual organiza de manera visual los ejes temáticos del componente formativo y las relaciones que los articulan.
-
     //- El mapa del XD mide 1228 px, que es justo el ancho útil de la tarjeta.
     figure.mt-4(data-aos="fade-down")
-      img(src="@/assets/curso/sintesis.svg" alt="Técnicas de primeros auxilios en primera infancia organiza el componente en seis ejes: anatomía y fisiología básica, evaluación inicial del lesionado, soporte vital básico, lesiones y movilización, situaciones específicas y enfermedades prevalentes, y comunicación, emergencias y cadena de custodia, con sus subtemas. Así, evidencia que atender una emergencia es un proceso integral, del reconocimiento de los signos de alarma a la movilización segura y la articulación con el sistema de salud." style="width: 1228px").m-auto
+      img(src="@/assets/curso/sintesis.svg" alt="Mapa conceptual del componente Técnicas de primeros auxilios en primera infancia, organizado en seis ejes relacionados entre sí. Los tres primeros ejes desarrollan las bases técnicas: anatomía y fisiología, evaluación inicial del lesionado, y soporte vital básico con RCP, OVACE y desfibrilador. Los dos ejes siguientes abordan la atención práctica: lesiones y movilización segura, y las situaciones específicas más frecuentes en la primera infancia. El último eje reúne la comunicación con el menor y sus cuidadores, la articulación con el sistema de emergencias y la cadena de custodia." style="width: 1228px").m-auto
 
     .row.justify-content-center.mt-5
       .col-auto
