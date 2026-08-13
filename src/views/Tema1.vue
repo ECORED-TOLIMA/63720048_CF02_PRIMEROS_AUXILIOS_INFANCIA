@@ -168,8 +168,8 @@
           .col-6
             figure
               img(src='@/assets/curso/temas/t1/i9.svg', alt='Texto que describa la imagen')          
-        h4.text-center Pulmones
-        p.mb-0 Realizan el intercambio de oxígeno y dióxido de carbono entre el aire y la sangre. Por ejemplo, una alteración en este proceso puede manifestarse mediante dificultad para respirar, respiración acelerada o coloración azulada en los labios.
+        h4.text-center Vías respiratorias
+        p.mb-0 Conducen el aire desde la nariz o la boca hasta los pulmones, a través de la faringe, la laringe y la tráquea. Por ejemplo, un alimento o un objeto pequeño puede bloquear este recorrido y ocasionar una obstrucción de la vía aérea por cuerpo extraño (OVACE). 
       
       .col-md.tarjeta.bg-6.p-5
         .row.justify-content-center.mb-4

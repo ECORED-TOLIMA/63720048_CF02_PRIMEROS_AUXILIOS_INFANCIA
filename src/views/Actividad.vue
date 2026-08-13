@@ -24,7 +24,7 @@ export default {
       tema: 'Misión: salvar vidas',
       titulo: 'Cuestionario',
       introduccion:
-        '<b>Objetivo:</b> Aplicar los conocimientos y habilidades adquiridas para atender emergencias en la primera infancia, identificando situaciones de riesgo, evaluando al lesionado y ejecutando acciones de primeros auxilios de forma oportuna, segura y conforme a los protocolos establecidos.<br><br>Esta actividad le permitirá determinar el grado de apropiación de los contenidos del componente formativo Técnicas de primeros auxilios en primera infancia. Antes de su realización, se recomienda la lectura del componente formativo mencionado. Es opcional (no es calificable), y puede realizarse todas las veces que se desee. Lea la pregunta de cada ítem y seleccione la respuesta correcta.',
+        '<b>Objetivo:</b> aplicar los conocimientos y habilidades adquiridas para atender emergencias en la primera infancia, identificando situaciones de riesgo, evaluando al lesionado y ejecutando acciones de primeros auxilios de forma oportuna, segura y conforme a los protocolos establecidos.',
       // el kit sólo muestra 10 de las 20: barajar es OBLIGATORIO
       barajarPreguntas: true,
       // `titulo_aprobado` y `titulo_reprobado` NO se escriben: el docx no los da y el kit ya trae
@@ -37,6 +37,8 @@ export default {
         'Felicitaciones. Ha superado satisfactoriamente la actividad. Los resultados obtenidos evidencian una comprensión adecuada de los conceptos y procedimientos relacionados con la atención de emergencias en la primera infancia. Se reconoce la capacidad para identificar situaciones de riesgo, interpretar signos de alarma y aplicar acciones básicas de primeros auxilios de manera segura y oportuna.',
       mensaje_final_reprobado:
         'No ha superado la actividad. Le recomendamos volver a revisar el componente formativo e intentar nuevamente la actividad didáctica.',
+      titulo_aprobado: '¡BUEN TRABAJO!',
+      titulo_reprobado: 'VUELVA A INTENTARLO',
       preguntas: [
         {
           id: 1,
