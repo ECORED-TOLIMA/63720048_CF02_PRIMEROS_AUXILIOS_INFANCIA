@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "node scripts/sync-readme-github-pages-link.mjs && vite",
+    "serve": "vite",
     "build": "vite build --mode file",
     "zip": "node scripts/build-material-zip.mjs",
     "lint": "eslint . --fix",
