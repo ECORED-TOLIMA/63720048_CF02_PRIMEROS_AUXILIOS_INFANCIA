@@ -131,9 +131,9 @@
     p.mt-4(data-aos="fade-down") La comunicación debe adaptarse a la edad, el estado emocional y la capacidad de respuesta. Para facilitar la comprensión, se recomienda:
 
     //- Ficha: caja (186,2776) 916x320 #F4EDFE con la lista A-F -> col-9 · foto (1122,2776) 292x394 -> col-3
-    .row.align-items-start.mt-4
+    .row.align-items-center.mt-4
       .col-lg-9
-        .bg-2.p-4(data-aos="fade-down")
+        .bg-2.p-5(data-aos="fade-down")
           ol.lista-ol--cuadro.lista-numerada--cuadro.mb-0
             li
               span.lista-ol--cuadro__vineta A

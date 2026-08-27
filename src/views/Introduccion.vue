@@ -19,10 +19,10 @@
         .bg-2.r-10.p-4.mt-4(data-aos="fade-down")
           p.mb-0 En este componente formativo se desarrollan las bases necesarias para adquirir estas competencias, permitiendo al talento humano en formación intervenir de manera oportuna y responsable ante una emergencia en la primera infancia, contribuyendo a salvar vidas y a reducir las consecuencias de una lesión mientras se activa el sistema de emergencias.
 
-        .row.align-items-start.mt-4(data-aos="fade-down")
+        .row.align-items-center.mt-4(data-aos="fade-down")
           .col-auto.mb-3.mb-lg-0
             figure
-              img(src="@/assets/curso/temas/intro/icono.png" alt="" style="width: 84px")
+              img(src="@/assets/curso/temas/intro/icono.png" alt="" style="width: 104px")
           .col
             p.mb-0 El desarrollo de los contenidos se presenta de manera progresiva: inicia con la anatomía y fisiología básica y la evaluación inicial del lesionado; continúa con el soporte vital básico y el manejo de lesiones y traumatismos; y finaliza con la atención de situaciones específicas y la comunicación con el niño, la niña y sus cuidadores durante la emergencia. Para ampliar la información, se recomienda consultar el material audiovisual que acompaña esta sección.
 

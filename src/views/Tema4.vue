@@ -102,10 +102,10 @@
       .col-lg-8
         p(data-aos="fade-down") El manejo de lesiones en la primera infancia comprende las acciones orientadas a estabilizar, proteger y evitar el agravamiento de lesiones que comprometen estructuras como huesos, articulaciones, tejidos blandos y sistema neurológico. Estas lesiones pueden derivarse de caídas, golpes, accidentes o situaciones de riesgo en el entorno, siendo frecuentes en esta etapa del desarrollo (Organización Mundial de la Salud, 2020).
         .bg-3.r-10.p-4.mt-4(data-aos="fade-down")
-          .row.align-items-start
+          .row.align-items-center
             .col-auto.mb-3.mb-lg-0
               figure
-                img(src="@/assets/curso/temas/t4/ic2.svg" alt="" style="width: 84px")
+                img(src="@/assets/curso/temas/t4/ic2.svg" alt="" style="width: 104px")
             .col
               p.mb-0 La intervención del primer respondiente debe centrarse en la identificación de signos de gravedad, la limitación del movimiento, la protección de la zona afectada y la preparación para un traslado seguro, evitando maniobras que puedan generar daño adicional. La actuación oportuna permite disminuir complicaciones y favorecer la recuperación de la niña o del niño.
 

@@ -16,10 +16,10 @@
       .col-lg-8
         p(data-aos="fade-down") El soporte vital básico corresponde al conjunto de acciones inmediatas orientadas a mantener la oxigenación y la circulación en una persona que presenta una alteración grave de sus funciones vitales. Estas intervenciones buscan preservar la vida hasta la llegada de atención especializada, mediante la aplicación de técnicas estandarizadas y seguras.
         .bg-3.r-10.p-4.mt-4(data-aos="fade-down")
-          .row.align-items-start
+          .row.align-items-center
             .col-auto.mb-3.mb-lg-0
               figure
-                img(src="@/assets/curso/temas/t3/ic1.png" alt="" style="width: 84px")
+                img(src="@/assets/curso/temas/t3/ic1.png" alt="" style="width: 104px")
             .col
               p.mb-0 En la primera infancia, el soporte vital básico adquiere especial relevancia debido a la mayor vulnerabilidad de niñas y niños frente a eventos como la obstrucción de la vía aérea, la insuficiencia respiratoria y el paro cardiorrespiratorio. Estas situaciones pueden evolucionar rápidamente, por lo que requieren una intervención oportuna y adecuada por parte del primer respondiente.
 
@@ -105,10 +105,10 @@
               |  #[b Continuar las maniobras:] mantener la RCP hasta que el lactante muestre signos de respuesta, llegue el personal especializado, el entorno deje de ser seguro o quien brinda la atención no pueda continuar.
 
     //- Ficha: icono (186,2227) 84x84 #FFC0AC r=10
-    .row.align-items-start.mt-5.mb-4
+    .row.align-items-center.mt-5.mb-4
       .col-auto.mb-3.mb-lg-0
         figure
-          img(src="@/assets/curso/temas/t3/ic3.png" alt="" style="width: 84px")
+          img(src="@/assets/curso/temas/t3/ic3.png" alt="" style="width: 104px")
       .col
         p(data-aos="fade-down") La aplicación ordenada de estas acciones contribuye a mantener la circulación y el aporte de oxígeno durante una emergencia. Las maniobras deben realizarse con precaución, sin ejercer una fuerza excesiva y conforme a los protocolos vigentes y la capacitación recibida.
         p.mb-0(data-aos="fade-down") Después de reconocer la técnica de RCP en lactantes, es necesario comprender otra situación de emergencia frecuente durante la primera infancia: la obstrucción de la vía aérea por cuerpo extraño. A diferencia del paro cardiorrespiratorio, esta condición puede presentarse mientras la niña o el niño está consciente, por lo que exige señales de identificación y maniobras diferentes. Por esta razón, a continuación se aborda la obstrucción de la vía aérea por cuerpo extraño (OVACE), sus manifestaciones y las acciones seguras para atenderla.
@@ -327,10 +327,10 @@
                 img(src="@/assets/curso/temas/t3/2.svg" alt="" style="width: 222px").m-auto
 
     //- Ficha: icono (186,7213) 84x84 #FFC0AC r=10
-    .row.align-items-start.mt-5
+    .row.align-items-center.mt-5
       .col-auto.mb-3.mb-lg-0
         figure
-          img(src="@/assets/curso/temas/t3/ic2.png" alt="" style="width: 84px")
+          img(src="@/assets/curso/temas/t3/ic2.png" alt="" style="width: 104px")
       .col
         p(data-aos="fade-down") El uso oportuno del DEA, combinado con una RCP de calidad, fortalece la respuesta ante un paro cardiorrespiratorio. Mantener la calma, seguir las instrucciones del dispositivo y continuar las maniobras contribuye a brindar una atención inicial segura mientras llega el personal especializado.
         p.mb-0(data-aos="fade-down") Después de reconocer las acciones de soporte vital básico, es necesario abordar otras situaciones que también pueden afectar la salud y la integridad de lactantes, niñas y niños. En el siguiente apartado, se presentan las medidas de atención inicial ante lesiones, traumatismos y situaciones que requieren una movilización segura.

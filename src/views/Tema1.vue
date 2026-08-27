@@ -438,10 +438,10 @@
               figure.m-0
                 img(src="@/assets/curso/temas/t1/f9.png" alt="" style="width: 316px").m-auto
 
-    .row.align-items-start.mt-5
+    .row.align-items-center.mt-5
       .col-auto.mb-3.mb-lg-0
         figure
-          img(src="@/assets/curso/temas/t1/ic3.png" alt="" style="width: 84px")
+          img(src="@/assets/curso/temas/t1/ic3.png" alt="" style="width: 104px")
       .col
         p(data-aos="fade-down") Esta secuencia favorece una respuesta segura, ordenada y centrada en las necesidades prioritarias. En la primera infancia, la observación permanente es fundamental, ya que el estado de una niña o un niño puede cambiar rápidamente durante una emergencia.
         p.mb-0(data-aos="fade-down") La comprensión de la anatomía y la fisiología básicas proporciona los fundamentos para reconocer posibles alteraciones corporales. Estos conocimientos facilitan la evaluación inicial de la persona lesionada, permiten identificar su estado general y ayudan a establecer las prioridades de atención.
